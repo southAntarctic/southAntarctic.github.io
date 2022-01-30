@@ -1,0 +1,560 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/xt-blog/img/favicon.png">
+  <link rel="icon" href="/xt-blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xue tao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="难度：困难             题目有效数字（按顺序）可以分成以下几个部分：  一个 小数 或者 整数 （可选）一个 &#39;e&#39; 或 &#39;E&#39; ，后面跟着一个 整数  小数（按顺序）可以分成以下几个部分：  （可选）一个符号字符（&#39;+&#39; 或 &#39;-&#39;） 下述格式之一： 至少一位数字，后面跟着一个点 &#39;.&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="65_有效数字">
+<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/01/29/65-%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97/index.html">
+<meta property="og:site_name" content="学涛的博客">
+<meta property="og:description" content="难度：困难             题目有效数字（按顺序）可以分成以下几个部分：  一个 小数 或者 整数 （可选）一个 &#39;e&#39; 或 &#39;E&#39; ，后面跟着一个 整数  小数（按顺序）可以分成以下几个部分：  （可选）一个符号字符（&#39;+&#39; 或 &#39;-&#39;） 下述格式之一： 至少一位数字，后面跟着一个点 &#39;.&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220129144707.png">
+<meta property="article:published_time" content="2022-01-29T06:35:23.000Z">
+<meta property="article:modified_time" content="2022-01-29T07:31:15.013Z">
+<meta property="article:author" content="xue tao">
+<meta property="article:tag" content="leetcode">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220129144707.png">
+  
+  
+  <title>65_有效数字 - 学涛的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/xt-blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"accept_one_time.gitee.io","root":"/xt-blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xt-blog/local-search.xml"};
+  </script>
+  <script  src="/xt-blog/js/utils.js" ></script>
+  <script  src="/xt-blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/xt-blog/">
+      <strong>学涛的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                文档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/xt-blog/img/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="65_有效数字">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-01-29 14:35" pubdate>
+        2022年1月29日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.8k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">65_有效数字</h1>
+            
+            <div class="markdown-body">
+              <div class="note note-danger">
+            <p>难度：困难</p>
+          </div>
+
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>有效数字（按顺序）可以分成以下几个部分：</p>
+<ol>
+<li>一个 <strong>小数</strong> 或者 <strong>整数</strong></li>
+<li>（可选）一个 <code>&#39;e&#39;</code> 或 <code>&#39;E&#39;</code> ，后面跟着一个 <strong>整数</strong></li>
+</ol>
+<p>小数（按顺序）可以分成以下几个部分：</p>
+<ol>
+<li>（可选）一个符号字符（<code>&#39;+&#39;</code> 或 <code>&#39;-&#39;</code>）</li>
+<li>下述格式之一：<ul>
+<li>至少一位数字，后面跟着一个点 <code>&#39;.&#39;</code></li>
+<li>至少一位数字，后面跟着一个点 <code>&#39;.&#39;</code> ，后面再跟着至少一位数字</li>
+<li>一个点 <code>&#39;.&#39;</code> ，后面跟着至少一位数字</li>
+</ul>
+</li>
+</ol>
+<p>整数（按顺序）可以分成以下几个部分：</p>
+<ol>
+<li>（可选）一个符号字符（<code>&#39;+&#39;</code> 或 <code>&#39;-&#39;</code>）</li>
+<li>至少一位数字</li>
+</ol>
+<p>部分有效数字列举如下：</p>
+<ul>
+<li><code>[&quot;2&quot;, &quot;0089&quot;, &quot;-0.1&quot;, &quot;+3.14&quot;, &quot;4.&quot;, &quot;-.9&quot;, &quot;2e10&quot;, &quot;-90E3&quot;, &quot;3e+7&quot;, &quot;+6e-1&quot;, &quot;53.5e93&quot;, &quot;-123.456e789&quot;]</code></li>
+</ul>
+<p>部分无效数字列举如下：</p>
+<ul>
+<li><code>[&quot;abc&quot;, &quot;1a&quot;, &quot;1e&quot;, &quot;e3&quot;, &quot;99e2.5&quot;, &quot;--6&quot;, &quot;-+3&quot;, &quot;95a54e53&quot;]</code></li>
+</ul>
+<p>给你一个字符串 s ，如果 s 是一个 有效数字 ，请返回 <strong>true</strong> 。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
+<blockquote>
+<p>输入：s = “0”<br>输出：true</p>
+</blockquote>
+<p>示例二：</p>
+<blockquote>
+<p>输入：s = “e”<br>输出：false</p>
+</blockquote>
+<p>示例三：</p>
+<blockquote>
+<p>输入：s = “.”<br>输出：false</p>
+</blockquote>
+<p>示例四：</p>
+<blockquote>
+<p>输入：s = “.1”<br>输出：true</p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul>
+<li><code>1 &lt;= s.length &lt;= 20</code></li>
+<li><code>s</code> 仅含英文字母（大写和小写），数字（<code>0-9</code>），加号 <code>&#39;+&#39;</code> ，减号 <code>&#39;-&#39;</code> ，或者点 <code>&#39;.&#39;</code> 。</li>
+</ul>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><h4 id="确定有限状态自动机"><a href="#确定有限状态自动机" class="headerlink" title="确定有限状态自动机"></a>确定有限状态自动机</h4><p>确定有限状态自动机（以下简称「自动机」）是一类计算模型。它包含一系列状态，这些状态中：</p>
+<ul>
+<li>有一个特殊的状态，被称作「初始状态」。</li>
+<li>还有一系列状态被称为「接受状态」，它们组成了一个特殊的集合。其中，一个状态可能既是「初始状态」，也是「接受状态」。</li>
+</ul>
+<p>起初，这个自动机处于「初始状态」。随后，它顺序地读取字符串中的每一个字符，并根据当前状态和读入的字符，按照某个事先约定好的「转移规则」，从当前状态转移到下一个状态；当状态转移完成后，它就读取下一个字符。当字符串全部读取完毕后，如果自动机处于某个「接受状态」，则判定该字符串「被接受」；否则，判定该字符串「被拒绝」。</p>
+<p>并且如果没有匹配到转移规则，也拒绝该字符串。</p>
+<p>自动机驱动的编程，可以看成是一种暴力解法。</p>
+<h3 id="合法数值字符串"><a href="#合法数值字符串" class="headerlink" title="合法数值字符串"></a>合法数值字符串</h3><p>一个合法的数值字符串，包含以下部分：</p>
+<ul>
+<li>符号位，即 +、−两种符号</li>
+<li>整数部分，即由若干字符 0−9 组成的字符串</li>
+<li>小数点</li>
+<li>小数部分，其构成与整数部分相同</li>
+<li>指数部分，其中包含开头的字符 e（大写小写均可）、可选的符号位，和整数部分</li>
+</ul>
+<p>上面五个部分每个都不是必需的，但是受一些额外规则制约：</p>
+<ul>
+<li>如果符号位存在，其后面必须跟着数字或者小数点</li>
+<li>小数点的前后两侧，至少有一侧是数字</li>
+</ul>
+<h3 id="自动机状态转换"><a href="#自动机状态转换" class="headerlink" title="自动机状态转换"></a>自动机状态转换</h3><p>根据这些规则，罗列出自动机的所有状态：</p>
+<ol start="0">
+<li>初始状态</li>
+<li>符号位</li>
+<li>整数部分</li>
+<li>左侧有整数的小数点</li>
+<li>左侧无整数的小数点</li>
+<li>小数部分</li>
+<li>字符 e</li>
+<li>指数部分的符号位</li>
+<li>指数部分的整数部分</li>
+</ol>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220129144707.png" srcset="/xt-blog/img/loading.gif" lazyload alt="fig1"></p>
+<p>初始状态即状态0，接受状态为状态2、状态3、状态5、状态8。</p>
+<ul>
+<li>当输入正负号时：<ul>
+<li>如果当前状态是初始状态0，则状态切换为1</li>
+<li>如果当前状态是状态6，则切换到状态7</li>
+<li>其他则拒绝</li>
+</ul>
+</li>
+<li>当输入数字时：<ul>
+<li>如果当前状态是状态0，1，2，则切换到状态2</li>
+<li>如果当前状态是状态3，4，5，则切换到状态5</li>
+<li>如果当前状态是状态6，7，8，则切换到状态8</li>
+</ul>
+</li>
+<li>当输入小数点时：<ul>
+<li>如果当前状态是状态0，1，则切换到状态4</li>
+<li>如果当前状态是状态2，则切换到状态3</li>
+<li>其他则拒绝</li>
+</ul>
+</li>
+<li>当输入字符 E | e 时：<ul>
+<li>如果当前状态是 2，3，5，则切换到状态6</li>
+<li>其他则拒绝</li>
+</ul>
+</li>
+<li>其他字符：<ul>
+<li>拒绝 </li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isNumber</span><span class="hljs-params">(String s)</span></span>&#123;<br>  <span class="hljs-keyword">int</span> state = <span class="hljs-number">0</span>;<br>  s = s.trim(); <span class="hljs-comment">// 去除头尾空格</span><br>  <span class="hljs-comment">// 遍历所有字符，当作输入</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;s.length(); i++)&#123;<br>    <span class="hljs-keyword">switch</span> (s.charAt(i)) &#123;<br>        <span class="hljs-comment">// 正负号</span><br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;+&#x27;</span>:<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;-&#x27;</span>:<br>        <span class="hljs-keyword">if</span> (state == <span class="hljs-number">0</span>)&#123;<br>          state = <span class="hljs-number">1</span>;<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (state ==<span class="hljs-number">6</span>)&#123;<br>          state = <span class="hljs-number">7</span>;<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>          <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">break</span>;<br>        <span class="hljs-comment">// 数字</span><br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;0&#x27;</span>:<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;1&#x27;</span>:<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;2&#x27;</span>:<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;3&#x27;</span>:<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;4&#x27;</span>:<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;5&#x27;</span>:<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;6&#x27;</span>:<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;7&#x27;</span>:<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;8&#x27;</span>:<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;9&#x27;</span>:<br>        <span class="hljs-keyword">if</span> (state==<span class="hljs-number">0</span>||state==<span class="hljs-number">1</span>||state==<span class="hljs-number">2</span>)&#123;<br>          state = <span class="hljs-number">2</span>;<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (state==<span class="hljs-number">3</span>||state==<span class="hljs-number">4</span>||state==<span class="hljs-number">5</span>)&#123;<br>          state = <span class="hljs-number">5</span>;<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (state==<span class="hljs-number">6</span>||state==<span class="hljs-number">7</span>||state==<span class="hljs-number">8</span>)&#123;<br>          state = <span class="hljs-number">8</span>;<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>          <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">break</span>;<br>        <span class="hljs-comment">// 小数点</span><br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;.&#x27;</span>:<br>        <span class="hljs-keyword">if</span> (state==<span class="hljs-number">0</span>||state==<span class="hljs-number">1</span>)&#123;<br>          state = <span class="hljs-number">4</span>;<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (state==<span class="hljs-number">2</span>)&#123;<br>          state = <span class="hljs-number">3</span>;<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>          <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">break</span>;<br>        <span class="hljs-comment">// E e</span><br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;E&#x27;</span>:<br>      <span class="hljs-keyword">case</span> <span class="hljs-string">&#x27;e&#x27;</span>:<br>        <span class="hljs-keyword">if</span> (state==<span class="hljs-number">2</span>||state==<span class="hljs-number">3</span>||state==<span class="hljs-number">5</span>)&#123;<br>          state=<span class="hljs-number">6</span>;<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>          <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>        &#125;<br>        <span class="hljs-keyword">break</span>;<br>      <span class="hljs-keyword">default</span>:<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 返回接受状态</span><br>  <span class="hljs-keyword">return</span> state==<span class="hljs-number">2</span>||state==<span class="hljs-number">3</span>||state==<span class="hljs-number">5</span>||state==<span class="hljs-number">8</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/xt-blog/categories/Leetcode/">Leetcode</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/xt-blog/2022/01/29/1765-%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%80%E9%AB%98%E7%82%B9/">
+                        <span class="hidden-mobile">1765_地图中的最高点</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     Peace <i class="iconfont icon-love"></i> Love 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/xt-blog/js/events.js" ></script>
+<script  src="/xt-blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/xt-blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/xt-blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/xt-blog/js/boot.js" ></script>
+
+
+</body>
+</html>
