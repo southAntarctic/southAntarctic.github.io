@@ -16,24 +16,21 @@
   <meta name="author" content="xue tao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="难度：中等             题目给你一个大小为 m x n 的整数矩阵 isWater ，它代表了一个由 陆地 和 水域 单元格组成的地图。 如果 isWater[i][j] &#x3D;&#x3D; 0，格子 (i, j) 是一个 陆地 格子。如果 isWater[i][j] &#x3D;&#x3D; 1，格子 (i, j) 是一个 水域 格子。你需要按照如下规则给每个单元格安排高度： 每个格子的高度">
+    <meta name="description" content="难度：简单             题目给你一个非负整数 num ，请你返回将它变成 0 所需要的步数。 如果当前数字是偶数，你需要把它除以 2 ；否则，减去 1 。 示例示例一：  输入：num &#x3D; 14输出：6解释：步骤 1) 14 是偶数，除以 2 得到 7 。步骤 2） 7 是奇数，减 1 得到 6 。步骤 3） 6 是偶数，除以 2 得到 3 。步骤 4） 3">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1765_地图中的最高点">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/01/29/1765-%E5%9C%B0%E5%9B%BE%E4%B8%AD%E7%9A%84%E6%9C%80%E9%AB%98%E7%82%B9/index.html">
+<meta property="og:title" content="1342_将数字变成0的操作次数">
+<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/01/31/1342-%E5%B0%86%E6%95%B0%E5%AD%97%E5%8F%98%E6%88%900%E7%9A%84%E6%93%8D%E4%BD%9C%E6%AC%A1%E6%95%B0/index.html">
 <meta property="og:site_name" content="学涛的博客">
-<meta property="og:description" content="难度：中等             题目给你一个大小为 m x n 的整数矩阵 isWater ，它代表了一个由 陆地 和 水域 单元格组成的地图。 如果 isWater[i][j] &#x3D;&#x3D; 0，格子 (i, j) 是一个 陆地 格子。如果 isWater[i][j] &#x3D;&#x3D; 1，格子 (i, j) 是一个 水域 格子。你需要按照如下规则给每个单元格安排高度： 每个格子的高度">
+<meta property="og:description" content="难度：简单             题目给你一个非负整数 num ，请你返回将它变成 0 所需要的步数。 如果当前数字是偶数，你需要把它除以 2 ；否则，减去 1 。 示例示例一：  输入：num &#x3D; 14输出：6解释：步骤 1) 14 是偶数，除以 2 得到 7 。步骤 2） 7 是奇数，减 1 得到 6 。步骤 3） 6 是偶数，除以 2 得到 3 。步骤 4） 3">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220129111515.png">
-<meta property="og:image" content="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220129111603.png">
-<meta property="article:published_time" content="2022-01-29T02:30:16.000Z">
-<meta property="article:modified_time" content="2022-02-01T03:20:14.156Z">
+<meta property="article:published_time" content="2022-01-31T09:53:13.000Z">
+<meta property="article:modified_time" content="2022-01-31T09:57:07.106Z">
 <meta property="article:author" content="xue tao">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220129111515.png">
   
   
-  <title>1765_地图中的最高点 - 学涛的博客</title>
+  <title>1342_将数字变成0的操作次数 - 学涛的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -179,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="1765_地图中的最高点">
+            <span class="h2" id="subtitle" title="1342_将数字变成0的操作次数">
               
             </span>
 
@@ -189,8 +186,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-01-29 10:30" pubdate>
-        2022年1月29日 上午
+      <time datetime="2022-01-31 17:53" pubdate>
+        2022年1月31日 下午
       </time>
     </span>
   
@@ -200,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.9k 字
+      554 字
     </span>
   
 
@@ -209,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      17 分钟
+      5 分钟
     </span>
   
 
@@ -242,44 +239,31 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">1765_地图中的最高点</h1>
+            <h1 style="display: none">1342_将数字变成0的操作次数</h1>
             
             <div class="markdown-body">
-              <div class="note note-warning">
-            <p>难度：中等</p>
+              <div class="note note-success">
+            <p>难度：简单</p>
           </div>
 
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个大小为 <code>m x n</code> 的整数矩阵 isWater ，它代表了一个由 <strong>陆地</strong> 和 <strong>水域</strong> 单元格组成的地图。</p>
-<p>如果 <code>isWater[i][j] == 0</code>，格子 <code>(i, j)</code> 是一个 陆地 格子。<br>如果 <code>isWater[i][j] == 1</code>，格子 <code>(i, j)</code> 是一个 水域 格子。<br>你需要按照如下规则给每个单元格安排高度：</p>
-<p>每个格子的高度都必须是非负的。<br>如果一个格子是是<strong>水域</strong>，那么它的高度必须为 <strong>0</strong> 。<br>任意相邻的格子高度差 <strong>至多</strong> 为 <strong>1</strong> 。当两个格子在正东、南、西、北方向上相互紧挨着，就称它们为相邻的格子。（也就是说它们有一条公共边）<br>找到一种安排高度的方案，使得矩阵中的最高高度值<strong>最大</strong> 。</p>
-<p>请你返回一个大小为 <code>m x n</code> 的整数矩阵<code>height</code> ，其中 <code>height[i][j]</code>是格子 <code>(i, j)</code> 的高度。如果有多种解法，请返回<strong>任意一个</strong> 。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个非负整数 <code>num</code> ，请你返回将它变成 0 所需要的步数。 如果当前数字是偶数，你需要把它除以 2 ；否则，减去 1 。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
 <blockquote>
-<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220129111515.png" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
-<p><strong>输入</strong>：isWater = [[0,1],[0,0]]<br><strong>输出</strong>：[[1,0],[2,1]]<br><strong>解释</strong>：上图展示了给各个格子安排的高度。<br>蓝色格子是水域格，绿色格子是陆地格。</p>
+<p><strong>输入</strong>：num = 14<br><strong>输出</strong>：6<br><strong>解释</strong>：<br>步骤 1) 14 是偶数，除以 2 得到 7 。<br>步骤 2） 7 是奇数，减 1 得到 6 。<br>步骤 3） 6 是偶数，除以 2 得到 3 。<br>步骤 4） 3 是奇数，减 1 得到 2 。<br>步骤 5） 2 是偶数，除以 2 得到 1 。<br>步骤 6） 1 是奇数，减 1 得到 0 。</p>
 </blockquote>
 <p>示例二：</p>
 <blockquote>
-<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220129111603.png" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
-<p><strong>输入</strong>：isWater = [[0,0,1],[1,0,0],[0,0,0]]<br><strong>输出</strong>：[[1,1,0],[0,1,1],[1,2,2]]<br><strong>解释</strong>：所有安排方案中，最高可行高度为 2 。<br>任意安排方案中，只要最高高度为 2 且符合上述规则的，都为可行方案。</p>
+<p><strong>输入</strong>：num = 8<br><strong>输出</strong>：4<br><strong>解释</strong>：<br>步骤 1） 8 是偶数，除以 2 得到 4 。<br>步骤 2） 4 是偶数，除以 2 得到 2 。<br>步骤 3） 2 是偶数，除以 2 得到 1 。<br>步骤 4） 1 是奇数，减 1 得到 0 。</p>
 </blockquote>
-<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul>
-<li>m == isWater.length</li>
-<li>n == isWater[i].length</li>
-<li>1 &lt;= m, n &lt;= 1000</li>
-<li><code>isWater[i][j]</code> 要么是 0 ，要么是 1 。</li>
-<li>至少有 1 个水域格子。</li>
-</ul>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>根据题意，空间内水面的高度为0，这是确定信息，因此可以从水面的高度出发，向周围迭代计算对应的高度，因为相邻格子的高度差最大为1，所以每个地方只需要迭代一次，并记录第一次访问的高度。</p>
-<p>相邻格子可定义为 <code>int[][] directions = &#123;&#123;-1,0&#125;,&#123;1,0&#125;,&#123;0,-1&#125;,&#123;0,1&#125;&#125;;</code></p>
-<p>用队列来控制迭代的顺序（从高度为0的水面开始，然后是高度为1的陆地，依此类推）</p>
-<p>刚开始给所有位置赋值 -1 ，表示未访问过该位置，然后遍历，将判定为水面的位置赋值 -1 ，并推入队列。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 数组填充</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++)&#123;<br>  <span class="hljs-comment">// 全部填充-1，表示未访问过</span><br>  Arrays.fill(ans[i],-<span class="hljs-number">1</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>示例三：</p>
+<blockquote>
+<p><strong>输入</strong>：num = 123<br><strong>输出</strong>：12</p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>0 &lt;= num &lt;= $10^6$</p>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>将数字变成 0 的步骤可以分成两类，一类是偶数，需要除以 2，一类是奇数，需要减 1，并且存在一个特例 0.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">numberOfSteps</span><span class="hljs-params">(<span class="hljs-keyword">int</span> num)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">if</span> (num == <span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>    <span class="hljs-keyword">while</span> (num!=<span class="hljs-number">0</span>)&#123;<br>        ans+=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (num%<span class="hljs-number">2</span>==<span class="hljs-number">1</span>)&#123;<br>            num -= <span class="hljs-number">1</span>;<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            num = num/<span class="hljs-number">2</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
-
-<p>然后从队列中的水面点开始迭代。每从队列取出一个位置，就计算它的相邻格子，如果相邻格子未访问过（为 -1 ），则设置相邻格子的高度为当前位置 +1，并将该格子推入队列。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span>[][] directions = &#123;&#123;-<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>&#125;,&#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>&#125;&#125;;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[][] highestPeak(<span class="hljs-keyword">int</span>[][] isWater) &#123;<br>  <span class="hljs-keyword">int</span> m = isWater.length;<br>  <span class="hljs-keyword">int</span> n = isWater[<span class="hljs-number">0</span>].length;<br>  <span class="hljs-keyword">int</span>[][] ans = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[m][n];<br>  <br>  <span class="hljs-comment">// 数组填充 -1 ，表示未访问过</span><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++)&#123;<br>    Arrays.fill(ans[i],-<span class="hljs-number">1</span>);<br>  &#125;<br>  <br>  Queue&lt;<span class="hljs-keyword">int</span>[]&gt; queue = <span class="hljs-keyword">new</span> ArrayDeque&lt;&gt;();<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>      <span class="hljs-keyword">if</span>(isWater[i][j]==<span class="hljs-number">1</span>)&#123;<br>        ans[i][j]=<span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// 记录水面的点</span><br>        queue.offer(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;i,j&#125;);<br>      &#125;<br>    &#125;<br>  &#125;<br>  <br>  <span class="hljs-keyword">while</span>(!queue.isEmpty())&#123;<br>    <span class="hljs-keyword">int</span>[] p = queue.poll();<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>[] dir: directions)&#123;<br>      <span class="hljs-keyword">int</span> x = p[<span class="hljs-number">0</span>]+dir[<span class="hljs-number">0</span>],y = p[<span class="hljs-number">1</span>]+dir[<span class="hljs-number">1</span>];<br>      <span class="hljs-keyword">if</span>(<span class="hljs-number">0</span>&lt;=x&amp;&amp;x&lt;m&amp;&amp;<span class="hljs-number">0</span>&lt;=y&amp;&amp;y&lt;n&amp;&amp;ans[x][y]==-<span class="hljs-number">1</span>)&#123;<br>        ans[x][y] = ans[p[<span class="hljs-number">0</span>]][p[<span class="hljs-number">1</span>]]+<span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// 将该点推入队列</span><br>        queue.offer(<span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;x,y&#125;);<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -309,9 +293,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/01/29/65-%E6%9C%89%E6%95%88%E6%95%B0%E5%AD%97/">
+                      <a href="/xt-blog/2022/01/31/447-%E5%9B%9E%E6%97%8B%E9%95%96%E7%9A%84%E6%95%B0%E9%87%8F/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">65_有效数字</span>
+                        <span class="hidden-mobile">447_回旋镖的数量</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -319,8 +303,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/01/28/2047-%E5%8F%A5%E5%AD%90%E4%B8%AD%E7%9A%84%E6%9C%89%E6%95%88%E5%8D%95%E8%AF%8D%E6%95%B0/">
-                        <span class="hidden-mobile">2047_句子中的有效单词数</span>
+                      <a href="/xt-blog/2022/01/30/2022-%E5%B0%86%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84%E8%BD%AC%E5%8F%98%E6%88%90%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/">
+                        <span class="hidden-mobile">2022_将一维数组转变成二维数组</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
