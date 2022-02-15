@@ -4,6 +4,131 @@
   
   
   <entry>
+    <title>1296_划分数组为连续数字的集合</title>
+    <link href="/xt-blog/2022/02/15/1296-%E5%88%92%E5%88%86%E6%95%B0%E7%BB%84%E4%B8%BA%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%AD%97%E7%9A%84%E9%9B%86%E5%90%88/"/>
+    <url>/xt-blog/2022/02/15/1296-%E5%88%92%E5%88%86%E6%95%B0%E7%BB%84%E4%B8%BA%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%AD%97%E7%9A%84%E9%9B%86%E5%90%88/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-warning">            <p>难度：中等</p>          </div><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数数组 nums 和一个正整数 k，请你判断是否可以把这个数组划分成一些由 k 个连续数字组成的集合。<br>如果可以，请返回 true；否则，返回 false。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p><blockquote><p><strong>输入</strong>：nums = [1,2,3,3,4,4,5,6], k = 4<br><strong>输出</strong>：true<br><strong>解释</strong>：数组可以分成 [1,2,3,4] 和 [3,4,5,6]。</p></blockquote><p>示例二：</p><blockquote><p><strong>输入</strong>：nums = [3,2,1,2,3,4,3,4,5,9,10,11], k = 3<br><strong>输出</strong>：true<br><strong>解释</strong>：数组可以分成 [1,2,3] , [2,3,4] , [3,4,5] 和 [9,10,11]。</p></blockquote><p>示例三：</p><blockquote><p><strong>输入</strong>：nums = [3,3,2,2,1,1], k = 3<br><strong>输出</strong>：true</p></blockquote><p>示例四：</p><blockquote><p><strong>输入</strong>：nums = [1,2,3,4], k = 3<br><strong>输出</strong>：false<br><strong>解释</strong>：数组不能分成几个大小为 3 的子数组。</p></blockquote><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul><li><code>1 &lt;= k &lt;= nums.length &lt;= 10^5</code></li><li><code>1 &lt;= nums[i] &lt;= 10^9</code></li></ul><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>首先对长度进行过滤，如果数组长度不是数组的整数倍，直接返回 false</p><p>然后用 HashMap 将数组存储起来</p><p>对数组按照从小到大排序，并开始遍历</p><p>当一个数 x 存在，那么 x+1, x+2, … x+k-1 也一定存在</p><p>按照这个顺序进行判断，首先判断 x 是否存在，然后循环判断 x 后 k 位是否存在，存在则从 HashMap 中减去一位，否则返回 false。</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPossibleDivide</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> n = nums.length;<br>  <span class="hljs-keyword">if</span> (n%k!=<span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>  &#125;<br>  Arrays.sort(nums);<br>  HashMap&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num: nums)&#123;<br>    map.put(num, map.getOrDefault(num,<span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);<br>  &#125;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>    <span class="hljs-keyword">if</span> (!map.containsKey(nums[i]))&#123;<br>      <span class="hljs-keyword">continue</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;k; j++)&#123;<br>      <span class="hljs-keyword">int</span> num = nums[i]+j;<br>      <span class="hljs-keyword">if</span> (!map.containsKey(num))&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>      &#125;<br>      map.put(num,map.get(num)-<span class="hljs-number">1</span>);<br>      <span class="hljs-keyword">if</span> (map.get(num)==<span class="hljs-number">0</span>)&#123;<br>        map.remove(num);<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>1380_矩阵中的幸运数</title>
+    <link href="/xt-blog/2022/02/15/1380-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E5%B9%B8%E8%BF%90%E6%95%B0/"/>
+    <url>/xt-blog/2022/02/15/1380-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E5%B9%B8%E8%BF%90%E6%95%B0/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-success">            <p>难度：简单</p>          </div><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个 <code>m * n</code> 的矩阵，矩阵中的数字 各不相同 。请你按 任意 顺序返回矩阵中的所有幸运数。</p><p>幸运数是指矩阵中满足同时下列两个条件的元素：</p><ul><li>在同一行的所有元素中最小</li><li>在同一列的所有元素中最大</li></ul><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p><blockquote><p><strong>输入</strong>：matrix = [[3,7,8],[9,11,13],[15,16,17]]<br><strong>输出</strong>：[15]<br><strong>解释</strong>：15 是唯一的幸运数，因为它是其所在行中的最小值，也是所在列中的最大值。</p></blockquote><p>示例二：</p><blockquote><p><strong>输入</strong>：matrix = [[1,10,4,2],[9,3,8,7],[15,16,17,12]]<br><strong>输出</strong>：[12]<br><strong>解释</strong>：12 是唯一的幸运数，因为它是其所在行中的最小值，也是所在列中的最大值。</p></blockquote><p>示例三：</p><blockquote><p><strong>输入</strong>：matrix = [[7,8],[1,2]]<br><strong>输出</strong>：[7]</p></blockquote><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul><li><code>m == mat.length</code></li><li><code>n == mat[i].length</code></li><li><code>1 &lt;= n, m &lt;= 50</code></li><li><code>1 &lt;= matrix[i][j] &lt;= 10^5</code></li><li>矩阵中的所有元素都是不同的</li></ul><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>常规思路，对每个元素进行遍历，然后判断是否为行中最小和列中最大，都符合的添加到结果中。</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">luckyNumbers</span> <span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix)</span> </span>&#123;<br>  List&lt;Integer&gt; ans = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>  <span class="hljs-keyword">int</span> m = matrix.length, n = matrix[<span class="hljs-number">0</span>].length;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++)&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>      <span class="hljs-keyword">boolean</span> isMin = <span class="hljs-keyword">true</span>, isMax = <span class="hljs-keyword">true</span>;<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>;k&lt;n;k++)&#123;<br>        <span class="hljs-keyword">if</span> (matrix[i][k]&lt;matrix[i][j])&#123;<br>          isMin = <span class="hljs-keyword">false</span>;<br>        &#125;<br>      &#125;<br>      <span class="hljs-keyword">if</span> (!isMin)&#123;<br>        <span class="hljs-keyword">continue</span>;<br>      &#125;<br>      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> k=<span class="hljs-number">0</span>;k&lt;m;k++)&#123;<br>        <span class="hljs-keyword">if</span> (matrix[k][j]&gt;matrix[i][j])&#123;<br>          isMax = <span class="hljs-keyword">false</span>;<br>        &#125;<br>      &#125;<br>      <span class="hljs-keyword">if</span> (isMax)&#123;<br>        ans.add(matrix[i][j]);<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure><p>也可以先对矩阵进行预处理，求出每行的最小值和每列的最大值，然后遍历矩阵，比较每个元素是否同时等于最小值和最大值即可。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">luckyNumbers</span> <span class="hljs-params">(<span class="hljs-keyword">int</span>[][] matrix)</span> </span>&#123;<br>  List&lt;Integer&gt; ans = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>  <span class="hljs-keyword">int</span> m = matrix.length, n = matrix[<span class="hljs-number">0</span>].length;<br>  <span class="hljs-keyword">int</span>[] minRow = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[m];<br>  <span class="hljs-comment">// 需要先填充最大值</span><br>  Arrays.fill(minRow, Integer.MAX_VALUE);<br>  <span class="hljs-keyword">int</span>[] maxCol = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];<br>  Arrays.fill(maxCol, Integer.MIN_VALUE);<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;m;i++)&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>;j&lt;n;j++)&#123;<br>      minRow[i] = Math.min(minRow[i],matrix[i][j]);<br>      maxCol[j] = Math.max(maxCol[j],matrix[i][j]);<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;m; i++)&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;n; j++)&#123;<br>      <span class="hljs-keyword">if</span> (matrix[i][j]==minRow[i]&amp;&amp;matrix[i][j]==maxCol[j])&#123;<br>        ans.add(matrix[i][j]);<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>136_只出现一次的数字</title>
+    <link href="/xt-blog/2022/02/14/136-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/"/>
+    <url>/xt-blog/2022/02/14/136-%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-success">            <p>难度：简单</p>          </div><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个非空整数数组，除了某个元素只出现一次以外，其余每个元素均出现两次。找出那个只出现了一次的元素。</p><p>说明：</p><p>你的算法应该具有线性时间复杂度。 你可以不使用额外空间来实现吗？</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p><blockquote><p><strong>输入</strong>: [2,2,1]<br><strong>输出</strong>: 1</p></blockquote><p>示例二：</p><blockquote><p><strong>输入</strong>: [4,1,2,1,2]<br><strong>输出</strong>: 4</p></blockquote><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>这道题最直观的方法就是用 hash 表存储每个出现的数字和出现的次数，最后返回出现一次的数字。或者使用集合，用集合来存储数字，如果集合中没有该数字就加入，如果有就删除，最后剩下的数字就是只出现一次的数字。</p><p>考虑到不使用额外空间来实现，可以用位计算来解决。异或运算有以下三个性质：</p><ul><li>$a\otimes a=0$</li><li>$a\otimes 0=a$</li><li>$a \otimes b \otimes a =b\otimes a \otimes a = b \otimes (a\otimes a) = b \otimes 0 = b$</li></ul><p>所以可以对数组里的全部元素进行异或，最后得到的值就是只出现一次的数</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">singleNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num: nums)&#123;<br>    ans ^= num;<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>540_有序数组中的单一元素</title>
+    <link href="/xt-blog/2022/02/14/540-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%8D%95%E4%B8%80%E5%85%83%E7%B4%A0/"/>
+    <url>/xt-blog/2022/02/14/540-%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E5%8D%95%E4%B8%80%E5%85%83%E7%B4%A0/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-warning">            <p>难度：中等</p>          </div><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个仅由整数组成的有序数组，其中每个元素都会出现两次，唯有一个数只会出现一次。</p><p>请你找出并返回只出现一次的那个数。</p><p>你设计的解决方案必须满足 O(log n) 时间复杂度和 O(1) 空间复杂度。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p><blockquote><p><strong>输入</strong>: nums = [1,1,2,3,3,4,4,8,8]<br><strong>输出</strong>: 2</p></blockquote><p>示例二：</p><blockquote><p><strong>输入</strong>: nums =  [3,3,7,7,10,11,11]<br><strong>输出</strong>: 10</p></blockquote><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul><li>$1 &lt;= nums.length &lt;= 10^5$</li><li>$0 &lt;= nums[i] &lt;= 10^5$</li></ul><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>根据题目要求，时间复杂度为O(log n)，首先想到二分法</p><p>当为偶数下标时，如果它和它的下一个相同，则说明出现一次的数在后半段，否则出现在前半段。</p><p>所以定义 left 和 right，在计算 mid 的时候，可以用 <code>left + ( right - left ) / 2</code> 来替代 <code>( left + right ) / 2</code>以防止整数溢出。</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">singleNonDuplicate</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> n = nums.length;<br>  <span class="hljs-keyword">int</span> left = <span class="hljs-number">0</span>,right = n-<span class="hljs-number">1</span>,mid=<span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">while</span> (left&lt;right)&#123;<br>    mid = left+(right-left)/<span class="hljs-number">2</span>;<br>    <span class="hljs-keyword">if</span> (mid%<span class="hljs-number">2</span>==<span class="hljs-number">1</span>)&#123;<br>      <span class="hljs-comment">// 如果mid为奇数</span><br>      mid--;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (nums[mid]==nums[mid+<span class="hljs-number">1</span>])&#123;<br>      left = mid + <span class="hljs-number">2</span>;<br>    &#125;<span class="hljs-keyword">else</span> &#123;<br>      right = mid;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> nums[left];<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>面试题_数字流的秩</title>
+    <link href="/xt-blog/2022/02/04/%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%95%B0%E5%AD%97%E6%B5%81%E7%9A%84%E7%A7%A9/"/>
+    <url>/xt-blog/2022/02/04/%E9%9D%A2%E8%AF%95%E9%A2%98-%E6%95%B0%E5%AD%97%E6%B5%81%E7%9A%84%E7%A7%A9/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-warning">            <p>难度：中等</p>          </div><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>假设你正在读取一串整数。每隔一段时间，你希望能找出数字 x 的秩(小于或等于 x 的值的个数)。请实现数据结构和算法来支持这些操作，也就是说：</p><p>实现 track(int x) 方法，每读入一个数字都会调用该方法；</p><p>实现 getRankOfNumber(int x) 方法，返回小于或等于 x 的值的个数。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p><blockquote><p><strong>输入</strong>:<br>[“StreamRank”, “getRankOfNumber”, “track”, “getRankOfNumber”]<br>[[], [1], [0], [0]]<br><strong>输出</strong>:<br>[null,0,null,1]</p></blockquote><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul><li><code>x &lt;= 50000</code></li><li><code>track</code> 和 <code>getRankOfNumber</code> 方法的调用次数均不超过 2000 次</li></ul><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>这道题比较灵活，可以有多种解法，最简单的就是粗暴解法用 int 数组存储数字，数组初始化大小为最大大小 50001，每个位置存储该位置的数字个数，track 的时候就向位置 ++，求秩则从 0 加到 x。 这个方法有局限性，就是限制了添加数字的最大值。</p><p>粗暴解法：</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StreamRank</span> </span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[] list;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">StreamRank</span><span class="hljs-params">()</span> </span>&#123;<br>        list = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">50001</span>];<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">track</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        list[x]++;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getRankOfNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;=x;i++)&#123;<br>            ans+=list[i];<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>二分法是效率比较高的方法，且不受添加数字大小限制，track 的时候先找到位置再添加，求秩即返回它的位置。与上面方法相比，添加比较麻烦，但是求秩效率很高。</p><p>二分法解法：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">StreamRank</span> </span>&#123;<br>  List&lt;Integer&gt; list;<br><br>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">StreamRank</span><span class="hljs-params">()</span> </span>&#123;<br>    list = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">track</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>    <span class="hljs-comment">// 找到第一个大于x的位置，插入x</span><br>    list.add(search(x), x);<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getRankOfNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> search(x);<br>  &#125;<br><br>  <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> <span class="hljs-title">search</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>&#123;<br>    <span class="hljs-keyword">int</span> l = <span class="hljs-number">0</span>, r = list.size() - <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (l &lt;= r) &#123;<br>      <span class="hljs-keyword">int</span> mid = l + (r - l) / <span class="hljs-number">2</span>;<br>      <span class="hljs-keyword">if</span> (list.get(mid) &gt; x) r = mid - <span class="hljs-number">1</span>;<br>      <span class="hljs-keyword">else</span> l = mid + <span class="hljs-number">1</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> l;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>面试题</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>面试题</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>1725_可以形成最大正方形的矩形数目</title>
     <link href="/xt-blog/2022/02/04/1725-%E5%8F%AF%E4%BB%A5%E5%BD%A2%E6%88%90%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2%E7%9A%84%E7%9F%A9%E5%BD%A2%E6%95%B0%E7%9B%AE/"/>
     <url>/xt-blog/2022/02/04/1725-%E5%8F%AF%E4%BB%A5%E5%BD%A2%E6%88%90%E6%9C%80%E5%A4%A7%E6%AD%A3%E6%96%B9%E5%BD%A2%E7%9A%84%E7%9F%A9%E5%BD%A2%E6%95%B0%E7%9B%AE/</url>
