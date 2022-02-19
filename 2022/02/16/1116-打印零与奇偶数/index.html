@@ -16,21 +16,21 @@
   <meta name="author" content="xue tao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="难度：中等             题目给你一个整数数组 nums 和一个正整数 k，请你判断是否可以把这个数组划分成一些由 k 个连续数字组成的集合。如果可以，请返回 true；否则，返回 false。 示例示例一：  输入：nums &#x3D; [1,2,3,3,4,4,5,6], k &#x3D; 4输出：true解释：数组可以分成 [1,2,3,4] 和 [3,4,5,6]。  示">
+    <meta name="description" content="难度：中等             题目现有函数 printNumber 可以用一个整数参数调用，并输出该整数到控制台。 例如，调用 printNumber(7) 将会输出 7 到控制台。给你类 ZeroEvenOdd 的一个实例，该类中有三个函数：zero、even 和 odd 。ZeroEvenOdd 的相同实例将会传递给三个不同线程：  线程 A：调用 zero()">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1296_划分数组为连续数字的集合">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/02/15/1296-%E5%88%92%E5%88%86%E6%95%B0%E7%BB%84%E4%B8%BA%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%AD%97%E7%9A%84%E9%9B%86%E5%90%88/index.html">
+<meta property="og:title" content="1116_打印零与奇偶数">
+<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/02/16/1116-%E6%89%93%E5%8D%B0%E9%9B%B6%E4%B8%8E%E5%A5%87%E5%81%B6%E6%95%B0/index.html">
 <meta property="og:site_name" content="学涛的博客">
-<meta property="og:description" content="难度：中等             题目给你一个整数数组 nums 和一个正整数 k，请你判断是否可以把这个数组划分成一些由 k 个连续数字组成的集合。如果可以，请返回 true；否则，返回 false。 示例示例一：  输入：nums &#x3D; [1,2,3,3,4,4,5,6], k &#x3D; 4输出：true解释：数组可以分成 [1,2,3,4] 和 [3,4,5,6]。  示">
+<meta property="og:description" content="难度：中等             题目现有函数 printNumber 可以用一个整数参数调用，并输出该整数到控制台。 例如，调用 printNumber(7) 将会输出 7 到控制台。给你类 ZeroEvenOdd 的一个实例，该类中有三个函数：zero、even 和 odd 。ZeroEvenOdd 的相同实例将会传递给三个不同线程：  线程 A：调用 zero()">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-15T11:43:18.000Z">
-<meta property="article:modified_time" content="2022-02-15T11:48:55.003Z">
+<meta property="article:published_time" content="2022-02-16T03:43:54.000Z">
+<meta property="article:modified_time" content="2022-02-16T03:56:43.307Z">
 <meta property="article:author" content="xue tao">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>1296_划分数组为连续数字的集合 - 学涛的博客</title>
+  <title>1116_打印零与奇偶数 - 学涛的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -176,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="1296_划分数组为连续数字的集合">
+            <span class="h2" id="subtitle" title="1116_打印零与奇偶数">
               
             </span>
 
@@ -186,8 +186,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-15 19:43" pubdate>
-        2022年2月15日 晚上
+      <time datetime="2022-02-16 11:43" pubdate>
+        2022年2月16日 中午
       </time>
     </span>
   
@@ -197,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      2k 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10 分钟
+      17 分钟
     </span>
   
 
@@ -239,40 +239,51 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">1296_划分数组为连续数字的集合</h1>
+            <h1 style="display: none">1116_打印零与奇偶数</h1>
             
             <div class="markdown-body">
               <div class="note note-warning">
             <p>难度：中等</p>
           </div>
 
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个整数数组 nums 和一个正整数 k，请你判断是否可以把这个数组划分成一些由 k 个连续数字组成的集合。<br>如果可以，请返回 true；否则，返回 false。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>现有函数 printNumber 可以用一个整数参数调用，并输出该整数到控制台。</p>
+<p>例如，调用 printNumber(7) 将会输出 7 到控制台。<br>给你类 ZeroEvenOdd 的一个实例，该类中有三个函数：zero、even 和 odd 。ZeroEvenOdd 的相同实例将会传递给三个不同线程：</p>
+<ul>
+<li><strong>线程 A</strong>：调用 zero() ，只输出 0</li>
+<li><strong>线程 B</strong>：调用 even() ，只输出偶数</li>
+<li><strong>线程 C</strong>：调用 odd() ，只输出奇数</li>
+</ul>
+<p>修改给出的类，以输出序列 “010203040506…” ，其中序列的长度必须为 2n 。</p>
+<p>实现 ZeroEvenOdd 类：</p>
+<ul>
+<li>ZeroEvenOdd(int n) 用数字 n 初始化对象，表示需要输出的数。</li>
+<li>void zero(printNumber) 调用 printNumber 以输出一个 0 。</li>
+<li>void even(printNumber) 调用printNumber 以输出偶数。</li>
+<li>void odd(printNumber) 调用 printNumber 以输出奇数。</li>
+</ul>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
 <blockquote>
-<p><strong>输入</strong>：nums = [1,2,3,3,4,4,5,6], k = 4<br><strong>输出</strong>：true<br><strong>解释</strong>：数组可以分成 [1,2,3,4] 和 [3,4,5,6]。</p>
+<p><strong>输入</strong>：n = 2<br><strong>输出</strong>：”0102”<br><strong>解释</strong>：三条线程异步执行，其中一个调用 zero()，另一个线程调用 even()，最后一个线程调用odd()。正确的输出为 “0102”。</p>
 </blockquote>
-<p>示例二：</p>
+<p>示例一：</p>
 <blockquote>
-<p><strong>输入</strong>：nums = [3,2,1,2,3,4,3,4,5,9,10,11], k = 3<br><strong>输出</strong>：true<br><strong>解释</strong>：数组可以分成 [1,2,3] , [2,3,4] , [3,4,5] 和 [9,10,11]。</p>
-</blockquote>
-<p>示例三：</p>
-<blockquote>
-<p><strong>输入</strong>：nums = [3,3,2,2,1,1], k = 3<br><strong>输出</strong>：true</p>
-</blockquote>
-<p>示例四：</p>
-<blockquote>
-<p><strong>输入</strong>：nums = [1,2,3,4], k = 3<br><strong>输出</strong>：false<br><strong>解释</strong>：数组不能分成几个大小为 3 的子数组。</p>
+<p><strong>输入</strong>：n = 5<br><strong>输出</strong>：”0102030405”</p>
 </blockquote>
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul>
-<li><code>1 &lt;= k &lt;= nums.length &lt;= 10^5</code></li>
-<li><code>1 &lt;= nums[i] &lt;= 10^9</code></li>
+<li><code>1 &lt;= n &lt;= 1000</code></li>
 </ul>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>首先对长度进行过滤，如果数组长度不是数组的整数倍，直接返回 false</p>
-<p>然后用 HashMap 将数组存储起来</p>
-<p>对数组按照从小到大排序，并开始遍历</p>
-<p>当一个数 x 存在，那么 x+1, x+2, … x+k-1 也一定存在</p>
-<p>按照这个顺序进行判断，首先判断 x 是否存在，然后循环判断 x 后 k 位是否存在，存在则从 HashMap 中减去一位，否则返回 false。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isPossibleDivide</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums, <span class="hljs-keyword">int</span> k)</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> n = nums.length;<br>  <span class="hljs-keyword">if</span> (n%k!=<span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>  &#125;<br>  Arrays.sort(nums);<br>  HashMap&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> num: nums)&#123;<br>    map.put(num, map.getOrDefault(num,<span class="hljs-number">0</span>)+<span class="hljs-number">1</span>);<br>  &#125;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>    <span class="hljs-keyword">if</span> (!map.containsKey(nums[i]))&#123;<br>      <span class="hljs-keyword">continue</span>;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>; j&lt;k; j++)&#123;<br>      <span class="hljs-keyword">int</span> num = nums[i]+j;<br>      <span class="hljs-keyword">if</span> (!map.containsKey(num))&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;<br>      &#125;<br>      map.put(num,map.get(num)-<span class="hljs-number">1</span>);<br>      <span class="hljs-keyword">if</span> (map.get(num)==<span class="hljs-number">0</span>)&#123;<br>        map.remove(num);<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><h3 id="Java-信号量"><a href="#Java-信号量" class="headerlink" title="Java 信号量"></a>Java 信号量</h3><p>Semaphore(信号量)：是一种计数器，用来保护一个或者多个共享资源的访问。如果线程要访问一个资源就必须先获得信号量。如果信号量内部计数器大于0，信号量减1，然后允许共享这个资源；否则，如果信号量的计数器等于0，信号量将会把线程置入休眠直至计数器大于0.当信号量使用完时，必须释放。</p>
+<p><strong>主要方法</strong>：</p>
+<ul>
+<li>void acquire() ：从信号量获取一个许可，如果无可用许可前将一直阻塞等待</li>
+<li>boolean tryAcquire()：从信号量尝试获取一个许可，如果无可用许可，直接返回false，不会阻塞</li>
+<li>void release()： 释放一个许可。注意：多次调用该方法，会使信号量的许可数增加，达到动态扩展的效果</li>
+<li>int availablePermits()： 获取当前信号量可用的许可</li>
+</ul>
+<p>在多线程中，通常会使用 Semaphore 信号量来进行资源共享。</p>
+<p>每当线程需要执行时，就调用 acquire 方法获取一个许可，等待获取到资源后执行，执行完成后调用 release 方法是放一个许可。</p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><p>在此题中，三个线程开始遍历 n，zero 线程首先获得一个许可，打印 0 后，从 1 到 n 进行遍历，奇数对 odd 信号量释放一个许可，偶数则对 even 信号量释放一个许可，odd 线程从 1 到 n 每隔一位进行遍历，等待获取许可，获取许可后打印当前奇数，然后对 zero 信号量释放一个许可，even 线程同样，从 2 到 n 没隔一位进行遍历。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ZeroEvenOdd</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;<br>    Semaphore zero;<br>    Semaphore even;<br>    Semaphore odd;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ZeroEvenOdd</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.n = n;<br>        zero = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);<br>        even = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);<br>        odd = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);<br>    &#125;<br><br>    <span class="hljs-comment">// printNumber.accept(x) outputs &quot;x&quot;, where x is an integer.</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">zero</span><span class="hljs-params">(IntConsumer printNumber)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>            zero.acquire();<br>            printNumber.accept(<span class="hljs-number">0</span>);<br>            <span class="hljs-keyword">if</span> (i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;<br>                even.release();<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                odd.release();<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">even</span><span class="hljs-params">(IntConsumer printNumber)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i += <span class="hljs-number">2</span>) &#123;<br>            even.acquire();<br>            printNumber.accept(i);<br>            zero.release();<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">odd</span><span class="hljs-params">(IntConsumer printNumber)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i += <span class="hljs-number">2</span>) &#123;<br>            odd.acquire();<br>            printNumber.accept(i);<br>            zero.release();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -302,9 +313,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/16/1116-%E6%89%93%E5%8D%B0%E9%9B%B6%E4%B8%8E%E5%A5%87%E5%81%B6%E6%95%B0/">
+                      <a href="/xt-blog/2022/02/16/1195-%E4%BA%A4%E6%9B%BF%E6%89%93%E5%8D%B0%E5%AD%97%E7%AC%A6%E4%B8%B2/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">1116_打印零与奇偶数</span>
+                        <span class="hidden-mobile">1195_交替打印字符串</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -312,8 +323,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/15/1380-%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E5%B9%B8%E8%BF%90%E6%95%B0/">
-                        <span class="hidden-mobile">1380_矩阵中的幸运数</span>
+                      <a href="/xt-blog/2022/02/15/1296-%E5%88%92%E5%88%86%E6%95%B0%E7%BB%84%E4%B8%BA%E8%BF%9E%E7%BB%AD%E6%95%B0%E5%AD%97%E7%9A%84%E9%9B%86%E5%90%88/">
+                        <span class="hidden-mobile">1296_划分数组为连续数字的集合</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

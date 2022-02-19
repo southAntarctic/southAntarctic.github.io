@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/xt-blog/img/favicon.png">
+  <link rel="icon" href="/xt-blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xue tao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="难度：中等             题目编写一个可以从 1 到 n 输出代表这个数字的字符串的程序，但是：  如果这个数字可以被 3 整除，输出 “fizz”。 如果这个数字可以被 5 整除，输出 “buzz”。 如果这个数字可以同时被 3 和 5 整除，输出 “fizzbuzz”。  例如，当 n &#x3D; 15，输出： 1, 2, fizz, 4, buzz, fizz,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1195_交替打印字符串">
+<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/02/16/1195-%E4%BA%A4%E6%9B%BF%E6%89%93%E5%8D%B0%E5%AD%97%E7%AC%A6%E4%B8%B2/index.html">
+<meta property="og:site_name" content="学涛的博客">
+<meta property="og:description" content="难度：中等             题目编写一个可以从 1 到 n 输出代表这个数字的字符串的程序，但是：  如果这个数字可以被 3 整除，输出 “fizz”。 如果这个数字可以被 5 整除，输出 “buzz”。 如果这个数字可以同时被 3 和 5 整除，输出 “fizzbuzz”。  例如，当 n &#x3D; 15，输出： 1, 2, fizz, 4, buzz, fizz,">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-16T03:57:10.000Z">
+<meta property="article:modified_time" content="2022-02-16T04:10:07.082Z">
+<meta property="article:author" content="xue tao">
+<meta property="article:tag" content="leetcode">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>1195_交替打印字符串 - 学涛的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/xt-blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"accept_one_time.gitee.io","root":"/xt-blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xt-blog/local-search.xml"};
+  </script>
+  <script  src="/xt-blog/js/utils.js" ></script>
+  <script  src="/xt-blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/xt-blog/">
+      <strong>学涛的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                文档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/xt-blog/img/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="1195_交替打印字符串">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-16 11:57" pubdate>
+        2022年2月16日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.5k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">1195_交替打印字符串</h1>
+            
+            <div class="markdown-body">
+              <div class="note note-warning">
+            <p>难度：中等</p>
+          </div>
+
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>编写一个可以从 1 到 n 输出代表这个数字的字符串的程序，但是：</p>
+<ul>
+<li>如果这个数字可以被 3 整除，输出 “fizz”。</li>
+<li>如果这个数字可以被 5 整除，输出 “buzz”。</li>
+<li>如果这个数字可以同时被 3 和 5 整除，输出 “fizzbuzz”。</li>
+</ul>
+<p>例如，当 n = 15，输出： 1, 2, fizz, 4, buzz, fizz, 7, 8, fizz, buzz, 11, fizz, 13, 14, fizzbuzz。</p>
+<p>假设有这么一个类：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FizzBuzz</span> </span>&#123;<br>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FizzBuzz</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123; ... &#125;               <span class="hljs-comment">// constructor</span><br>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fizz</span><span class="hljs-params">(printFizz)</span> </span>&#123; ... &#125;          <span class="hljs-comment">// only output &quot;fizz&quot;</span><br>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">buzz</span><span class="hljs-params">(printBuzz)</span> </span>&#123; ... &#125;          <span class="hljs-comment">// only output &quot;buzz&quot;</span><br>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fizzbuzz</span><span class="hljs-params">(printFizzBuzz)</span> </span>&#123; ... &#125;  <span class="hljs-comment">// only output &quot;fizzbuzz&quot;</span><br>  <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">number</span><span class="hljs-params">(printNumber)</span> </span>&#123; ... &#125;      <span class="hljs-comment">// only output the numbers</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>请你实现一个有四个线程的多线程版  FizzBuzz， 同一个 FizzBuzz 实例会被如下四个线程使用：</p>
+<ol>
+<li>线程A将调用 fizz() 来判断是否能被 3 整除，如果可以，则输出 fizz。</li>
+<li>线程B将调用 buzz() 来判断是否能被 5 整除，如果可以，则输出 buzz。</li>
+<li>线程C将调用 fizzbuzz() 来判断是否同时能被 3 和 5 整除，如果可以，则输出 fizzbuzz。</li>
+<li>线程D将调用 number() 来实现输出既不能被 3 整除也不能被 5 整除的数字。</li>
+</ol>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><p>本题已经提供了打印字符串的相关方法，如 <code>printFizz()</code> 等，具体方法名请参考答题模板中的注释部分</p>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>本题与 1116 类似，使用 4 个信号量来对输出进行控制，分别是打印 fizz，打印 buzz，打印 fizzbuzz 和打印数字。每个线程都从 1 到 n 进行遍历，以 number 为主进行输出，符合哪个条件，就释放哪个信号量，各线程执行一次之后，释放信号量给 number 让它继续遍历。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FizzBuzz</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> n;<br>    <span class="hljs-keyword">private</span> Semaphore number;<br>    <span class="hljs-keyword">private</span> Semaphore fizz;<br>    <span class="hljs-keyword">private</span> Semaphore buzz;<br>    <span class="hljs-keyword">private</span> Semaphore fizzbuzz;<br><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FizzBuzz</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>.n = n;<br>        <span class="hljs-keyword">this</span>.number = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">1</span>);<br>        <span class="hljs-keyword">this</span>.fizz = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">this</span>.buzz = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">this</span>.fizzbuzz = <span class="hljs-keyword">new</span> Semaphore(<span class="hljs-number">0</span>);<br>    &#125;<br><br>    <span class="hljs-comment">// printFizz.run() outputs &quot;fizz&quot;.</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fizz</span><span class="hljs-params">(Runnable printFizz)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)&#123;<br>            <span class="hljs-keyword">if</span> (i%<span class="hljs-number">3</span>==<span class="hljs-number">0</span> &amp;&amp; i%<span class="hljs-number">5</span>!=<span class="hljs-number">0</span>)&#123;<br>                fizz.acquire();<br>                printFizz.run();<br>                number.release();<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// printBuzz.run() outputs &quot;buzz&quot;.</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">buzz</span><span class="hljs-params">(Runnable printBuzz)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)&#123;<br>            <span class="hljs-keyword">if</span> (i%<span class="hljs-number">3</span>!=<span class="hljs-number">0</span> &amp;&amp; i%<span class="hljs-number">5</span>==<span class="hljs-number">0</span>)&#123;<br>                buzz.acquire();<br>                printBuzz.run();<br>                number.release();<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// printFizzBuzz.run() outputs &quot;fizzbuzz&quot;.</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fizzbuzz</span><span class="hljs-params">(Runnable printFizzBuzz)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)&#123;<br>            <span class="hljs-keyword">if</span> (i%<span class="hljs-number">3</span>==<span class="hljs-number">0</span> &amp;&amp; i%<span class="hljs-number">5</span>==<span class="hljs-number">0</span>)&#123;<br>                fizzbuzz.acquire();<br>                printFizzBuzz.run();<br>                number.release();<br>            &#125;<br>        &#125;<br><br>    &#125;<br><br>    <span class="hljs-comment">// printNumber.accept(x) outputs &quot;x&quot;, where x is an integer.</span><br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">number</span><span class="hljs-params">(IntConsumer printNumber)</span> <span class="hljs-keyword">throws</span> InterruptedException </span>&#123;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">1</span>; i&lt;=n; i++)&#123;<br>            <span class="hljs-keyword">if</span> (i%<span class="hljs-number">3</span>!=<span class="hljs-number">0</span>&amp;&amp;i%<span class="hljs-number">5</span>!=<span class="hljs-number">0</span>)&#123;<br>                printNumber.accept(i);<br>                number.release();<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i%<span class="hljs-number">3</span> == <span class="hljs-number">0</span> &amp;&amp; i%<span class="hljs-number">5</span> != <span class="hljs-number">0</span>)&#123;<br>                fizz.release();<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i%<span class="hljs-number">3</span> != <span class="hljs-number">0</span> &amp;&amp; i%<span class="hljs-number">5</span> == <span class="hljs-number">0</span>)&#123;<br>                buzz.release();<br>            &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i%<span class="hljs-number">3</span> == <span class="hljs-number">0</span> &amp;&amp; i%<span class="hljs-number">5</span> == <span class="hljs-number">0</span>)&#123;<br>                fizzbuzz.release();<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/xt-blog/categories/Leetcode/">Leetcode</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/xt-blog/2022/02/19/809-%E6%83%85%E6%84%9F%E4%B8%B0%E5%AF%8C%E7%9A%84%E6%96%87%E5%AD%97/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">809_情感丰富的文字</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/xt-blog/2022/02/16/1116-%E6%89%93%E5%8D%B0%E9%9B%B6%E4%B8%8E%E5%A5%87%E5%81%B6%E6%95%B0/">
+                        <span class="hidden-mobile">1116_打印零与奇偶数</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     Peace <i class="iconfont icon-love"></i> Love 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/xt-blog/js/events.js" ></script>
+<script  src="/xt-blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/xt-blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/xt-blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/xt-blog/js/boot.js" ></script>
+
+
+</body>
+</html>
