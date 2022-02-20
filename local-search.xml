@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>717_1比特与2比特字符</title>
+    <link href="/xt-blog/2022/02/20/717-1%E6%AF%94%E7%89%B9%E4%B8%8E2%E6%AF%94%E7%89%B9%E5%AD%97%E7%AC%A6/"/>
+    <url>/xt-blog/2022/02/20/717-1%E6%AF%94%E7%89%B9%E4%B8%8E2%E6%AF%94%E7%89%B9%E5%AD%97%E7%AC%A6/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-success">            <p>难度：简单</p>          </div><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>有两种特殊字符：</p><ul><li>第一种字符可以用一个比特 0 来表示</li><li>第二种字符可以用两个比特(10 或 11)来表示、</li></ul><p>给定一个以 0 结尾的二进制数组 bits ，如果最后一个字符必须是一位字符，则返回 true 。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p><blockquote><p><strong>输入</strong>: bits = [1, 0, 0]<br><strong>输出</strong>: true<br><strong>解释</strong>: 唯一的编码方式是一个两比特字符和一个一比特字符。<br>所以最后一个字符是一比特字符。</p></blockquote><p>示例二：</p><blockquote><p><strong>输入</strong>: bits = [1, 1, 1, 0]<br><strong>输出</strong>: false<br><strong>解释</strong>: 唯一的编码方式是两比特字符和两比特字符。<br>所以最后一个字符不是一比特字符。</p></blockquote><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul><li><code>1 &lt;= bits.length &lt;= 1000</code></li><li><code>bits[i] == 0 or 1</code></li></ul><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>遍历数组，遇到 1 的时候，下一个无论是 0 还是 1，都会与当前这个 1 组合成一个字符。所以可以从头遍历数组，如果遇到 0 ，就跳到下一位，如果遇到 1 ，就跳到下两位，直至遍历结束，结束的位置如果等于数组长度（下标为数组长度 -1），即正确。</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isOneBitCharacter</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] bits)</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>, n = bits.length;<br>  <span class="hljs-keyword">while</span> (start&lt;n-<span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-keyword">if</span> (bits[start]==<span class="hljs-number">0</span>)&#123;<br>      start++;<br>    &#125;<span class="hljs-keyword">else</span> &#123;<br>      start+=<span class="hljs-number">2</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> start==n-<span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>969_煎饼排序</title>
     <link href="/xt-blog/2022/02/19/969-%E7%85%8E%E9%A5%BC%E6%8E%92%E5%BA%8F/"/>
     <url>/xt-blog/2022/02/19/969-%E7%85%8E%E9%A5%BC%E6%8E%92%E5%BA%8F/</url>
