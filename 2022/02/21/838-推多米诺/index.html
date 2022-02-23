@@ -16,21 +16,23 @@
   <meta name="author" content="xue tao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="难度：简单             题目有两种特殊字符：  第一种字符可以用一个比特 0 来表示 第二种字符可以用两个比特(10 或 11)来表示、  给定一个以 0 结尾的二进制数组 bits ，如果最后一个字符必须是一位字符，则返回 true 。 示例示例一：  输入: bits &#x3D; [1, 0, 0]输出: true解释: 唯一的编码方式是一个两比特字符和一个一比特">
+    <meta name="description" content="难度：中等             题目n 张多米诺骨牌排成一行，将每张多米诺骨牌垂直竖立。在开始时，同时把一些多米诺骨牌向左或向右推。 每过一秒，倒向左边的多米诺骨牌会推动其左侧相邻的多米诺骨牌。同样地，倒向右边的多米诺骨牌也会推动竖立在其右侧的相邻多米诺骨牌。 如果一张垂直竖立的多米诺骨牌的两侧同时有多米诺骨牌倒下时，由于受力平衡， 该骨牌仍然保持不变。 就这个问题而">
 <meta property="og:type" content="article">
-<meta property="og:title" content="717_1比特与2比特字符">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/02/20/717-1%E6%AF%94%E7%89%B9%E4%B8%8E2%E6%AF%94%E7%89%B9%E5%AD%97%E7%AC%A6/index.html">
+<meta property="og:title" content="838_推多米诺">
+<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/02/21/838-%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/index.html">
 <meta property="og:site_name" content="学涛的博客">
-<meta property="og:description" content="难度：简单             题目有两种特殊字符：  第一种字符可以用一个比特 0 来表示 第二种字符可以用两个比特(10 或 11)来表示、  给定一个以 0 结尾的二进制数组 bits ，如果最后一个字符必须是一位字符，则返回 true 。 示例示例一：  输入: bits &#x3D; [1, 0, 0]输出: true解释: 唯一的编码方式是一个两比特字符和一个一比特">
+<meta property="og:description" content="难度：中等             题目n 张多米诺骨牌排成一行，将每张多米诺骨牌垂直竖立。在开始时，同时把一些多米诺骨牌向左或向右推。 每过一秒，倒向左边的多米诺骨牌会推动其左侧相邻的多米诺骨牌。同样地，倒向右边的多米诺骨牌也会推动竖立在其右侧的相邻多米诺骨牌。 如果一张垂直竖立的多米诺骨牌的两侧同时有多米诺骨牌倒下时，由于受力平衡， 该骨牌仍然保持不变。 就这个问题而">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-20T12:27:54.000Z">
-<meta property="article:modified_time" content="2022-02-20T12:32:06.349Z">
+<meta property="og:image" content="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220221104642.png">
+<meta property="article:published_time" content="2022-02-21T02:44:56.000Z">
+<meta property="article:modified_time" content="2022-02-21T02:56:25.959Z">
 <meta property="article:author" content="xue tao">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220221104642.png">
   
   
-  <title>717_1比特与2比特字符 - 学涛的博客</title>
+  <title>838_推多米诺 - 学涛的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -176,7 +178,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="717_1比特与2比特字符">
+            <span class="h2" id="subtitle" title="838_推多米诺">
               
             </span>
 
@@ -186,8 +188,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-20 20:27" pubdate>
-        2022年2月20日 晚上
+      <time datetime="2022-02-21 10:44" pubdate>
+        2022年2月21日 上午
       </time>
     </span>
   
@@ -197,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      592 字
+      1.8k 字
     </span>
   
 
@@ -206,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5 分钟
+      16 分钟
     </span>
   
 
@@ -239,33 +241,53 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">717_1比特与2比特字符</h1>
+            <h1 style="display: none">838_推多米诺</h1>
             
             <div class="markdown-body">
-              <div class="note note-success">
-            <p>难度：简单</p>
+              <div class="note note-warning">
+            <p>难度：中等</p>
           </div>
 
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>有两种特殊字符：</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>n 张多米诺骨牌排成一行，将每张多米诺骨牌垂直竖立。在开始时，同时把一些多米诺骨牌向左或向右推。</p>
+<p>每过一秒，倒向左边的多米诺骨牌会推动其左侧相邻的多米诺骨牌。同样地，倒向右边的多米诺骨牌也会推动竖立在其右侧的相邻多米诺骨牌。</p>
+<p>如果一张垂直竖立的多米诺骨牌的两侧同时有多米诺骨牌倒下时，由于受力平衡， 该骨牌仍然保持不变。</p>
+<p>就这个问题而言，我们会认为一张正在倒下的多米诺骨牌不会对其它正在倒下或已经倒下的多米诺骨牌施加额外的力。</p>
+<p>给你一个字符串 dominoes 表示这一行多米诺骨牌的初始状态，其中：</p>
 <ul>
-<li>第一种字符可以用一个比特 0 来表示</li>
-<li>第二种字符可以用两个比特(10 或 11)来表示、</li>
+<li>dominoes[i] = ‘L’，表示第 i 张多米诺骨牌被推向左侧，</li>
+<li>dominoes[i] = ‘R’，表示第 i 张多米诺骨牌被推向右侧，</li>
+<li>dominoes[i] = ‘.’，表示没有推动第 i 张多米诺骨牌。</li>
 </ul>
-<p>给定一个以 0 结尾的二进制数组 bits ，如果最后一个字符必须是一位字符，则返回 true 。</p>
+<p>返回表示最终状态的字符串。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
 <blockquote>
-<p><strong>输入</strong>: bits = [1, 0, 0]<br><strong>输出</strong>: true<br><strong>解释</strong>: 唯一的编码方式是一个两比特字符和一个一比特字符。<br>所以最后一个字符是一比特字符。</p>
+<p><strong>输入</strong>：dominoes = “RR.L”<br><strong>输出</strong>：”RR.L”<br><strong>解释</strong>：第一张多米诺骨牌没有给第二张施加额外的力。</p>
 </blockquote>
 <p>示例二：</p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220221104642.png" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
 <blockquote>
-<p><strong>输入</strong>: bits = [1, 1, 1, 0]<br><strong>输出</strong>: false<br><strong>解释</strong>: 唯一的编码方式是两比特字符和两比特字符。<br>所以最后一个字符不是一比特字符。</p>
+<p><strong>输入</strong>：dominoes = “.L.R…LR..L..”<br><strong>输出</strong>：”LL.RR.LLRRLL..”</p>
 </blockquote>
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul>
-<li><code>1 &lt;= bits.length &lt;= 1000</code></li>
-<li><code>bits[i] == 0 or 1</code></li>
+<li><code>n == dominoes.length</code></li>
+<li><code>1 &lt;= n &lt;= 105</code></li>
+<li><code>dominoes[i]</code> 为 <code>&#39;L&#39;</code>、<code>&#39;R&#39;</code> 或 <code>&#39;.&#39;</code></li>
 </ul>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>遍历数组，遇到 1 的时候，下一个无论是 0 还是 1，都会与当前这个 1 组合成一个字符。所以可以从头遍历数组，如果遇到 0 ，就跳到下一位，如果遇到 1 ，就跳到下两位，直至遍历结束，结束的位置如果等于数组长度（下标为数组长度 -1），即正确。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isOneBitCharacter</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] bits)</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>, n = bits.length;<br>  <span class="hljs-keyword">while</span> (start&lt;n-<span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-keyword">if</span> (bits[start]==<span class="hljs-number">0</span>)&#123;<br>      start++;<br>    &#125;<span class="hljs-keyword">else</span> &#123;<br>      start+=<span class="hljs-number">2</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> start==n-<span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>最直观的想法就是找到每个状态为直立的骨牌，然后比较它前后两块的状态</p>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">char</span> cur = sb.charAt(i);<br><span class="hljs-keyword">if</span> (cur != <span class="hljs-string">&#x27;.&#x27;</span>) &#123;<br>  pre = cur;<br>  <span class="hljs-keyword">continue</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>如果前后都为 L，则它会变成 L</li>
+<li>如果前后都是 R，则它会变成 R</li>
+<li>如果前为 R，后为 . ，则它会变成 R</li>
+<li>如果后为 L，前为 . ，则它会变成 L</li>
+</ul>
+<p>如果为边界，则认为是直立状态。如左边界前一个为直立，右边界后一个位直立。</p>
+<p><code>char next = i==n-1?&#39;.&#39;:sb.charAt(i+1);</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> (pre==<span class="hljs-string">&#x27;R&#x27;</span>&amp;&amp;next!=<span class="hljs-string">&#x27;L&#x27;</span>)&#123;<br>  <span class="hljs-comment">// 左侧 R，右侧为 R 或者 . 向右倒</span><br>  hasChange = <span class="hljs-keyword">true</span>;<br>  sb.setCharAt(i,<span class="hljs-string">&#x27;R&#x27;</span>);<br>&#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (next==<span class="hljs-string">&#x27;L&#x27;</span>&amp;&amp;pre!=<span class="hljs-string">&#x27;R&#x27;</span>)&#123;<br>  <span class="hljs-comment">// 右侧为 L，左侧为 L 或者 . 向左倒</span><br>  hasChange = <span class="hljs-keyword">true</span>;<br>  sb.setCharAt(i,<span class="hljs-string">&#x27;L&#x27;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>每次循环所有骨牌，直至该轮循环无变化。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">pushDominoes</span><span class="hljs-params">(String dominoes)</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> n = dominoes.length();<br>  StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder(dominoes);<br>  <span class="hljs-keyword">while</span> (<span class="hljs-keyword">true</span>)&#123;<br>    <span class="hljs-keyword">boolean</span> hasChange = <span class="hljs-keyword">false</span>;<br>    <span class="hljs-keyword">char</span> pre = <span class="hljs-string">&#x27;.&#x27;</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>      <span class="hljs-comment">// 当前位置</span><br>      <span class="hljs-keyword">char</span> cur = sb.charAt(i);<br>      <span class="hljs-keyword">if</span> (cur != <span class="hljs-string">&#x27;.&#x27;</span>) &#123;<br>        pre = cur;<br>        <span class="hljs-keyword">continue</span>;<br>      &#125;<br>      <span class="hljs-comment">// 下一个位置</span><br>      <span class="hljs-keyword">char</span> next = i==n-<span class="hljs-number">1</span>?<span class="hljs-string">&#x27;.&#x27;</span>:sb.charAt(i+<span class="hljs-number">1</span>);<br>      <span class="hljs-keyword">if</span> (pre==<span class="hljs-string">&#x27;R&#x27;</span>&amp;&amp;next!=<span class="hljs-string">&#x27;L&#x27;</span>)&#123;<br>        <span class="hljs-comment">// 左侧 R，右侧为 R 或者 . 向右倒</span><br>        hasChange = <span class="hljs-keyword">true</span>;<br>        sb.setCharAt(i,<span class="hljs-string">&#x27;R&#x27;</span>);<br>      &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (next==<span class="hljs-string">&#x27;L&#x27;</span>&amp;&amp;pre!=<span class="hljs-string">&#x27;R&#x27;</span>)&#123;<br>        <span class="hljs-comment">// 右侧为 L，左侧为 L 或者 . 向左倒</span><br>        hasChange = <span class="hljs-keyword">true</span>;<br>        sb.setCharAt(i,<span class="hljs-string">&#x27;L&#x27;</span>);<br>      &#125;<br>      pre = cur;<br>    &#125;<br>    <span class="hljs-comment">// 每次迭代如果没有变化，则说明稳定，结束</span><br>    <span class="hljs-keyword">if</span> (!hasChange)&#123;<br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> sb.toString();<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -295,9 +317,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/21/838-%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/">
+                      <a href="/xt-blog/2022/02/23/146-LRU%E7%BC%93%E5%AD%98/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">838_推多米诺</span>
+                        <span class="hidden-mobile">146_LRU缓存</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -305,8 +327,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/19/969-%E7%85%8E%E9%A5%BC%E6%8E%92%E5%BA%8F/">
-                        <span class="hidden-mobile">969_煎饼排序</span>
+                      <a href="/xt-blog/2022/02/20/717-1%E6%AF%94%E7%89%B9%E4%B8%8E2%E6%AF%94%E7%89%B9%E5%AD%97%E7%AC%A6/">
+                        <span class="hidden-mobile">717_1比特与2比特字符</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

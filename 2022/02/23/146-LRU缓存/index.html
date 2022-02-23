@@ -16,21 +16,21 @@
   <meta name="author" content="xue tao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="难度：简单             题目有两种特殊字符：  第一种字符可以用一个比特 0 来表示 第二种字符可以用两个比特(10 或 11)来表示、  给定一个以 0 结尾的二进制数组 bits ，如果最后一个字符必须是一位字符，则返回 true 。 示例示例一：  输入: bits &#x3D; [1, 0, 0]输出: true解释: 唯一的编码方式是一个两比特字符和一个一比特">
+    <meta name="description" content="难度：中等             题目请你设计并实现一个满足  LRU (最近最少使用) 缓存 约束的数据结构。实现 LRUCache 类：  LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存 int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。 void pu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="717_1比特与2比特字符">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/02/20/717-1%E6%AF%94%E7%89%B9%E4%B8%8E2%E6%AF%94%E7%89%B9%E5%AD%97%E7%AC%A6/index.html">
+<meta property="og:title" content="146_LRU缓存">
+<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/02/23/146-LRU%E7%BC%93%E5%AD%98/index.html">
 <meta property="og:site_name" content="学涛的博客">
-<meta property="og:description" content="难度：简单             题目有两种特殊字符：  第一种字符可以用一个比特 0 来表示 第二种字符可以用两个比特(10 或 11)来表示、  给定一个以 0 结尾的二进制数组 bits ，如果最后一个字符必须是一位字符，则返回 true 。 示例示例一：  输入: bits &#x3D; [1, 0, 0]输出: true解释: 唯一的编码方式是一个两比特字符和一个一比特">
+<meta property="og:description" content="难度：中等             题目请你设计并实现一个满足  LRU (最近最少使用) 缓存 约束的数据结构。实现 LRUCache 类：  LRUCache(int capacity) 以 正整数 作为容量 capacity 初始化 LRU 缓存 int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。 void pu">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-20T12:27:54.000Z">
-<meta property="article:modified_time" content="2022-02-20T12:32:06.349Z">
+<meta property="article:published_time" content="2022-02-23T05:03:33.000Z">
+<meta property="article:modified_time" content="2022-02-23T05:34:27.379Z">
 <meta property="article:author" content="xue tao">
-<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="CodeTop">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>717_1比特与2比特字符 - 学涛的博客</title>
+  <title>146_LRU缓存 - 学涛的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -176,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="717_1比特与2比特字符">
+            <span class="h2" id="subtitle" title="146_LRU缓存">
               
             </span>
 
@@ -186,8 +186,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-20 20:27" pubdate>
-        2022年2月20日 晚上
+      <time datetime="2022-02-23 13:03" pubdate>
+        2022年2月23日 下午
       </time>
     </span>
   
@@ -197,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      592 字
+      1.8k 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      5 分钟
+      16 分钟
     </span>
   
 
@@ -239,33 +239,35 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">717_1比特与2比特字符</h1>
+            <h1 style="display: none">146_LRU缓存</h1>
             
             <div class="markdown-body">
-              <div class="note note-success">
-            <p>难度：简单</p>
+              <div class="note note-warning">
+            <p>难度：中等</p>
           </div>
 
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>有两种特殊字符：</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>请你设计并实现一个满足  LRU (最近最少使用) 缓存 约束的数据结构。<br>实现 LRUCache 类：</p>
 <ul>
-<li>第一种字符可以用一个比特 0 来表示</li>
-<li>第二种字符可以用两个比特(10 或 11)来表示、</li>
+<li>LRUCache(int capacity) 以 <strong>正整数</strong> 作为容量 capacity 初始化 LRU 缓存</li>
+<li>int get(int key) 如果关键字 key 存在于缓存中，则返回关键字的值，否则返回 -1 。</li>
+<li>void put(int key, int value) 如果关键字 key 已经存在，则变更其数据值 value ；如果不存在，则向缓存中插入该组 key-value 。如果插入操作导致关键字数量超过 capacity ，则应该 <strong>逐出</strong> 最久未使用的关键字。</li>
 </ul>
-<p>给定一个以 0 结尾的二进制数组 bits ，如果最后一个字符必须是一位字符，则返回 true 。</p>
+<p>函数 get 和 put 必须以 O(1) 的平均时间复杂度运行。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
 <blockquote>
-<p><strong>输入</strong>: bits = [1, 0, 0]<br><strong>输出</strong>: true<br><strong>解释</strong>: 唯一的编码方式是一个两比特字符和一个一比特字符。<br>所以最后一个字符是一比特字符。</p>
-</blockquote>
-<p>示例二：</p>
-<blockquote>
-<p><strong>输入</strong>: bits = [1, 1, 1, 0]<br><strong>输出</strong>: false<br><strong>解释</strong>: 唯一的编码方式是两比特字符和两比特字符。<br>所以最后一个字符不是一比特字符。</p>
+<p><strong>输入</strong><br>[“LRUCache”, “put”, “put”, “get”, “put”, “get”, “put”, “get”, “get”, “get”]<br>[[2], [1, 1], [2, 2], [1], [3, 3], [2], [4, 4], [1], [3], [4]]<br><strong>输出</strong><br>[null, null, null, 1, null, -1, null, -1, 3, 4]</p>
+<p><strong>解释</strong><br>LRUCache lRUCache = new LRUCache(2);<br>lRUCache.put(1, 1); // 缓存是 {1=1}<br>lRUCache.put(2, 2); // 缓存是 {1=1, 2=2}<br>lRUCache.get(1);    // 返回 1<br>lRUCache.put(3, 3); // 该操作会使得关键字 2 作废，缓存是 {1=1, 3=3}<br>lRUCache.get(2);    // 返回 -1 (未找到)<br>lRUCache.put(4, 4); // 该操作会使得关键字 1 作废，缓存是 {4=4, 3=3}<br>lRUCache.get(1);    // 返回 -1 (未找到)<br>lRUCache.get(3);    // 返回 3<br>lRUCache.get(4);    // 返回 4</p>
 </blockquote>
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul>
-<li><code>1 &lt;= bits.length &lt;= 1000</code></li>
-<li><code>bits[i] == 0 or 1</code></li>
+<li><code>1 &lt;= capacity &lt;= 3000</code></li>
+<li><code>0 &lt;= key &lt;= 10000</code></li>
+<li><code>0 &lt;= value &lt;= 10^5</code></li>
+<li><code>最多调用 2 * 10^5 次 get 和 put</code></li>
 </ul>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>遍历数组，遇到 1 的时候，下一个无论是 0 还是 1，都会与当前这个 1 组合成一个字符。所以可以从头遍历数组，如果遇到 0 ，就跳到下一位，如果遇到 1 ，就跳到下两位，直至遍历结束，结束的位置如果等于数组长度（下标为数组长度 -1），即正确。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isOneBitCharacter</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] bits)</span> </span>&#123;<br>  <span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>, n = bits.length;<br>  <span class="hljs-keyword">while</span> (start&lt;n-<span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-keyword">if</span> (bits[start]==<span class="hljs-number">0</span>)&#123;<br>      start++;<br>    &#125;<span class="hljs-keyword">else</span> &#123;<br>      start+=<span class="hljs-number">2</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> start==n-<span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>用一个 LinkedHashMap 存储数据</p>
+<p>执行 get 方法时，先检查是否在 keySet 中，存在则获取值，然后先 remove 再 put，保证查询后的数据在末尾，再返回值。</p>
+<p>执行 put 方法时， 先检查是否在 keySet 中，如果存在，就先移除，如果不存在，就检查 map 的 size 和 capacity 是否相同，如果相同，则遍历 map，将第一个删除。最后再调用 map.put(key, value) 方法将数据添加到末尾。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">LRUCache</span> </span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">int</span> cap;<br>    <span class="hljs-keyword">private</span> Map&lt;Integer, Integer&gt; map = <span class="hljs-keyword">new</span> LinkedHashMap&lt;&gt;();<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">LRUCache</span><span class="hljs-params">(<span class="hljs-keyword">int</span> capacity)</span></span>&#123;<br>        <span class="hljs-keyword">this</span>.cap = capacity;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key)</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (map.keySet().contains(key))&#123;<br>            <span class="hljs-keyword">int</span> value = map.get(key);<br>            map.remove(key);<br>            <span class="hljs-comment">// 保证每次查询后都在末尾</span><br>            map.put(key,value);<br>            <span class="hljs-keyword">return</span> value;<br>        &#125;<br>        <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>    &#125;<br>    <br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">put</span><span class="hljs-params">(<span class="hljs-keyword">int</span> key, <span class="hljs-keyword">int</span> value)</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (map.keySet().contains(key))&#123;<br>            map.remove(key);<br>        &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (map.size()==cap)&#123;<br>            Iterator&lt;Map.Entry&lt;Integer, Integer&gt;&gt; iterator = map.entrySet().iterator();<br>            <span class="hljs-comment">// 移除首个</span><br>            iterator.next();<br>            iterator.remove();<br>        &#125;<br>        map.put(key, value);<br>    &#125;<br>&#125;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Your LRUCache object will be instantiated and called as such:</span><br><span class="hljs-comment"> * LRUCache obj = new LRUCache(capacity);</span><br><span class="hljs-comment"> * int param_1 = obj.get(key);</span><br><span class="hljs-comment"> * obj.put(key,value);</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -284,7 +286,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                      <a class="hover-with-bg" href="/xt-blog/tags/CodeTop/">CodeTop</a>
                     
                   </div>
                 
@@ -295,9 +297,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/21/838-%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/">
+                      <a href="/xt-blog/2022/02/23/3-%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%97%E4%B8%B2/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">838_推多米诺</span>
+                        <span class="hidden-mobile">3_无重复字符的最长字串</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -305,8 +307,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/19/969-%E7%85%8E%E9%A5%BC%E6%8E%92%E5%BA%8F/">
-                        <span class="hidden-mobile">969_煎饼排序</span>
+                      <a href="/xt-blog/2022/02/21/838-%E6%8E%A8%E5%A4%9A%E7%B1%B3%E8%AF%BA/">
+                        <span class="hidden-mobile">838_推多米诺</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
