@@ -16,21 +16,21 @@
   <meta name="author" content="xue tao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="难度：中等             题目给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]k[1]…*k[m-1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。 示例示例一：">
+    <meta name="description" content="难度：困难             题目给定一个表示整数的字符串 n ，返回与它最近的回文整数（不包括自身）。如果不止一个，返回较小的那个。 “最近的”定义为两个整数差的绝对值最小。 示例示例一：  输入: n &#x3D; “123”输出: “121”  示例二：  输入: n &#x3D; “1”输出: “0”解释: 0 和 2是最近的回文，但我们返回最小的，也就是 0。  提示 1 &amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="343_整数拆分（剪绳子）">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/02/26/343-%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86%EF%BC%88%E5%89%AA%E7%BB%B3%E5%AD%90%EF%BC%89/index.html">
+<meta property="og:title" content="564_寻找最近的回文数">
+<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/03/02/564-%E5%AF%BB%E6%89%BE%E6%9C%80%E8%BF%91%E7%9A%84%E5%9B%9E%E6%96%87%E6%95%B0/index.html">
 <meta property="og:site_name" content="学涛的博客">
-<meta property="og:description" content="难度：中等             题目给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]k[1]…*k[m-1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。 示例示例一：">
+<meta property="og:description" content="难度：困难             题目给定一个表示整数的字符串 n ，返回与它最近的回文整数（不包括自身）。如果不止一个，返回较小的那个。 “最近的”定义为两个整数差的绝对值最小。 示例示例一：  输入: n &#x3D; “123”输出: “121”  示例二：  输入: n &#x3D; “1”输出: “0”解释: 0 和 2是最近的回文，但我们返回最小的，也就是 0。  提示 1 &amp;">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-26T10:54:40.000Z">
-<meta property="article:modified_time" content="2022-02-26T11:07:10.830Z">
+<meta property="article:published_time" content="2022-03-02T01:19:06.000Z">
+<meta property="article:modified_time" content="2022-03-02T01:53:53.010Z">
 <meta property="article:author" content="xue tao">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary_large_image">
   
   
-  <title>343_整数拆分（剪绳子） - 学涛的博客</title>
+  <title>564_寻找最近的回文数 - 学涛的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -176,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="343_整数拆分（剪绳子）">
+            <span class="h2" id="subtitle" title="564_寻找最近的回文数">
               
             </span>
 
@@ -186,8 +186,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-26 18:54" pubdate>
-        2022年2月26日 晚上
+      <time datetime="2022-03-02 09:19" pubdate>
+        2022年3月2日 上午
       </time>
     </span>
   
@@ -197,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      668 字
+      2k 字
     </span>
   
 
@@ -206,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6 分钟
+      17 分钟
     </span>
   
 
@@ -239,32 +239,40 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">343_整数拆分（剪绳子）</h1>
+            <h1 style="display: none">564_寻找最近的回文数</h1>
             
             <div class="markdown-body">
-              <div class="note note-warning">
-            <p>难度：中等</p>
+              <div class="note note-danger">
+            <p>难度：困难</p>
           </div>
 
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]<em>k[1]</em>…*k[m-1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个表示整数的字符串 <code>n</code> ，返回与它最近的回文整数（不包括自身）。如果不止一个，返回较小的那个。</p>
+<p>“最近的”定义为两个整数<strong>差的绝对值</strong>最小。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
 <blockquote>
-<p><strong>输入</strong>: 2<br><strong>输出</strong>: 1<br><strong>解释</strong>: 2 = 1 + 1, 1 × 1 = 1</p>
+<p><strong>输入</strong>: n = “123”<br><strong>输出</strong>: “121”</p>
 </blockquote>
 <p>示例二：</p>
 <blockquote>
-<p><strong>输入</strong>: 10<br><strong>输出</strong>: 36<br><strong>解释</strong>: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36</p>
+<p><strong>输入</strong>: n = “1”<br><strong>输出</strong>: “0”<br><strong>解释</strong>: 0 和 2是最近的回文，但我们返回最小的，也就是 0。</p>
 </blockquote>
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul>
-<li><code>2 &lt;= n &lt;= 58</code></li>
+<li><code>1 &lt;= n.length &lt;= 18</code></li>
+<li><code>n</code> 只由数字组成</li>
+<li><code>n</code> 不含前导 0</li>
+<li><code>n</code> 代表在 <code>[1, 10^18 - 1]</code> 范围内的整数</li>
 </ul>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>要求剪下绳子长度乘积的最大值，可以用动态规划的方法。</p>
-<p>用一个 dp 数组记录绳子长度为 n 的时候乘积的最大值，初始情况：当绳子长度为 2 时，最大乘积为 1 （最少要减一次）<code>int[] dp = new int[n+1]; dp[2] = 1;</code></p>
-<p>剪下一段后，可以选择继续剪或者不剪。不剪的话长度乘积为 剪下长度 <code>j</code> * 剩余长度  <code>i-j</code> ；剪的话长度乘积为 剪下长度 <code>j</code> * dp[剩余长度] <code>dp[i-j]</code></p>
-<p><code>Math.max(j*(i-j), j*dp[i-j])</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">cuttingRope</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>&#123;<br>  <span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n+<span class="hljs-number">1</span>];<br>  dp[<span class="hljs-number">2</span>]=<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">3</span>; i &lt;=n; i++) &#123;<br>    <span class="hljs-comment">// 剪 1 没有意义，故从 2 开始循环</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span>; j &lt; i; j++) &#123;<br>      dp[i] = Math.max(dp[i], Math.max(j*(i-j), j*dp[i-j]));<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> dp[n];<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>寻找最近的回文数，最直观的想法就是将字符串的前半段复制到后半段<code>12345 =&gt; 12321  </code>，但是考虑到有的前半段复制过来不一定是最近的回文数，比如 <code>12499 =&gt; 12421 12499 =&gt;12521</code>, 很明显 12521 比 12421 离 12499 更近，所以将前半段加一或者减一的结果也考虑进来。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">long</span> t = Long.parseLong(n.substring(<span class="hljs-number">0</span>,(len+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>));<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">long</span> i = t-<span class="hljs-number">1</span>; i&lt;=t+<span class="hljs-number">1</span>; i++)&#123;<br>  <span class="hljs-keyword">long</span> temp = -<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">if</span>(len%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-comment">// 偶数长度的情况</span><br>    temp = getNum(i, <span class="hljs-keyword">true</span>);<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-comment">// 奇数长度的情况</span><br>    temp = getNum(i, <span class="hljs-keyword">false</span>);<br>  &#125;<br>  <span class="hljs-keyword">if</span>(temp!=curr)&#123;<br>    set.add(temp);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<p>将前半段复制到后半段的函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-title">getNum</span><span class="hljs-params">(<span class="hljs-keyword">long</span> k, <span class="hljs-keyword">boolean</span> isEven)</span></span>&#123;<br>  StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();<br>  sb.append(k);<br>  <span class="hljs-keyword">int</span> index = isEven? sb.length()-<span class="hljs-number">1</span>:sb.length()-<span class="hljs-number">2</span>;<br>  <span class="hljs-keyword">while</span> (index&gt;=<span class="hljs-number">0</span>)&#123;<br>    sb.append(sb.charAt(index--));<br>  &#125;<br>  <span class="hljs-keyword">return</span> Long.parseLong(sb.toString());<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<p>对于边界值也需要进行处理，如 99999 和 100001 也是回文数，可以单独进行检测</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span> len = n.length();<br>Set&lt;Long&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();<br>set.add((<span class="hljs-keyword">long</span>)Math.pow(<span class="hljs-number">10</span>,len-<span class="hljs-number">1</span>)-<span class="hljs-number">1</span>);    <span class="hljs-comment">// 99999</span><br>set.add((<span class="hljs-keyword">long</span>)Math.pow(<span class="hljs-number">10</span>,len)+<span class="hljs-number">1</span>);      <span class="hljs-comment">// 100001</span><br></code></pre></td></tr></table></figure>
+
+<p>最终代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">nearestPalindromic</span><span class="hljs-params">(String n)</span></span>&#123;<br>  <span class="hljs-keyword">int</span> len = n.length();<br>  <span class="hljs-keyword">long</span> curr = Long.parseLong(n);<br>  Set&lt;Long&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();<br>  set.add((<span class="hljs-keyword">long</span>)Math.pow(<span class="hljs-number">10</span>,len-<span class="hljs-number">1</span>)-<span class="hljs-number">1</span>); <br>  set.add((<span class="hljs-keyword">long</span>)Math.pow(<span class="hljs-number">10</span>,len)+<span class="hljs-number">1</span>);  <br>  <span class="hljs-keyword">long</span> t = Long.parseLong(n.substring(<span class="hljs-number">0</span>,(len+<span class="hljs-number">1</span>)/<span class="hljs-number">2</span>));<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">long</span> i = t-<span class="hljs-number">1</span>; i&lt;= t+<span class="hljs-number">1</span>; i++)&#123;<br>    <span class="hljs-keyword">long</span> temp = -<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">if</span> (len%<span class="hljs-number">2</span>==<span class="hljs-number">0</span>)&#123;<br>      <span class="hljs-comment">// 如果为偶数长度</span><br>      temp = getNum(i,<span class="hljs-keyword">true</span>);<br>    &#125;<span class="hljs-keyword">else</span> &#123;<br>      temp = getNum(i,<span class="hljs-keyword">false</span>);<br>    &#125;<br>    <span class="hljs-keyword">if</span> (temp!=curr) set.add(temp);<br>  &#125;<br><br>  <span class="hljs-keyword">long</span> ans = -<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">long</span> i:set)&#123;<br>    <span class="hljs-keyword">if</span> (ans == -<span class="hljs-number">1</span>) ans = i;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Math.abs(i-curr)&lt;Math.abs(ans-curr)) ans = i;<br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (Math.abs(i-curr)==Math.abs(ans-curr)&amp;&amp; i&lt;ans) ans = i;<br>  &#125;<br>  <span class="hljs-keyword">return</span> String.valueOf(ans);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">long</span> <span class="hljs-title">getNum</span><span class="hljs-params">(<span class="hljs-keyword">long</span> k, <span class="hljs-keyword">boolean</span> isEven)</span></span>&#123;<br>  StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();<br>  sb.append(k);<br>  <span class="hljs-keyword">int</span> index = isEven? sb.length()-<span class="hljs-number">1</span>:sb.length()-<span class="hljs-number">2</span>;<br>  <span class="hljs-keyword">while</span> (index&gt;=<span class="hljs-number">0</span>)&#123;<br>    sb.append(sb.charAt(index--));<br>  &#125;<br>  <span class="hljs-keyword">return</span> Long.parseLong(sb.toString());<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -294,9 +302,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/27/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">
+                      <a href="/xt-blog/2022/03/04/1409-%E6%9F%A5%E8%AF%A2%E5%B8%A6%E9%94%AE%E7%9A%84%E6%8E%92%E5%88%97/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">15_三数之和</span>
+                        <span class="hidden-mobile">1409_查询带键的排列</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -304,8 +312,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/24/1706-%E7%90%83%E4%BC%9A%E8%90%BD%E4%BD%95%E5%A4%84/">
-                        <span class="hidden-mobile">1706_球会落何处</span>
+                      <a href="/xt-blog/2022/03/01/6-Z%E5%AD%97%E5%9E%8B%E5%8F%98%E6%8D%A2/">
+                        <span class="hidden-mobile">6_Z字型变换</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

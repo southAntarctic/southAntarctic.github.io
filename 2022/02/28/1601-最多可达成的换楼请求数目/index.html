@@ -16,21 +16,24 @@
   <meta name="author" content="xue tao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="难度：中等             题目给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]k[1]…*k[m-1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。 示例示例一：">
+    <meta name="description" content="难度：困难             题目我们有 n 栋楼，编号从 0 到 n - 1 。每栋楼有若干员工。由于现在是换楼的季节，部分员工想要换一栋楼居住。 给你一个数组 requests ，其中 requests[i] &#x3D; [fromi, toi] ，表示一个员工请求从编号为 fromi 的楼搬到编号为 toi 的楼。 一开始 所有楼都是满的，所以从请求列表中选出的若干个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="343_整数拆分（剪绳子）">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/02/26/343-%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86%EF%BC%88%E5%89%AA%E7%BB%B3%E5%AD%90%EF%BC%89/index.html">
+<meta property="og:title" content="1601_最多可达成的换楼请求数目">
+<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/02/28/1601-%E6%9C%80%E5%A4%9A%E5%8F%AF%E8%BE%BE%E6%88%90%E7%9A%84%E6%8D%A2%E6%A5%BC%E8%AF%B7%E6%B1%82%E6%95%B0%E7%9B%AE/index.html">
 <meta property="og:site_name" content="学涛的博客">
-<meta property="og:description" content="难度：中等             题目给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]k[1]…*k[m-1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。 示例示例一：">
+<meta property="og:description" content="难度：困难             题目我们有 n 栋楼，编号从 0 到 n - 1 。每栋楼有若干员工。由于现在是换楼的季节，部分员工想要换一栋楼居住。 给你一个数组 requests ，其中 requests[i] &#x3D; [fromi, toi] ，表示一个员工请求从编号为 fromi 的楼搬到编号为 toi 的楼。 一开始 所有楼都是满的，所以从请求列表中选出的若干个">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-26T10:54:40.000Z">
-<meta property="article:modified_time" content="2022-02-26T11:07:10.830Z">
+<meta property="og:image" content="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220228210549.jpg">
+<meta property="og:image" content="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220228210527.jpg">
+<meta property="article:published_time" content="2022-02-28T12:59:35.000Z">
+<meta property="article:modified_time" content="2022-03-01T01:27:33.850Z">
 <meta property="article:author" content="xue tao">
 <meta property="article:tag" content="leetcode">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220228210549.jpg">
   
   
-  <title>343_整数拆分（剪绳子） - 学涛的博客</title>
+  <title>1601_最多可达成的换楼请求数目 - 学涛的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -176,7 +179,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="343_整数拆分（剪绳子）">
+            <span class="h2" id="subtitle" title="1601_最多可达成的换楼请求数目">
               
             </span>
 
@@ -186,8 +189,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-02-26 18:54" pubdate>
-        2022年2月26日 晚上
+      <time datetime="2022-02-28 20:59" pubdate>
+        2022年2月28日 晚上
       </time>
     </span>
   
@@ -197,7 +200,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      668 字
+      1.7k 字
     </span>
   
 
@@ -206,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      6 分钟
+      14 分钟
     </span>
   
 
@@ -239,32 +242,42 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">343_整数拆分（剪绳子）</h1>
+            <h1 style="display: none">1601_最多可达成的换楼请求数目</h1>
             
             <div class="markdown-body">
-              <div class="note note-warning">
-            <p>难度：中等</p>
+              <div class="note note-danger">
+            <p>难度：困难</p>
           </div>
 
-<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一根长度为 n 的绳子，请把绳子剪成整数长度的 m 段（m、n都是整数，n&gt;1并且m&gt;1），每段绳子的长度记为 k[0],k[1]…k[m-1] 。请问 k[0]<em>k[1]</em>…*k[m-1] 可能的最大乘积是多少？例如，当绳子的长度是8时，我们把它剪成长度分别为2、3、3的三段，此时得到的最大乘积是18。</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>我们有 n 栋楼，编号从 0 到 n - 1 。每栋楼有若干员工。由于现在是换楼的季节，部分员工想要换一栋楼居住。</p>
+<p>给你一个数组 requests ，其中 requests[i] = [fromi, toi] ，表示一个员工请求从编号为 fromi 的楼搬到编号为 toi 的楼。</p>
+<p>一开始 所有楼都是满的，所以从请求列表中选出的若干个请求是可行的需要满足 每栋楼员工净变化为 0 。意思是每栋楼 离开 的员工数目 等于 该楼 搬入 的员工数数目。比方说 n = 3 且两个员工要离开楼 0 ，一个员工要离开楼 1 ，一个员工要离开楼 2 ，如果该请求列表可行，应该要有两个员工搬入楼 0 ，一个员工搬入楼 1 ，一个员工搬入楼 2 。</p>
+<p>请你从原请求列表中选出若干个请求，使得它们是一个可行的请求列表，并返回所有可行列表中最大请求数目。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220228210549.jpg" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
 <blockquote>
-<p><strong>输入</strong>: 2<br><strong>输出</strong>: 1<br><strong>解释</strong>: 2 = 1 + 1, 1 × 1 = 1</p>
+<p>输入：n = 5, requests = [[0,1],[1,0],[0,1],[1,2],[2,0],[3,4]]<br>输出：5<br>解释：请求列表如下：<br>从楼 0 离开的员工为 x 和 y ，且他们都想要搬到楼 1 。<br>从楼 1 离开的员工为 a 和 b ，且他们分别想要搬到楼 2 和 0 。<br>从楼 2 离开的员工为 z ，且他想要搬到楼 0 。<br>从楼 3 离开的员工为 c ，且他想要搬到楼 4 。<br>没有员工从楼 4 离开。<br>我们可以让 x 和 b 交换他们的楼，以满足他们的请求。<br>我们可以让 y，a 和 z 三人在三栋楼间交换位置，满足他们的要求。<br>所以最多可以满足 5 个请求。</p>
 </blockquote>
 <p>示例二：</p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220228210527.jpg" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
 <blockquote>
-<p><strong>输入</strong>: 10<br><strong>输出</strong>: 36<br><strong>解释</strong>: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36</p>
+<p><strong>输入</strong>：n = 3, requests = [[0,0],[1,2],[2,1]]<br><strong>输出</strong>：3<br><strong>解释</strong>：请求列表如下：<br>从楼 0 离开的员工为 x ，且他想要回到原来的楼 0 。<br>从楼 1 离开的员工为 y ，且他想要搬到楼 2 。<br>从楼 2 离开的员工为 z ，且他想要搬到楼 1 。<br>我们可以满足所有的请求。</p>
+</blockquote>
+<p>示例三：</p>
+<blockquote>
+<p><strong>输入</strong>：n = 4, requests = [[0,3],[3,1],[1,2],[2,0]]<br><strong>输出</strong>：4</p>
 </blockquote>
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul>
-<li><code>2 &lt;= n &lt;= 58</code></li>
+<li>1 &lt;= n &lt;= 20</li>
+<li>1 &lt;= requests.length &lt;= 16</li>
+<li>requests[i].length == 2</li>
+<li>0 &lt;= fromi, toi &lt; n</li>
 </ul>
-<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>要求剪下绳子长度乘积的最大值，可以用动态规划的方法。</p>
-<p>用一个 dp 数组记录绳子长度为 n 的时候乘积的最大值，初始情况：当绳子长度为 2 时，最大乘积为 1 （最少要减一次）<code>int[] dp = new int[n+1]; dp[2] = 1;</code></p>
-<p>剪下一段后，可以选择继续剪或者不剪。不剪的话长度乘积为 剪下长度 <code>j</code> * 剩余长度  <code>i-j</code> ；剪的话长度乘积为 剪下长度 <code>j</code> * dp[剩余长度] <code>dp[i-j]</code></p>
-<p><code>Math.max(j*(i-j), j*dp[i-j])</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">cuttingRope</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n)</span></span>&#123;<br>  <span class="hljs-keyword">int</span>[] dp = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n+<span class="hljs-number">1</span>];<br>  dp[<span class="hljs-number">2</span>]=<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">3</span>; i &lt;=n; i++) &#123;<br>    <span class="hljs-comment">// 剪 1 没有意义，故从 2 开始循环</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span>; j &lt; i; j++) &#123;<br>      dp[i] = Math.max(dp[i], Math.max(j*(i-j), j*dp[i-j]));<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> dp[n];<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>采用回溯的方法枚举每一个选项</p>
+<p>用数组 delta 记录每一栋楼的变化量，用整数 count 记录被选择的请求数，用 zero 维护变化量中 0 的个数</p>
+<p>对于第 pos 个请求<code>[x, y]</code>，如果选择该请求，那么 count 数加一，<code>delta[x]</code>减一，<code>delta[y]</code>加一。如果不选择，则不进行任何操作。然后调用 <code>dfd(pos + 1)</code>处理下一个请求</p>
+<p>如果枚举了所有请求，则判断是否满足 delta 里全是 0，如果满足，则更新答案的最大值。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span>[] delta;<br><span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>, count = <span class="hljs-number">0</span>, zero, n;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maximumRequests</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span>[][] requests)</span></span>&#123;<br>  delta = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];<br>  zero = n;<br>  <span class="hljs-keyword">this</span>.n = n;<br>  dfs(requests, <span class="hljs-number">0</span>);<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] requests, <span class="hljs-keyword">int</span> pos)</span></span>&#123;<br>  <span class="hljs-keyword">if</span> (pos == requests.length)&#123;<br>    <span class="hljs-keyword">if</span> (zero == n)&#123;<br>      ans = Math.max(ans, count);<br>    &#125;<br>    <span class="hljs-keyword">return</span>;<br>  &#125;<br>  <span class="hljs-comment">// 不选 requests[pos]</span><br>  dfs(requests, pos+<span class="hljs-number">1</span>);<br><br>  <span class="hljs-comment">// 选 requests[pos]</span><br>  <span class="hljs-keyword">int</span> z = zero;<br>  count++;<br>  <span class="hljs-keyword">int</span>[] r = requests[pos];<br>  <span class="hljs-keyword">int</span> x = r[<span class="hljs-number">0</span>], y = r[<span class="hljs-number">1</span>];<br>  zero -= delta[x] == <span class="hljs-number">0</span> ? <span class="hljs-number">1</span>:<span class="hljs-number">0</span>;<br>  delta[x]--;<br>  zero += delta[x] == <span class="hljs-number">0</span> ? <span class="hljs-number">1</span>:<span class="hljs-number">0</span>;<br><br>  zero -= delta[y] == <span class="hljs-number">0</span> ? <span class="hljs-number">1</span>:<span class="hljs-number">0</span>;<br>  delta[y]++;<br>  zero += delta[y] == <span class="hljs-number">0</span> ? <span class="hljs-number">1</span>:<span class="hljs-number">0</span>;<br>  dfs(requests, pos+<span class="hljs-number">1</span>);<br>  delta[y]--;<br>  delta[x]++;<br>  count--;<br>  zero = z;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 
             </div>
@@ -294,9 +307,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/27/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">
+                      <a href="/xt-blog/2022/03/01/6-Z%E5%AD%97%E5%9E%8B%E5%8F%98%E6%8D%A2/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">15_三数之和</span>
+                        <span class="hidden-mobile">6_Z字型变换</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -304,8 +317,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/24/1706-%E7%90%83%E4%BC%9A%E8%90%BD%E4%BD%95%E5%A4%84/">
-                        <span class="hidden-mobile">1706_球会落何处</span>
+                      <a href="/xt-blog/2022/02/27/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">
+                        <span class="hidden-mobile">15_三数之和</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
