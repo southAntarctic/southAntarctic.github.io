@@ -1,0 +1,487 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/xt-blog/img/favicon.png">
+  <link rel="icon" href="/xt-blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xue tao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="难度：困难             题目给你一个数组 nums，我们可以将它按一个非负整数 k 进行轮调，这样可以使数组变为 nums[k], nums[k + 1], ... nums[nums.length - 1], nums[0], nums[1], ..., nums[k-1]] 的形式。此后，任何值小于或等于其索引的项都可以记作一分。  例如，数组为 nums">
+<meta property="og:type" content="article">
+<meta property="og:title" content="798_得分最高的最小轮调">
+<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/03/09/798-%E5%BE%97%E5%88%86%E6%9C%80%E9%AB%98%E7%9A%84%E6%9C%80%E5%B0%8F%E8%BD%AE%E8%B0%83/index.html">
+<meta property="og:site_name" content="学涛的博客">
+<meta property="og:description" content="难度：困难             题目给你一个数组 nums，我们可以将它按一个非负整数 k 进行轮调，这样可以使数组变为 nums[k], nums[k + 1], ... nums[nums.length - 1], nums[0], nums[1], ..., nums[k-1]] 的形式。此后，任何值小于或等于其索引的项都可以记作一分。  例如，数组为 nums">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-03-09T05:56:53.000Z">
+<meta property="article:modified_time" content="2022-03-09T06:39:57.319Z">
+<meta property="article:author" content="xue tao">
+<meta property="article:tag" content="leetcode">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>798_得分最高的最小轮调 - 学涛的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/xt-blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"accept_one_time.gitee.io","root":"/xt-blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xt-blog/local-search.xml"};
+  </script>
+  <script  src="/xt-blog/js/utils.js" ></script>
+  <script  src="/xt-blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/xt-blog/">
+      <strong>学涛的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                文档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/xt-blog/img/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="798_得分最高的最小轮调">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-09 13:56" pubdate>
+        2022年3月9日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      18 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">798_得分最高的最小轮调</h1>
+            
+            <div class="markdown-body">
+              <div class="note note-danger">
+            <p>难度：困难</p>
+          </div>
+
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个数组 nums，我们可以将它按一个非负整数 k 进行轮调，这样可以使数组变为 <code>nums[k], nums[k + 1], ... nums[nums.length - 1], nums[0], nums[1], ..., nums[k-1]] </code>的形式。此后，任何值小于或等于其索引的项都可以记作一分。</p>
+<ul>
+<li>例如，数组为 nums = [2,4,1,3,0]，我们按 k = 2 进行轮调后，它将变成 [1,3,0,2,4]。这将记为 3 分，因为 1 &gt; 0 [不计分]、3 &gt; 1 [不计分]、0 &lt;= 2 [计 1 分]、2 &lt;= 3 [计 1 分]，4 &lt;= 4 [计 1 分]。</li>
+</ul>
+<p>在所有可能的轮调中，返回我们所能得到的最高分数对应的轮调下标 k 。如果有多个答案，返回满足条件的最小的下标 k 。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
+<blockquote>
+<p><strong>输入</strong>：nums = [2,3,1,4,0]<br><strong>输出</strong>：3<br><strong>解释</strong>：<br>下面列出了每个 k 的得分：<br>k = 0,  nums = [2,3,1,4,0],    score 2<br>k = 1,  nums = [3,1,4,0,2],    score 3<br>k = 2,  nums = [1,4,0,2,3],    score 3<br>k = 3,  nums = [4,0,2,3,1],    score 4<br>k = 4,  nums = [0,2,3,1,4],    score 3<br>所以我们应当选择 k = 3，得分最高。</p>
+</blockquote>
+<p>示例二：</p>
+<blockquote>
+<p><strong>输入</strong>：nums = [1,3,0,2,4]<br><strong>输出</strong>：0<br><strong>解释</strong>：<br>nums 无论怎么变化总是有 3 分。<br>所以我们将选择最小的 k，即 0。</p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul>
+<li>$1 &lt;= nums.length &lt;= 10^5$</li>
+<li>$0 &lt;= nums[i] &lt; nums.length$</li>
+</ul>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p><strong>当数字下标大于值时得分。</strong></p>
+<p>对于给定的 nums[i]，能使得其得分的下标区间是明确的。基本上是位于右半边能得分，位于左半边不得分。</p>
+<p>这意味着，能使其得分的「 k 区间 」也是明确的。只要计算出，在 k 从 0 到 n-1 的过程中，什么时候从得分变成失分，什么时候从失分变成得分。</p>
+<ul>
+<li>如果一开始就在得分圈，那么随着 k 的增加，（元素逐渐左移），会先失分，然后在轮回后得分，直到最后<ul>
+<li>一开始得分，此时的次数为 0 </li>
+<li>随着下标变小，对于某个nums[i]&lt;=i的数字而言，左移到下标为nums[i]的时候，仍然还可以得分；再多移动一格则不可得分，此时的次数为 <code>i - nums[i] + 1</code></li>
+<li>轮回后会一直得分，此时的次数为 <code>i+1</code></li>
+</ul>
+</li>
+<li>如果一开始在失分圈，那么随着 k 的增加，会在大轮回后得分，然后进入失分圈，直到最后<ul>
+<li>从0开始到下标i的每个位置都不可得分</li>
+<li>下标为<code>num[i]-i</code>时，不得分，此时的次数为 <code>n - (nums[i] - i) + 1</code></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span>[] diff = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>  <span class="hljs-keyword">if</span> (nums[i]&lt;=i)&#123;<br>    <span class="hljs-comment">// 在得分圈</span><br>    diff[<span class="hljs-number">0</span>]++;	<span class="hljs-comment">// 不移动时 nums[i] 就产生贡献</span><br>    diff[(i-nums[i]+<span class="hljs-number">1</span>)%n]--;	<span class="hljs-comment">// 左移 i-nums[i]+1 是，首次变为正，贡献取消</span><br>    diff[(i+<span class="hljs-number">1</span>)%n]++;	<span class="hljs-comment">// 直到移动到坐标小于 0 的位置，变成移动到最右边，贡献产生</span><br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-comment">// 在失分圈</span><br>    diff[(i+<span class="hljs-number">1</span>)%n]++;	<span class="hljs-comment">// 移动到最右边，贡献产生</span><br>    diff[(n-(nums[i]-i)+<span class="hljs-number">1</span>)%n]--;	<span class="hljs-comment">// 值和下标相同的临界点，继续左移则贡献取消</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>整体思路就是遍历一遍每个数，通过直接计算得到产生分数贡献变化的分界点，将对应的移动值和变化记录下来。最后求总分的时候再遍历累计求和即可；相当于用积分恢复差分对应的原始值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">bestRotation</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] nums)</span></span>&#123;<br>  <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">int</span> n = nums.length;<br>  <span class="hljs-keyword">int</span>[] diff = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    <span class="hljs-keyword">if</span> (nums[i]&lt;=i)&#123;<br>      <span class="hljs-comment">// nums[i] 初始位置可以得分</span><br>      diff[<span class="hljs-number">0</span>]++; <span class="hljs-comment">// 不移动时 nums[i】就产生贡献</span><br>      diff[(i-nums[i]+<span class="hljs-number">1</span>)%n]--; <span class="hljs-comment">// 左移 i-nums[i]+1 则差首次为正，贡献取消，继续左移也不会产生新贡献</span><br>      diff[(i+<span class="hljs-number">1</span>)%n]++; <span class="hljs-comment">// 直到移动到坐标小于0的位置，变成移动到最右边，贡献产生</span><br>    &#125;<span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// 一开始所在的位置不得分，左移没有用，只有移动到边界才会产生变化</span><br>      diff[(i+<span class="hljs-number">1</span>)%n]++;<br>      <span class="hljs-comment">// 继续向左移动，则会再次到达值和下标相同的临界点，继续左移一位则得分取消</span><br>      diff[(n-(nums[i]-i)+<span class="hljs-number">1</span>)%n]--;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">int</span> score = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">int</span> max = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> m = <span class="hljs-number">0</span>; m&lt;n; m++)&#123;<br>    score+=diff[m];<br>    <span class="hljs-keyword">if</span> (score&gt;max)&#123;<br>      max = score;<br>      ans = m;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/xt-blog/categories/Leetcode/">Leetcode</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/xt-blog/2022/03/10/1248-%E7%BB%9F%E8%AE%A1%E3%80%8C%E4%BC%98%E7%BE%8E%E5%AD%90%E6%95%B0%E7%BB%84%E3%80%8D/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">1248_统计「优美子数组」</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/xt-blog/2022/03/09/1109-%E8%88%AA%E7%8F%AD%E9%A2%84%E8%AE%A2%E7%BB%9F%E8%AE%A1/">
+                        <span class="hidden-mobile">1109_航班预订统计</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     Peace <i class="iconfont icon-love"></i> Love 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/xt-blog/js/events.js" ></script>
+<script  src="/xt-blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/xt-blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/xt-blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/xt-blog/js/boot.js" ></script>
+
+
+</body>
+</html>
