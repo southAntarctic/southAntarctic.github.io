@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/xt-blog/img/favicon.png">
+  <link rel="icon" href="/xt-blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xue tao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="难度：困难             题目给定整数 n 和 k，返回 [1, n] 中字典序第 k 小的数字。 示例示例一：  输入: n &#x3D; 13, k &#x3D; 2输出: 10解释: 字典序的排列是 [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9]，所以第二小的数字是 10。  示例二：  输入: n &#x3D; 1, k &#x3D; 1输出: 1  提">
+<meta property="og:type" content="article">
+<meta property="og:title" content="440_字典序的第K小数字">
+<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/03/23/440-%E5%AD%97%E5%85%B8%E5%BA%8F%E7%9A%84%E7%AC%ACK%E5%B0%8F%E6%95%B0%E5%AD%97/index.html">
+<meta property="og:site_name" content="学涛的博客">
+<meta property="og:description" content="难度：困难             题目给定整数 n 和 k，返回 [1, n] 中字典序第 k 小的数字。 示例示例一：  输入: n &#x3D; 13, k &#x3D; 2输出: 10解释: 字典序的排列是 [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9]，所以第二小的数字是 10。  示例二：  输入: n &#x3D; 1, k &#x3D; 1输出: 1  提">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220323142951.png">
+<meta property="article:published_time" content="2022-03-23T06:28:16.000Z">
+<meta property="article:modified_time" content="2022-03-23T06:35:37.514Z">
+<meta property="article:author" content="xue tao">
+<meta property="article:tag" content="leetcode">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220323142951.png">
+  
+  
+  <title>440_字典序的第K小数字 - 学涛的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/xt-blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"accept_one_time.gitee.io","root":"/xt-blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xt-blog/local-search.xml"};
+  </script>
+  <script  src="/xt-blog/js/utils.js" ></script>
+  <script  src="/xt-blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/xt-blog/">
+      <strong>学涛的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                文档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/xt-blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/xt-blog/img/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="440_字典序的第K小数字">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-23 14:28" pubdate>
+        2022年3月23日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      11 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">440_字典序的第K小数字</h1>
+            
+            <div class="markdown-body">
+              <div class="note note-danger">
+            <p>难度：困难</p>
+          </div>
+
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定整数 <code>n</code> 和 <code>k</code>，返回 <code>[1, n]</code> 中字典序第 <code>k</code> 小的数字。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
+<blockquote>
+<p><strong>输入</strong>: n = 13, k = 2<br><strong>输出</strong>: 10<br><strong>解释</strong>: 字典序的排列是 [1, 10, 11, 12, 13, 2, 3, 4, 5, 6, 7, 8, 9]，所以第二小的数字是 10。</p>
+</blockquote>
+<p>示例二：</p>
+<blockquote>
+<p><strong>输入</strong>: n = 1, k = 1<br><strong>输出</strong>: 1</p>
+</blockquote>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul>
+<li>$1 &lt;= k &lt;= n &lt;= 10^9$</li>
+</ul>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220323142951.png" srcset="/xt-blog/img/loading.gif" lazyload alt="image.png"></p>
+<p>可以参照上图来理解</p>
+<ol>
+<li>初始化前缀为 1，计算以 1 为前缀的所有子树节点树木，如果小于 k ，说明当前子树的节点数不够，向右移动变为 2，如果大于 k ，说明答案就在当前根节点的子树节点，向下移动 变为 10</li>
+<li>k 减去已经遍历过的节点个数，以当前为根节点，直到 k=0</li>
+</ol>
+<blockquote>
+<p>第一层节点数为： 1 = nextPrefix - prefix; | 2 - 1<br>第二层的节点数为10 = nextPrefix - prefix; | (2 * 10) - (1 * 10)<br>…</p>
+<p>由于最后一层可能出现结点不满的情况，所以要取 总结点数 - prefix 与 nextPrefix - prefix的最小值，即：</p>
+<p>第n层的节点数为：Math.min (k - prefix , nextPrefix - prefix); | k - (1 * 10^n) 、(n * 10^n) - (1 * 10^n)</p>
+<p>于是对于每一层的节点数，直接用一个式子表示：Math.min (k - prefix , nextPrefix - prefix)</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">findKthNumber</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span> k)</span></span>&#123;<br>    <span class="hljs-comment">// 从根节点下面的第一个节点 1 开始遍历</span><br>    <span class="hljs-keyword">long</span> curr = <span class="hljs-number">1</span>;<br>    <span class="hljs-comment">// 从 1 出发后按字典序从小到大的顺序走 k-1 步就是 字典序第 k 小的数字</span><br>    k -= <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (k&gt;<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-comment">// 得到以当前节点为根的所有子树节点数目</span><br>        <span class="hljs-keyword">int</span> node = getCount(n,curr);<br>        <span class="hljs-comment">// 如果 k 大于当前根节点下所有子树节点的数目，就向右侧移动 -&gt; 2 -&gt; 3 -&gt; 4 ...</span><br>        <span class="hljs-keyword">if</span> (k&gt;=node)&#123;<br>            <span class="hljs-comment">// 减去已经遍历的个数</span><br>            k-=node;<br>            <span class="hljs-comment">// 根节点右移</span><br>            curr++;<br>        &#125;<br>        <span class="hljs-comment">// 如果 k 小于当前根节点下子树节点数目，说明答案就在当前根节点的子树节点中</span><br>        <span class="hljs-keyword">else</span>&#123;<br>            <span class="hljs-comment">// 减去根节点的数量 1</span><br>            k -= <span class="hljs-number">1</span>;<br>            <span class="hljs-comment">// 将根节点移动到下一层(每层有 10 个节点)</span><br>            curr *= <span class="hljs-number">10</span>;<br>        &#125;<br>    &#125;<br>    <span class="hljs-comment">// 最终 k=0 时,就找到了答案</span><br>    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>)curr;<br>&#125;<br><br><span class="hljs-comment">// 计算以 curr 为根的子树节点数目，所有节点值必须 &lt;= n</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getCount</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">long</span> curr)</span></span>&#123;<br>    <span class="hljs-comment">// 记录子树中的全部节点数目</span><br>    <span class="hljs-keyword">long</span> totalCounts = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// 当前节点右侧节点的值</span><br>    <span class="hljs-keyword">long</span> next = curr + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (curr&lt;=n)&#123;<br>        <span class="hljs-comment">// 取整行节点的个数，可能全满，也可能是叶子节点，没有满</span><br>        totalCounts += Math.min(n-curr+<span class="hljs-number">1</span>, next - curr);<br>        next *=<span class="hljs-number">10</span>;<br>        curr *=<span class="hljs-number">10</span>;<br>    &#125;<br>    <span class="hljs-keyword">return</span> (<span class="hljs-keyword">int</span>)totalCounts;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/xt-blog/categories/Leetcode/">Leetcode</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/xt-blog/2022/03/23/386-%E5%AD%97%E5%85%B8%E5%BA%8F%E6%8E%92%E6%95%B0/">
+                        <span class="hidden-mobile">386_字典序排数</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     Peace <i class="iconfont icon-love"></i> Love 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/xt-blog/js/events.js" ></script>
+<script  src="/xt-blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/xt-blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/xt-blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/xt-blog/js/boot.js" ></script>
+
+
+</body>
+</html>
