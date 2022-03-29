@@ -4,6 +4,106 @@
   
   
   <entry>
+    <title>2024_考试的最大困扰度</title>
+    <link href="/xt-blog/2022/03/29/2024-%E8%80%83%E8%AF%95%E7%9A%84%E6%9C%80%E5%A4%A7%E5%9B%B0%E6%89%B0%E5%BA%A6/"/>
+    <url>/xt-blog/2022/03/29/2024-%E8%80%83%E8%AF%95%E7%9A%84%E6%9C%80%E5%A4%A7%E5%9B%B0%E6%89%B0%E5%BA%A6/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-warning">            <p>难度：中等</p>          </div><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>一位老师正在出一场由 n 道判断题构成的考试，每道题的答案为 true （用 ‘T’ 表示）或者 false （用 ‘F’ 表示）。老师想增加学生对自己做出答案的不确定性，方法是 最大化 有 连续相同 结果的题数。（也就是连续出现 true 或者连续出现 false）。</p><p>给你一个字符串 answerKey ，其中 answerKey[i] 是第 i 个问题的正确结果。除此以外，还给你一个整数 k ，表示你能进行以下操作的最多次数：</p><p>每次操作中，将问题的正确答案改为 ‘T’ 或者 ‘F’ （也就是将 answerKey[i] 改为 ‘T’ 或者 ‘F’ ）。<br>请你返回在不超过 k 次操作的情况下，最大 连续 ‘T’ 或者 ‘F’ 的数目。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p><blockquote><p><strong>输入</strong>：answerKey = “TTFF”, k = 2<br><strong>输出</strong>：4<br><strong>解释</strong>：我们可以将两个 ‘F’ 都变为 ‘T’ ，得到 answerKey = “TTTT” 。<br>总共有四个连续的 ‘T’ 。</p></blockquote><p>示例二：</p><blockquote><p><strong>输入</strong>：answerKey = “TFFT”, k = 1<br><strong>输出</strong>：3<br><strong>解释</strong>：我们可以将最前面的 ‘T’ 换成 ‘F’ ，得到 answerKey = “FFFT” 。<br>或者，我们可以将第二个 ‘T’ 换成 ‘F’ ，得到 answerKey = “TFFF” 。<br>两种情况下，都有三个连续的 ‘F’ 。</p></blockquote><p>示例三：</p><blockquote><p><strong>输入</strong>：answerKey = “TTFTTFTT”, k = 1<br><strong>输出</strong>：5<br><strong>解释</strong>：我们可以将第一个 ‘F’ 换成 ‘T’ ，得到 answerKey = “TTTTTFTT” 。<br>或者我们可以将第二个 ‘F’ 换成 ‘T’ ，得到 answerKey = “TTFTTTTT” 。<br>两种情况下，都有五个连续的 ‘T’ 。</p></blockquote><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul><li>n == answerKey.length</li><li>$1 &lt;= n &lt;= 5 * 10^4$</li><li>answerKey[i] 要么是 ‘T’ ，要么是 ‘F’</li><li>1 &lt;= k &lt;= n</li></ul><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>设计一个 getCount 函数，getCount 函数的实现可以使用「滑动窗口」：使用 j 和 i 分别代表窗口的左右端点，count 为区间 <code>[j, i]</code> 中字符 c 的数量，每次右端点 i 移动时，若满足 s[i] = c，让 count 自增，当 count &gt; k 时，使左端点 j 往右移动，同时更新 count，直到 <code>[j, i]</code> 区间恢复合法性（包含字符 c 的数量 count 不超过 k 个）。</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    String s;<br>    <span class="hljs-keyword">int</span> n,_k;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">maxConsecutiveAnswers</span><span class="hljs-params">(String answerKey, <span class="hljs-keyword">int</span> k)</span></span>&#123;<br>        s = answerKey;<br>        n = s.length();<br>        _k = k;<br>        <span class="hljs-keyword">return</span> Math.max(getCount(<span class="hljs-string">&#x27;T&#x27;</span>),getCount(<span class="hljs-string">&#x27;F&#x27;</span>));<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">getCount</span><span class="hljs-params">(<span class="hljs-keyword">char</span> c)</span></span>&#123;<br>        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>, j=<span class="hljs-number">0</span>, count=<span class="hljs-number">0</span>; i&lt;n; i++)&#123;<br>            <span class="hljs-keyword">if</span> (s.charAt(i)==c) count++;<br>            <span class="hljs-keyword">while</span> (count&gt;_k)&#123;<br>                <span class="hljs-keyword">if</span> (s.charAt(j)==c)count--;<br>                j++;<br>            &#125;<br>            ans = Math.max(ans,i-j+<span class="hljs-number">1</span>);<br>        &#125;<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>1123_最深叶节点的最近公共祖先</title>
+    <link href="/xt-blog/2022/03/28/1123-%E6%9C%80%E6%B7%B1%E5%8F%B6%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/"/>
+    <url>/xt-blog/2022/03/28/1123-%E6%9C%80%E6%B7%B1%E5%8F%B6%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-warning">            <p>难度：中等</p>          </div><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给你一个有根节点 root 的二叉树，返回它 最深的叶节点的最近公共祖先 。</p><p>回想一下：</p><ul><li>叶节点 是二叉树中没有子节点的节点</li><li>树的根节点的 深度 为 0，如果某一节点的深度为 d，那它的子节点的深度就是 d+1</li><li>如果我们假定 A 是一组节点 S 的 最近公共祖先，S 中的每个节点都在以 A 为根节点的子树中，且 A 的深度达到此条件下可能的最大值。</li></ul><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p><p><img src="https://s3-lc-upload.s3.amazonaws.com/uploads/2018/07/01/sketch1.png" alt="img"></p><blockquote><p><strong>输入</strong>：root = [3,5,1,6,2,0,8,null,null,7,4]<br><strong>输出</strong>：[2,7,4]<br><strong>解释</strong>：我们返回值为 2 的节点，在图中用黄色标记。<br>在图中用蓝色标记的是树的最深的节点。<br>注意，节点 6、0 和 8 也是叶节点，但是它们的深度是 2 ，而节点 7 和 4 的深度是 3 。</p></blockquote><p>示例二：</p><blockquote><p><strong>输入</strong>：root = [1]<br><strong>输出</strong>：[1]<br><strong>解释</strong>：根节点是树中最深的节点，它是它本身的最近公共祖先。</p></blockquote><p>示例三：</p><blockquote><p><strong>输入</strong>：root = [0,1,3,null,2]<br><strong>输出</strong>：[2]<br><strong>解释</strong>：树中最深的叶节点是 2 ，最近公共祖先是它自己。</p></blockquote><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul><li>树中的节点数将在 <code>[1, 1000]</code> 的范围内。</li><li><code>0 &lt;= Node.val &lt;= 1000</code></li><li>每个节点的值都是 <strong>独一无二</strong> 的。</li></ul><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>寻找最深叶子节点，如果最深叶子节点只有一个的话，那这个最深叶子节点的最近公共祖先就是它自己。</p><p>可以从深度的方面考虑，全局维护一个最大共同深度，当左节点深度等于右节点深度，则更新最大共同深度，更新结果。</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> max = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">public</span> TreeNode ans = <span class="hljs-keyword">null</span>;<br><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">lcaDeepestLeaves</span><span class="hljs-params">(TreeNode root)</span></span>&#123;<br>dfs(root, <span class="hljs-number">0</span>);<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(TreeNode root, <span class="hljs-keyword">int</span> level)</span></span>&#123;<br>  <span class="hljs-keyword">if</span> (root==<span class="hljs-keyword">null</span>) <span class="hljs-keyword">return</span> level;<br>  <span class="hljs-keyword">int</span> left = dfs(root.left, level+<span class="hljs-number">1</span>);<br>  <span class="hljs-keyword">int</span> right = dfs(root.right,level+<span class="hljs-number">1</span>);<br>  <span class="hljs-keyword">if</span> (left==right &amp;&amp; left&gt;=max)&#123;<br>    ans = root;<br>    max = left;<br>  &#125;<br>  <span class="hljs-keyword">return</span> Math.max(left,right);<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>388_文件的最长绝对路径</title>
+    <link href="/xt-blog/2022/03/24/388-%E6%96%87%E4%BB%B6%E7%9A%84%E6%9C%80%E9%95%BF%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84/"/>
+    <url>/xt-blog/2022/03/24/388-%E6%96%87%E4%BB%B6%E7%9A%84%E6%9C%80%E9%95%BF%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-warning">            <p>难度：中等</p>          </div><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>假设有一个同时存储文件和目录的文件系统。下图展示了文件系统的一个示例：</p><p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220324113857.jpg" alt="img"></p><p>这里将 dir 作为根目录中的唯一目录。dir 包含两个子目录 subdir1 和 subdir2 。subdir1 包含文件 file1.ext 和子目录 subsubdir1；subdir2 包含子目录 subsubdir2，该子目录下包含文件 file2.ext 。</p><p>在文本格式中，如下所示(⟶表示制表符)：</p><blockquote><p>dir<br>⟶ subdir1<br>⟶ ⟶ file1.ext<br>⟶ ⟶ subsubdir1<br>⟶ subdir2<br>⟶ ⟶ subsubdir2<br>⟶ ⟶ ⟶ file2.ext</p></blockquote><p>如果是代码表示，上面的文件系统可以写为 <code>&quot;dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext&quot;</code> 。<code>&#39;\n&#39;</code> 和 <code>&#39;\t&#39;</code> 分别是换行符和制表符。</p><p>文件系统中的每个文件和文件夹都有一个唯一的 绝对路径 ，即必须打开才能到达文件/目录所在位置的目录顺序，所有路径用 ‘/‘ 连接。上面例子中，指向 file2.ext 的 绝对路径 是 “dir/subdir2/subsubdir2/file2.ext” 。每个目录名由字母、数字和/或空格组成，每个文件名遵循 name.extension 的格式，其中 name 和 extension由字母、数字和/或空格组成。</p><p>给定一个以上述格式表示文件系统的字符串 input ，返回文件系统中 指向 文件 的 最长绝对路径 的长度 。 如果系统中没有文件，返回 0。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p><p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220324114139.jpg" alt="img"></p><blockquote><p><strong>输入</strong>：input = “dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext”<br><strong>输出</strong>：20<br><strong>解释</strong>：只有一个文件，绝对路径为 “dir/subdir2/file.ext” ，路径长度 20</p></blockquote><p>示例二：</p><p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220324114114.jpg" alt="img"></p><blockquote><p><strong>输入</strong>：input = “dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext”<br><strong>输出</strong>：32<br><strong>解释</strong>：存在两个文件：<br>“dir/subdir1/file1.ext” ，路径长度 21<br>“dir/subdir2/subsubdir2/file2.ext” ，路径长度 32<br>返回 32 ，因为这是最长的路径</p></blockquote><p>示例三：</p><blockquote><p><strong>输入</strong>：input = “a”<br><strong>输出</strong>：0<br><strong>解释</strong>：不存在任何文件</p></blockquote><p>示例四：</p><blockquote><p><strong>输入</strong>：input = “file1.txt\nfile2.txt\nlongfile.txt”<br><strong>输出</strong>：12<br><strong>解释</strong>：根目录下有 3 个文件。<br>因为根目录中任何东西的绝对路径只是名称本身，所以答案是 “longfile.txt” ，路径长度为 12</p></blockquote><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul><li>$1 &lt;= input.length &lt;= 10^4$</li><li>input 可能包含小写或大写的英文字母，一个换行符 <code>&#39;\n&#39;</code>，一个制表符 <code>&#39;\t&#39;</code>，一个点 <code>&#39;.&#39;</code>，一个空格 <code>&#39; &#39;</code>，和数字。</li></ul><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>先用 <code>\n</code>将字符串切开，按行读取，然后用一个 栈 来存储每层的累积长度</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthLongestPath</span><span class="hljs-params">(String input)</span></span>&#123;<br>    String[] files = input.split(<span class="hljs-string">&quot;\n&quot;</span>);<br>    Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    stack.push(<span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">for</span> (String file: files)&#123;<br>        <span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>, depth = <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// 计算层数</span><br>        <span class="hljs-keyword">while</span> (j&lt;file.length()&amp;&amp;file.charAt(j)==<span class="hljs-string">&#x27;\t&#x27;</span>)&#123;<br>            depth++;<br>            j++;<br>        &#125;<br>        <span class="hljs-comment">// 文件名长度</span><br>        <span class="hljs-keyword">int</span> length = file.length()-j;<br>        <span class="hljs-comment">// 清空多余层数</span><br>        <span class="hljs-keyword">while</span> (stack.size()&gt;depth)&#123;<br>            stack.pop();<br>        &#125;<br>        <span class="hljs-comment">// 如果是文件，则计算最大长度 stack.peek() + length</span><br>        <span class="hljs-keyword">if</span> (file.indexOf(<span class="hljs-string">&#x27;.&#x27;</span>)&gt;=<span class="hljs-number">0</span>)&#123;<br>            ans = Math.max(ans,stack.peek()+length);<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 如果不是文件，说明为目录，则推入当前层的累积长度 （上一层+本层+1）</span><br>            stack.push(stack.peek()+length+<span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>385_迷你语法分析器</title>
+    <link href="/xt-blog/2022/03/24/385-%E8%BF%B7%E4%BD%A0%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/"/>
+    <url>/xt-blog/2022/03/24/385-%E8%BF%B7%E4%BD%A0%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-warning">            <p>难度：中等</p>          </div><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个字符串 s 表示一个整数嵌套列表，实现一个解析它的语法分析器并返回解析的结果 NestedInteger 。</p><p>列表中的每个元素只可能是整数或整数嵌套列表</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p><blockquote><p><strong>输入</strong>：s = “324”,<br><strong>输出</strong>：324<br><strong>解释</strong>：你应该返回一个 NestedInteger 对象，其中只包含整数值 324。</p></blockquote><p>示例二：</p><blockquote><p><strong>输入</strong>：s = “[123,[456,[789]]]”,<br><strong>输出</strong>：[123,[456,[789]]]<br><strong>解释</strong>：返回一个 NestedInteger 对象包含一个有两个元素的嵌套列表：</p><ol><li>一个 integer 包含值 123</li><li>一个包含两个元素的嵌套列表：<br> i.  一个 integer 包含值 456<br> ii. 一个包含一个元素的嵌套列表<div class="code-wrapper"><pre><code class="hljs">  a. 一个 integer 包含值 789</code></pre></div></li></ol></blockquote><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul><li>$1 &lt;= s.length &lt;= 5 * 10^4$</li><li>s 由数字、方括号 “[]”、负号 ‘-‘ 、逗号 ‘,’组成</li><li>用例保证 s 是可解析的 NestedInteger</li><li>输入中的所有值的范围是 $[-10^6, 10^6]$</li></ul><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>题目意思是解析字符串，还原成 NestedInteger 对象，NestedInteger 对象可以实例化成两类，要么是空或者数组，要么是数字</p><p>使用 start 来标记起始位置，用来截取一个完整的对象字符串，用 count 来标记层数，当 count 等于 0 时，说明当前字符串为数字，当字符大于 0 时，说明当前字符串为数组</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> NestedInteger <span class="hljs-title">deserialize</span><span class="hljs-params">(String s)</span> </span>&#123;<br>  <span class="hljs-keyword">if</span>(s.isEmpty()) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> NestedInteger();<br>  <span class="hljs-keyword">if</span>(s.charAt(<span class="hljs-number">0</span>)!=<span class="hljs-string">&#x27;[&#x27;</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> NestedInteger(Integer.valueOf(s));<br>  <span class="hljs-keyword">if</span>(s.length()&lt;=<span class="hljs-number">2</span>) <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> NestedInteger();<br>  NestedInteger res = <span class="hljs-keyword">new</span> NestedInteger();<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> start=<span class="hljs-number">1</span>, i=<span class="hljs-number">1</span>,count=<span class="hljs-number">0</span>; i&lt;s.length();i++)&#123;<br>    <span class="hljs-comment">// count == 0表示非List，遇到&#x27;,&#x27;则递归解析；</span><br>    <span class="hljs-comment">// count &gt; 0，表示已经进入List状态，这时不处理&#x27;,&#x27;，</span><br>    <span class="hljs-comment">// 这时的逗号是List里面的，属于子问题，由DFS处理</span><br>    <span class="hljs-keyword">if</span>(count==<span class="hljs-number">0</span> &amp;&amp; (s.charAt(i)==<span class="hljs-string">&#x27;,&#x27;</span>|| i==s.length()-<span class="hljs-number">1</span>))&#123;<br>      res.add(deserialize(s.substring(start,i)));<br>      start = i+<span class="hljs-number">1</span>;<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(s.charAt(i)==<span class="hljs-string">&#x27;[&#x27;</span>)&#123;<br>      count++;<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(s.charAt(i)==<span class="hljs-string">&#x27;]&#x27;</span>)&#123;<br>      count--;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> res;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>440_字典序的第K小数字</title>
     <link href="/xt-blog/2022/03/23/440-%E5%AD%97%E5%85%B8%E5%BA%8F%E7%9A%84%E7%AC%ACK%E5%B0%8F%E6%95%B0%E5%AD%97/"/>
     <url>/xt-blog/2022/03/23/440-%E5%AD%97%E5%85%B8%E5%BA%8F%E7%9A%84%E7%AC%ACK%E5%B0%8F%E6%95%B0%E5%AD%97/</url>
