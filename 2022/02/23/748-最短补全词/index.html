@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/xt-blog/img/favicon.png">
-  <link rel="icon" href="/xt-blog/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="难度：简单             题目给你一个字符串 licensePlate 和一个字符串数组 words ，请你找出 words 中的 最短补全词 。 补全词 是一个包含 licensePlate 中所有字母的单词。忽略 licensePlate 中的 数字和空格 。不区分大小写。如果某个字母在 licensePlate 中出现不止一次，那么该字母在补全词中的出现次">
 <meta property="og:type" content="article">
 <meta property="og:title" content="748_最短补全词">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/02/23/748-%E6%9C%80%E7%9F%AD%E8%A1%A5%E5%85%A8%E8%AF%8D/index.html">
+<meta property="og:url" content="https://southantarctic.github.io/2022/02/23/748-%E6%9C%80%E7%9F%AD%E8%A1%A5%E5%85%A8%E8%AF%8D/index.html">
 <meta property="og:site_name" content="学涛的博客">
 <meta property="og:description" content="难度：简单             题目给你一个字符串 licensePlate 和一个字符串数组 words ，请你找出 words 中的 最短补全词 。 补全词 是一个包含 licensePlate 中所有字母的单词。忽略 licensePlate 中的 数字和空格 。不区分大小写。如果某个字母在 licensePlate 中出现不止一次，那么该字母在补全词中的出现次">
 <meta property="og:locale" content="zh_CN">
@@ -42,7 +42,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/night-owl.min.css" />
     
   
 
@@ -60,21 +60,21 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/xt-blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="/xt-blog/css/mac.css">
+<link rel="stylesheet" href="/css/mac.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"accept_one_time.gitee.io","root":"/xt-blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xt-blog/local-search.xml"};
+    var CONFIG = {"hostname":"southantarctic.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/xt-blog/js/utils.js" ></script>
-  <script  src="/xt-blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.1"></head>
 
 
@@ -82,7 +82,7 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/xt-blog/">
+    <a class="navbar-brand" href="/">
       <strong>学涛的博客</strong>
     </a>
 
@@ -101,7 +101,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -113,7 +113,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 文档
               </a>
@@ -125,7 +125,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -137,7 +137,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -149,7 +149,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -175,7 +175,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/xt-blog/img/default.jpg') no-repeat center center;
+         style="background: url('/img/default.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -271,11 +271,11 @@
 </ul>
 <h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>题目最关键的部分是是 <strong>忽略数字和空格 ，不区分大小写</strong>。如果某个字母在 licensePlate 中出现不止一次，那么<strong>该字母在补全词中的出现次数应当一致或者更多。</strong></p>
 <p>所以首先统计 licensePlate 中每个字母出现的次数，用一个 int 数组记录</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>];<br><span class="hljs-comment">// 统计句子中的字母个数</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;licensePlate.length();i++)&#123;<br>  <span class="hljs-keyword">char</span> ch = licensePlate.charAt(i);<br>  <span class="hljs-keyword">if</span> (Character.isLetter(ch))&#123;<br>    count[Character.toLowerCase(ch)-<span class="hljs-string">&#x27;a&#x27;</span>]++;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>];<br><span class="hljs-comment">// 统计句子中的字母个数</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;licensePlate.length();i++)&#123;<br>  <span class="hljs-keyword">char</span> ch = licensePlate.charAt(i);<br>  <span class="hljs-keyword">if</span> (Character.isLetter(ch))&#123;<br>    count[Character.toLowerCase(ch)-<span class="hljs-string">&#x27;a&#x27;</span>]++;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>然后遍历每个单词，同时记录一个 index 用来标记上一个符合条件的 word 下标</p>
 <p>遍历单词时，先统计每个单词字母出现的个数，然后与句子中的比较，符合条件后，再比较当前单词与 index 下标单词的长度，选择长度更小的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">shortestCompletingWord</span><span class="hljs-params">(String licensePlate, String[] words)</span></span>&#123;<br>  <span class="hljs-keyword">int</span> index= -<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>];<br>  <span class="hljs-comment">// 统计句子中的字母个数</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;licensePlate.length();i++)&#123;<br>    <span class="hljs-keyword">char</span> ch = licensePlate.charAt(i);<br>    <span class="hljs-keyword">if</span> (Character.isLetter(ch))&#123;<br>      count[Character.toLowerCase(ch)-<span class="hljs-string">&#x27;a&#x27;</span>]++;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 遍历单词</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; words.length; i++) &#123;<br>    <span class="hljs-keyword">int</span>[] word = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>];<br>    <span class="hljs-keyword">boolean</span> ok = <span class="hljs-keyword">true</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; words[i].length(); j++) &#123;<br>      <span class="hljs-keyword">char</span> ch = words[i].charAt(j);<br>      word[ch-<span class="hljs-string">&#x27;a&#x27;</span>]++;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;<span class="hljs-number">26</span> ; j++) &#123;<br>      <span class="hljs-keyword">if</span> (word[j]&lt;count[j])&#123;<br>        ok = <span class="hljs-keyword">false</span>;<br>        <span class="hljs-keyword">break</span>;<br>      &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (ok &amp;&amp;(index&lt;<span class="hljs-number">0</span> || words[i].length()&lt;words[index].length()))&#123;<br>      index = i;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> words[index];<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> String <span class="hljs-title">shortestCompletingWord</span><span class="hljs-params">(String licensePlate, String[] words)</span></span>&#123;<br>  <span class="hljs-keyword">int</span> index= -<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">int</span>[] count = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>];<br>  <span class="hljs-comment">// 统计句子中的字母个数</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;licensePlate.length();i++)&#123;<br>    <span class="hljs-keyword">char</span> ch = licensePlate.charAt(i);<br>    <span class="hljs-keyword">if</span> (Character.isLetter(ch))&#123;<br>      count[Character.toLowerCase(ch)-<span class="hljs-string">&#x27;a&#x27;</span>]++;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 遍历单词</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; words.length; i++) &#123;<br>    <span class="hljs-keyword">int</span>[] word = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[<span class="hljs-number">26</span>];<br>    <span class="hljs-keyword">boolean</span> ok = <span class="hljs-keyword">true</span>;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; words[i].length(); j++) &#123;<br>      <span class="hljs-keyword">char</span> ch = words[i].charAt(j);<br>      word[ch-<span class="hljs-string">&#x27;a&#x27;</span>]++;<br>    &#125;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt;<span class="hljs-number">26</span> ; j++) &#123;<br>      <span class="hljs-keyword">if</span> (word[j]&lt;count[j])&#123;<br>        ok = <span class="hljs-keyword">false</span>;<br>        <span class="hljs-keyword">break</span>;<br>      &#125;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (ok &amp;&amp;(index&lt;<span class="hljs-number">0</span> || words[i].length()&lt;words[index].length()))&#123;<br>      index = i;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> words[index];<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 
             </div>
@@ -286,7 +286,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/categories/Leetcode/">Leetcode</a>
+                      <a class="hover-with-bg" href="/categories/Leetcode/">Leetcode</a>
                     
                   </div>
                 
@@ -294,7 +294,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
                     
                   </div>
                 
@@ -305,7 +305,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/24/1706-%E7%90%83%E4%BC%9A%E8%90%BD%E4%BD%95%E5%A4%84/">
+                      <a href="/2022/02/24/1706-%E7%90%83%E4%BC%9A%E8%90%BD%E4%BD%95%E5%A4%84/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">1706_球会落何处</span>
                         <span class="visible-mobile">上一篇</span>
@@ -315,7 +315,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/23/25-K%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/">
+                      <a href="/2022/02/23/25-K%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/">
                         <span class="hidden-mobile">25_K个一组翻转链表</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -409,18 +409,18 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/xt-blog/js/events.js" ></script>
-<script  src="/xt-blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/xt-blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/xt-blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -473,7 +473,7 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/xt-blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
 </body>

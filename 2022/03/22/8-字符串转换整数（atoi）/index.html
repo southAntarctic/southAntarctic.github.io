@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/xt-blog/img/favicon.png">
-  <link rel="icon" href="/xt-blog/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="难度：中等             题目请你来实现一个 myAtoi(string s) 函数，使其能将字符串转换成一个 32 位有符号整数（类似 C&#x2F;C++ 中的 atoi 函数）。 函数 myAtoi(string s) 的算法如下：  读入字符串并丢弃无用的前导空格 检查下一个字符（假设还未到字符末尾）为正还是负号，读取该字符（如果有）。 确定最终结果是负数还是正数">
 <meta property="og:type" content="article">
 <meta property="og:title" content="8_字符串转换整数（atoi）">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/03/22/8-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%EF%BC%88atoi%EF%BC%89/index.html">
+<meta property="og:url" content="https://southantarctic.github.io/2022/03/22/8-%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0%EF%BC%88atoi%EF%BC%89/index.html">
 <meta property="og:site_name" content="学涛的博客">
 <meta property="og:description" content="难度：中等             题目请你来实现一个 myAtoi(string s) 函数，使其能将字符串转换成一个 32 位有符号整数（类似 C&#x2F;C++ 中的 atoi 函数）。 函数 myAtoi(string s) 的算法如下：  读入字符串并丢弃无用的前导空格 检查下一个字符（假设还未到字符末尾）为正还是负号，读取该字符（如果有）。 确定最终结果是负数还是正数">
 <meta property="og:locale" content="zh_CN">
@@ -42,7 +42,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/night-owl.min.css" />
     
   
 
@@ -60,21 +60,21 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/xt-blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="/xt-blog/css/mac.css">
+<link rel="stylesheet" href="/css/mac.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"accept_one_time.gitee.io","root":"/xt-blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xt-blog/local-search.xml"};
+    var CONFIG = {"hostname":"southantarctic.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/xt-blog/js/utils.js" ></script>
-  <script  src="/xt-blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.1"></head>
 
 
@@ -82,7 +82,7 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/xt-blog/">
+    <a class="navbar-brand" href="/">
       <strong>学涛的博客</strong>
     </a>
 
@@ -101,7 +101,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -113,7 +113,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 文档
               </a>
@@ -125,7 +125,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -137,7 +137,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -149,7 +149,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -175,7 +175,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/xt-blog/img/default.jpg') no-repeat center center;
+         style="background: url('/img/default.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -280,7 +280,7 @@
 </ul>
 <h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>使用 trim() 函数去空格会产生新的变量，所以尽量不使用。</p>
 <p>使用一个变量 <code>index</code> 去做遍历，并且在计算数值时，因为要求在整数范围内，所以要先判断乘以 10 之后是否会溢出，只要溢出就退出循环。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">myAtoi</span><span class="hljs-params">(String s)</span></span>&#123;<br>  <span class="hljs-keyword">int</span> len = s.length();<br>  <span class="hljs-keyword">char</span>[] charArray = s.toCharArray();<br>  <span class="hljs-comment">// 去除前导空格</span><br>  <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">while</span> (index&lt;len &amp;&amp; charArray[index]==<span class="hljs-string">&#x27; &#x27;</span>)&#123;<br>    index++;<br>  &#125;<br>  <span class="hljs-keyword">if</span> (index==len)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br><br>  <span class="hljs-comment">// 符号</span><br>  <span class="hljs-keyword">int</span> sign = <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">char</span> firstChar = charArray[index];<br>  <span class="hljs-keyword">if</span> (firstChar == <span class="hljs-string">&#x27;+&#x27;</span>)&#123;<br>    index++;<br>  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (firstChar == <span class="hljs-string">&#x27;-&#x27;</span>)&#123;<br>    index++;<br>    sign = -<span class="hljs-number">1</span>;<br>  &#125;<br>  <span class="hljs-comment">// 数字</span><br>  <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">while</span> (index&lt;len)&#123;<br>    <span class="hljs-keyword">char</span> currChar = charArray[index];<br>    <span class="hljs-keyword">if</span> (currChar&gt;<span class="hljs-string">&#x27;9&#x27;</span>||currChar&lt;<span class="hljs-string">&#x27;0&#x27;</span>)&#123;<br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-comment">// 判断乘10以后是否越界</span><br>    <span class="hljs-keyword">if</span> (ans &gt; Integer.MAX_VALUE /<span class="hljs-number">10</span> || (ans==Integer.MAX_VALUE/<span class="hljs-number">10</span> &amp;&amp; (currChar - <span class="hljs-string">&#x27;0&#x27;</span>)&gt;Integer.MAX_VALUE%<span class="hljs-number">10</span>))&#123;<br>      <span class="hljs-keyword">return</span> Integer.MAX_VALUE;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (ans &lt; Integer.MIN_VALUE / <span class="hljs-number">10</span> || (ans==Integer.MIN_VALUE/<span class="hljs-number">10</span> &amp;&amp; (currChar - <span class="hljs-string">&#x27;0&#x27;</span>)&gt;-(Integer.MIN_VALUE%<span class="hljs-number">10</span>)))&#123;<br>      <span class="hljs-keyword">return</span> Integer.MIN_VALUE;<br>    &#125;<br>    <span class="hljs-comment">// 合法情况下，每一步都把符号为乘进去</span><br>    ans = ans*<span class="hljs-number">10</span> + sign * (currChar - <span class="hljs-string">&#x27;0&#x27;</span>);<br>    index++;<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">myAtoi</span><span class="hljs-params">(String s)</span></span>&#123;<br>  <span class="hljs-keyword">int</span> len = s.length();<br>  <span class="hljs-keyword">char</span>[] charArray = s.toCharArray();<br>  <span class="hljs-comment">// 去除前导空格</span><br>  <span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">while</span> (index&lt;len &amp;&amp; charArray[index]==<span class="hljs-string">&#x27; &#x27;</span>)&#123;<br>    index++;<br>  &#125;<br>  <span class="hljs-keyword">if</span> (index==len)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br><br>  <span class="hljs-comment">// 符号</span><br>  <span class="hljs-keyword">int</span> sign = <span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">char</span> firstChar = charArray[index];<br>  <span class="hljs-keyword">if</span> (firstChar == <span class="hljs-string">&#x27;+&#x27;</span>)&#123;<br>    index++;<br>  &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (firstChar == <span class="hljs-string">&#x27;-&#x27;</span>)&#123;<br>    index++;<br>    sign = -<span class="hljs-number">1</span>;<br>  &#125;<br>  <span class="hljs-comment">// 数字</span><br>  <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">while</span> (index&lt;len)&#123;<br>    <span class="hljs-keyword">char</span> currChar = charArray[index];<br>    <span class="hljs-keyword">if</span> (currChar&gt;<span class="hljs-string">&#x27;9&#x27;</span>||currChar&lt;<span class="hljs-string">&#x27;0&#x27;</span>)&#123;<br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>    <span class="hljs-comment">// 判断乘10以后是否越界</span><br>    <span class="hljs-keyword">if</span> (ans &gt; Integer.MAX_VALUE /<span class="hljs-number">10</span> || (ans==Integer.MAX_VALUE/<span class="hljs-number">10</span> &amp;&amp; (currChar - <span class="hljs-string">&#x27;0&#x27;</span>)&gt;Integer.MAX_VALUE%<span class="hljs-number">10</span>))&#123;<br>      <span class="hljs-keyword">return</span> Integer.MAX_VALUE;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (ans &lt; Integer.MIN_VALUE / <span class="hljs-number">10</span> || (ans==Integer.MIN_VALUE/<span class="hljs-number">10</span> &amp;&amp; (currChar - <span class="hljs-string">&#x27;0&#x27;</span>)&gt;-(Integer.MIN_VALUE%<span class="hljs-number">10</span>)))&#123;<br>      <span class="hljs-keyword">return</span> Integer.MIN_VALUE;<br>    &#125;<br>    <span class="hljs-comment">// 合法情况下，每一步都把符号为乘进去</span><br>    ans = ans*<span class="hljs-number">10</span> + sign * (currChar - <span class="hljs-string">&#x27;0&#x27;</span>);<br>    index++;<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 
             </div>
@@ -291,7 +291,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/categories/Leetcode/">Leetcode</a>
+                      <a class="hover-with-bg" href="/categories/Leetcode/">Leetcode</a>
                     
                   </div>
                 
@@ -299,7 +299,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
                     
                   </div>
                 
@@ -310,7 +310,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/03/22/166-%E5%88%86%E6%95%B0%E5%88%B0%E5%B0%8F%E6%95%B0/">
+                      <a href="/2022/03/22/166-%E5%88%86%E6%95%B0%E5%88%B0%E5%B0%8F%E6%95%B0/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">166_分数到小数</span>
                         <span class="visible-mobile">上一篇</span>
@@ -320,7 +320,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/03/20/2039-%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B2%E7%9A%84%E6%97%B6%E5%88%BB/">
+                      <a href="/2022/03/20/2039-%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B2%E7%9A%84%E6%97%B6%E5%88%BB/">
                         <span class="hidden-mobile">2039_网络空闲的时刻</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -414,18 +414,18 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/xt-blog/js/events.js" ></script>
-<script  src="/xt-blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/xt-blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/xt-blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -478,7 +478,7 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/xt-blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
 </body>

@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/xt-blog/img/favicon.png">
-  <link rel="icon" href="/xt-blog/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="难度：中等             题目树是一个无向图，其中任何两个顶点只通过一条路径连接。 换句话说，一个任何没有简单环路的连通图都是一棵树。 给你一棵包含 n 个节点的树，标记为 0 到 n - 1 。给定数字 n 和一个有 n - 1 条无向边的 edges 列表（每一个边都是一对标签），其中 edges[i] &#x3D; [ai, bi] 表示树中节点 ai 和 bi 之">
 <meta property="og:type" content="article">
 <meta property="og:title" content="310_最小高度树">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/03/15/310-%E6%9C%80%E5%B0%8F%E9%AB%98%E5%BA%A6%E6%A0%91/index.html">
+<meta property="og:url" content="https://southantarctic.github.io/2022/03/15/310-%E6%9C%80%E5%B0%8F%E9%AB%98%E5%BA%A6%E6%A0%91/index.html">
 <meta property="og:site_name" content="学涛的博客">
 <meta property="og:description" content="难度：中等             题目树是一个无向图，其中任何两个顶点只通过一条路径连接。 换句话说，一个任何没有简单环路的连通图都是一棵树。 给你一棵包含 n 个节点的树，标记为 0 到 n - 1 。给定数字 n 和一个有 n - 1 条无向边的 edges 列表（每一个边都是一对标签），其中 edges[i] &#x3D; [ai, bi] 表示树中节点 ai 和 bi 之">
 <meta property="og:locale" content="zh_CN">
@@ -45,7 +45,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/night-owl.min.css" />
     
   
 
@@ -63,21 +63,21 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/xt-blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="/xt-blog/css/mac.css">
+<link rel="stylesheet" href="/css/mac.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"accept_one_time.gitee.io","root":"/xt-blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xt-blog/local-search.xml"};
+    var CONFIG = {"hostname":"southantarctic.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/xt-blog/js/utils.js" ></script>
-  <script  src="/xt-blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.1"></head>
 
 
@@ -85,7 +85,7 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/xt-blog/">
+    <a class="navbar-brand" href="/">
       <strong>学涛的博客</strong>
     </a>
 
@@ -104,7 +104,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -116,7 +116,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 文档
               </a>
@@ -128,7 +128,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -140,7 +140,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -152,7 +152,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -178,7 +178,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/xt-blog/img/default.jpg') no-repeat center center;
+         style="background: url('/img/default.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -259,12 +259,12 @@
 <p>请你找到所有的 最小高度树 并按 任意顺序 返回它们的根节点标签列表。</p>
 <p>树的 高度 是指根节点和叶子节点之间最长向下路径上边的数量。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
-<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220315142115.jpg" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220315142115.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <blockquote>
 <p><strong>输入</strong>：n = 4, edges = [[1,0],[1,2],[1,3]]<br><strong>输出</strong>：[1]<br><strong>解释</strong>：如图所示，当根是标签为 1 的节点时，树的高度是 1 ，这是唯一的最小高度树。</p>
 </blockquote>
 <p>示例二：</p>
-<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220315142044.jpg" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220315142044.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <blockquote>
 <p><strong>输入</strong>：n = 6, edges = [[3,0],[3,1],[3,2],[3,4],[5,4]]<br><strong>输出</strong>：[3,4]</p>
 </blockquote>
@@ -278,22 +278,22 @@
 </ul>
 <h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>直觉上，一棵树越靠「外面」的结点，越不可能把它作为根结点，如果这样做的话，可能树的高度是很高的，所以使用「剔除边缘结点」的策略。</p>
 <p>对于小于 2 个节点的树，可以直接返回结果</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><pre><code class="hljs java">List&lt;Integer&gt; ans = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br><span class="hljs-keyword">if</span> (n&lt;=<span class="hljs-number">2</span>)&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    ans.add(i);<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java">List&lt;Integer&gt; ans = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br><span class="hljs-keyword">if</span> (n&lt;=<span class="hljs-number">2</span>)&#123;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    ans.add(i);<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>统计入度情况，生成连接图</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 入度数组</span><br><span class="hljs-keyword">int</span>[] inDegre = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];<br><span class="hljs-comment">// 存储edges</span><br>Set&lt;Integer&gt;[] adjs = <span class="hljs-keyword">new</span> Set[n];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>  adjs[i] = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();<br>&#125;<br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>[] edge:edges)&#123;<br>  adjs[edge[<span class="hljs-number">0</span>]].add(edge[<span class="hljs-number">1</span>]);<br>  adjs[edge[<span class="hljs-number">1</span>]].add(edge[<span class="hljs-number">0</span>]);<br>  inDegre[edge[<span class="hljs-number">0</span>]]++;<br>  inDegre[edge[<span class="hljs-number">1</span>]]++;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">// 入度数组</span><br><span class="hljs-keyword">int</span>[] inDegre = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];<br><span class="hljs-comment">// 存储edges</span><br>Set&lt;Integer&gt;[] adjs = <span class="hljs-keyword">new</span> Set[n];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>  adjs[i] = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();<br>&#125;<br><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>[] edge:edges)&#123;<br>  adjs[edge[<span class="hljs-number">0</span>]].add(edge[<span class="hljs-number">1</span>]);<br>  adjs[edge[<span class="hljs-number">1</span>]].add(edge[<span class="hljs-number">0</span>]);<br>  inDegre[edge[<span class="hljs-number">0</span>]]++;<br>  inDegre[edge[<span class="hljs-number">1</span>]]++;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>用队列记录入度为 1 的点</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 记录入度为1的点</span><br>Queue&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>  <span class="hljs-keyword">if</span> (inDegre[i]==<span class="hljs-number">1</span>)&#123;<br>    queue.add(i);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">// 记录入度为1的点</span><br>Queue&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>  <span class="hljs-keyword">if</span> (inDegre[i]==<span class="hljs-number">1</span>)&#123;<br>    queue.add(i);<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>然后迭代，直至节点数小于等于2</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (n&gt;<span class="hljs-number">2</span>)&#123;<br>  <span class="hljs-keyword">int</span> size = queue.size();<br>  <span class="hljs-comment">// 减小 n</span><br>  n-=size;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>    <span class="hljs-keyword">int</span> top = queue.poll();<br>    <span class="hljs-comment">// 将当前点标记为删除</span><br>    result[top] = <span class="hljs-keyword">true</span>;<br>    <span class="hljs-comment">// 把它和它的邻接节点入度减一</span><br>    inDegre[top] -=<span class="hljs-number">1</span>;<br>    Set&lt;Integer&gt; set = adjs[top];<br>    <span class="hljs-keyword">for</span> (Integer s:set)&#123;<br>      inDegre[s]-=<span class="hljs-number">1</span>;<br>      <span class="hljs-keyword">if</span> (inDegre[s]==<span class="hljs-number">1</span>)&#123;<br>        queue.offer(s);<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (n&gt;<span class="hljs-number">2</span>)&#123;<br>  <span class="hljs-keyword">int</span> size = queue.size();<br>  <span class="hljs-comment">// 减小 n</span><br>  n-=size;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>    <span class="hljs-keyword">int</span> top = queue.poll();<br>    <span class="hljs-comment">// 将当前点标记为删除</span><br>    result[top] = <span class="hljs-keyword">true</span>;<br>    <span class="hljs-comment">// 把它和它的邻接节点入度减一</span><br>    inDegre[top] -=<span class="hljs-number">1</span>;<br>    Set&lt;Integer&gt; set = adjs[top];<br>    <span class="hljs-keyword">for</span> (Integer s:set)&#123;<br>      inDegre[s]-=<span class="hljs-number">1</span>;<br>      <span class="hljs-keyword">if</span> (inDegre[s]==<span class="hljs-number">1</span>)&#123;<br>        queue.offer(s);<br>      &#125;<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>最后遍历结果记录数组</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; result.length; i++) &#123;<br>  <span class="hljs-keyword">if</span> (!result[i])&#123;<br>    ans.add(i);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; result.length; i++) &#123;<br>  <span class="hljs-keyword">if</span> (!result[i])&#123;<br>    ans.add(i);<br>  &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>将解组合起来</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">findMinHeightTrees</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span>[][] edges)</span></span>&#123;<br>  List&lt;Integer&gt; ans = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>  <span class="hljs-keyword">if</span> (n&lt;=<span class="hljs-number">2</span>)&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>      ans.add(i);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>  &#125;<br>  <span class="hljs-comment">// 入度数组</span><br>  <span class="hljs-keyword">int</span>[] inDegre = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];<br>  <span class="hljs-comment">// 记录是否被 pass,如果 pass，则为 true</span><br>  <span class="hljs-keyword">boolean</span>[] result = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[n];<br>  <span class="hljs-comment">// 存储edges</span><br>  Set&lt;Integer&gt;[] adjs = <span class="hljs-keyword">new</span> Set[n];<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    adjs[i] = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();<br>  &#125;<br><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>[] edge:edges)&#123;<br>    adjs[edge[<span class="hljs-number">0</span>]].add(edge[<span class="hljs-number">1</span>]);<br>    adjs[edge[<span class="hljs-number">1</span>]].add(edge[<span class="hljs-number">0</span>]);<br>    inDegre[edge[<span class="hljs-number">0</span>]]++;<br>    inDegre[edge[<span class="hljs-number">1</span>]]++;<br>  &#125;<br>  <span class="hljs-comment">// 记录入度为1的点</span><br>  Queue&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    <span class="hljs-keyword">if</span> (inDegre[i]==<span class="hljs-number">1</span>)&#123;<br>      queue.add(i);<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">while</span> (n&gt;<span class="hljs-number">2</span>)&#123;<br>    <span class="hljs-keyword">int</span> size = queue.size();<br>    n-=size;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>      <span class="hljs-keyword">int</span> top = queue.poll();<br>      result[top] = <span class="hljs-keyword">true</span>;<br>      <span class="hljs-comment">// 把它和它的邻接节点入度减一</span><br>      inDegre[top] -=<span class="hljs-number">1</span>;<br>      Set&lt;Integer&gt; set = adjs[top];<br>      <span class="hljs-keyword">for</span> (Integer s:set)&#123;<br>        inDegre[s]-=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (inDegre[s]==<span class="hljs-number">1</span>)&#123;<br>          queue.offer(s);<br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; result.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (!result[i])&#123;<br>      ans.add(i);<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Integer&gt; <span class="hljs-title">findMinHeightTrees</span><span class="hljs-params">(<span class="hljs-keyword">int</span> n, <span class="hljs-keyword">int</span>[][] edges)</span></span>&#123;<br>  List&lt;Integer&gt; ans = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>  <span class="hljs-keyword">if</span> (n&lt;=<span class="hljs-number">2</span>)&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>      ans.add(i);<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>  &#125;<br>  <span class="hljs-comment">// 入度数组</span><br>  <span class="hljs-keyword">int</span>[] inDegre = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];<br>  <span class="hljs-comment">// 记录是否被 pass,如果 pass，则为 true</span><br>  <span class="hljs-keyword">boolean</span>[] result = <span class="hljs-keyword">new</span> <span class="hljs-keyword">boolean</span>[n];<br>  <span class="hljs-comment">// 存储edges</span><br>  Set&lt;Integer&gt;[] adjs = <span class="hljs-keyword">new</span> Set[n];<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    adjs[i] = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();<br>  &#125;<br><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>[] edge:edges)&#123;<br>    adjs[edge[<span class="hljs-number">0</span>]].add(edge[<span class="hljs-number">1</span>]);<br>    adjs[edge[<span class="hljs-number">1</span>]].add(edge[<span class="hljs-number">0</span>]);<br>    inDegre[edge[<span class="hljs-number">0</span>]]++;<br>    inDegre[edge[<span class="hljs-number">1</span>]]++;<br>  &#125;<br>  <span class="hljs-comment">// 记录入度为1的点</span><br>  Queue&lt;Integer&gt; queue = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    <span class="hljs-keyword">if</span> (inDegre[i]==<span class="hljs-number">1</span>)&#123;<br>      queue.add(i);<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">while</span> (n&gt;<span class="hljs-number">2</span>)&#123;<br>    <span class="hljs-keyword">int</span> size = queue.size();<br>    n-=size;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; size; i++) &#123;<br>      <span class="hljs-keyword">int</span> top = queue.poll();<br>      result[top] = <span class="hljs-keyword">true</span>;<br>      <span class="hljs-comment">// 把它和它的邻接节点入度减一</span><br>      inDegre[top] -=<span class="hljs-number">1</span>;<br>      Set&lt;Integer&gt; set = adjs[top];<br>      <span class="hljs-keyword">for</span> (Integer s:set)&#123;<br>        inDegre[s]-=<span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">if</span> (inDegre[s]==<span class="hljs-number">1</span>)&#123;<br>          queue.offer(s);<br>        &#125;<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; result.length; i++) &#123;<br>    <span class="hljs-keyword">if</span> (!result[i])&#123;<br>      ans.add(i);<br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 
             </div>
@@ -304,7 +304,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/categories/Leetcode/">Leetcode</a>
+                      <a class="hover-with-bg" href="/categories/Leetcode/">Leetcode</a>
                     
                   </div>
                 
@@ -312,7 +312,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
                     
                   </div>
                 
@@ -323,7 +323,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/03/16/432-%E5%85%A8O-1-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                      <a href="/2022/03/16/432-%E5%85%A8O-1-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">432_全O_1_的数据结构</span>
                         <span class="visible-mobile">上一篇</span>
@@ -333,7 +333,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/03/15/2044-%E7%BB%9F%E8%AE%A1%E6%8C%89%E4%BD%8D%E6%88%96%E8%83%BD%E5%BE%97%E5%88%B0%E6%9C%80%E5%A4%A7%E5%80%BC%E7%9A%84%E5%AD%90%E9%9B%86%E6%95%B0%E7%9B%AE/">
+                      <a href="/2022/03/15/2044-%E7%BB%9F%E8%AE%A1%E6%8C%89%E4%BD%8D%E6%88%96%E8%83%BD%E5%BE%97%E5%88%B0%E6%9C%80%E5%A4%A7%E5%80%BC%E7%9A%84%E5%AD%90%E9%9B%86%E6%95%B0%E7%9B%AE/">
                         <span class="hidden-mobile">2044_统计按位或能得到最大值的子集数目</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -427,18 +427,18 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/xt-blog/js/events.js" ></script>
-<script  src="/xt-blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/xt-blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/xt-blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -491,7 +491,7 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/xt-blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
 </body>

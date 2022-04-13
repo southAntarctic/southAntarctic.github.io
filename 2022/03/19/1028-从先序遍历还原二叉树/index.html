@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/xt-blog/img/favicon.png">
-  <link rel="icon" href="/xt-blog/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="难度：困难             题目我们从二叉树的根节点 root 开始进行深度优先搜索。 在遍历中的每个节点处，我们输出 D 条短划线（其中 D 是该节点的深度），然后输出该节点的值。（如果节点的深度为 D，则其直接子节点的深度为 D + 1。根节点的深度为 0）。 如果节点只有一个子节点，那么保证该子节点为左子节点。 给出遍历输出 S，还原树并返回其根节点 roo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="1028_从先序遍历还原二叉树">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/03/19/1028-%E4%BB%8E%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
+<meta property="og:url" content="https://southantarctic.github.io/2022/03/19/1028-%E4%BB%8E%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="学涛的博客">
 <meta property="og:description" content="难度：困难             题目我们从二叉树的根节点 root 开始进行深度优先搜索。 在遍历中的每个节点处，我们输出 D 条短划线（其中 D 是该节点的深度），然后输出该节点的值。（如果节点的深度为 D，则其直接子节点的深度为 D + 1。根节点的深度为 0）。 如果节点只有一个子节点，那么保证该子节点为左子节点。 给出遍历输出 S，还原树并返回其根节点 roo">
 <meta property="og:locale" content="zh_CN">
@@ -46,7 +46,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/night-owl.min.css" />
     
   
 
@@ -64,21 +64,21 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/xt-blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="/xt-blog/css/mac.css">
+<link rel="stylesheet" href="/css/mac.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"accept_one_time.gitee.io","root":"/xt-blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xt-blog/local-search.xml"};
+    var CONFIG = {"hostname":"southantarctic.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/xt-blog/js/utils.js" ></script>
-  <script  src="/xt-blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.1"></head>
 
 
@@ -86,7 +86,7 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/xt-blog/">
+    <a class="navbar-brand" href="/">
       <strong>学涛的博客</strong>
     </a>
 
@@ -105,7 +105,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -117,7 +117,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 文档
               </a>
@@ -129,7 +129,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -141,7 +141,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -153,7 +153,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -179,7 +179,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/xt-blog/img/default.jpg') no-repeat center center;
+         style="background: url('/img/default.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -259,17 +259,17 @@
 <p>如果节点只有一个子节点，那么保证该子节点为左子节点。</p>
 <p>给出遍历输出 S，还原树并返回其根节点 root。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
-<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220319180127.png" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220319180127.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <blockquote>
 <p><strong>输入</strong>：”1-2–3–4-5–6–7”<br><strong>输出</strong>：[1,2,5,3,4,6,7]</p>
 </blockquote>
 <p>示例二：</p>
-<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220319180110.png" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220319180110.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <blockquote>
 <p><strong>输入</strong>：”1-2–3—4-5–6—7”<br><strong>输出</strong>：[1,2,5,3,null,6,null,4,null,7]</p>
 </blockquote>
 <p>示例三：</p>
-<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220319180058.png" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220319180058.png" srcset="/img/loading.gif" lazyload alt="img"></p>
 <blockquote>
 <p><strong>输入</strong>：”1-401–349—90–88”<br><strong>输出</strong>：[1,401,null,349,88,90]</p>
 </blockquote>
@@ -279,13 +279,13 @@
 </ul>
 <h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>基本思路是按照先序遍历的顺序创建二叉树，每次都判断深度，当深度不一致时，就回溯</p>
 <p>寻找连续的 - 和连续数字：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span> val = <span class="hljs-number">0</span>, nextlevel=<span class="hljs-number">0</span>,index;<br>  TreeNode node = <span class="hljs-keyword">null</span>;<br>	<span class="hljs-comment">// 从 start 开始遍历字符串</span><br>  <span class="hljs-keyword">for</span>(index = start; index&lt;traversal.length();index++)&#123;<br>    <span class="hljs-comment">// 遇到 - ，则 nextlevel增加1</span><br>    <span class="hljs-keyword">if</span>(traversal.charAt(index)==<span class="hljs-string">&#x27;-&#x27;</span>) &#123;<br>      nextlevel++;<br>    &#125; <span class="hljs-keyword">else</span>&#123;<br>      <span class="hljs-comment">// 遇到字符则将值存储起来</span><br>      <span class="hljs-keyword">while</span>(index&lt;traversal.length() &amp;&amp; traversal.charAt(index)!=<span class="hljs-string">&#x27;-&#x27;</span>)&#123;<br>        val = val*<span class="hljs-number">10</span>+traversal.charAt(index)-<span class="hljs-string">&#x27;0&#x27;</span>;<br>        index++;<br>      &#125;<br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>  &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">int</span> val = <span class="hljs-number">0</span>, nextlevel=<span class="hljs-number">0</span>,index;<br>  TreeNode node = <span class="hljs-keyword">null</span>;<br>	<span class="hljs-comment">// 从 start 开始遍历字符串</span><br>  <span class="hljs-keyword">for</span>(index = start; index&lt;traversal.length();index++)&#123;<br>    <span class="hljs-comment">// 遇到 - ，则 nextlevel增加1</span><br>    <span class="hljs-keyword">if</span>(traversal.charAt(index)==<span class="hljs-string">&#x27;-&#x27;</span>) &#123;<br>      nextlevel++;<br>    &#125; <span class="hljs-keyword">else</span>&#123;<br>      <span class="hljs-comment">// 遇到字符则将值存储起来</span><br>      <span class="hljs-keyword">while</span>(index&lt;traversal.length() &amp;&amp; traversal.charAt(index)!=<span class="hljs-string">&#x27;-&#x27;</span>)&#123;<br>        val = val*<span class="hljs-number">10</span>+traversal.charAt(index)-<span class="hljs-string">&#x27;0&#x27;</span>;<br>        index++;<br>      &#125;<br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>  &#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>当当前 level 等于 nextlevel 时，说明此时处理的内容为本层节点</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span>(level == nextlevel)&#123;<br>    node = <span class="hljs-keyword">new</span> TreeNode();<br>    node.val = val;<br>    start = index;<br>  <span class="hljs-comment">// 先左后右</span><br>    node.left = dfs(level+<span class="hljs-number">1</span>, traversal);<br>    node.right = dfs(level+<span class="hljs-number">1</span>, traversal);<br>  &#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">if</span>(level == nextlevel)&#123;<br>    node = <span class="hljs-keyword">new</span> TreeNode();<br>    node.val = val;<br>    start = index;<br>  <span class="hljs-comment">// 先左后右</span><br>    node.left = dfs(level+<span class="hljs-number">1</span>, traversal);<br>    node.right = dfs(level+<span class="hljs-number">1</span>, traversal);<br>  &#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>组合起来</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 记录当前访问到字符串的位置</span><br><span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">recoverFromPreorder</span><span class="hljs-params">(String traversal)</span> </span>&#123;<br>  <span class="hljs-keyword">return</span> dfs(<span class="hljs-number">0</span>,traversal);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> level, String traversal)</span></span>&#123;<br>  <span class="hljs-keyword">int</span> val = <span class="hljs-number">0</span>, nextlevel=<span class="hljs-number">0</span>,index;<br>  TreeNode node = <span class="hljs-keyword">null</span>;<br>  <span class="hljs-keyword">for</span>(index = start; index&lt;traversal.length();index++)&#123;<br>    <span class="hljs-keyword">if</span>(traversal.charAt(index)==<span class="hljs-string">&#x27;-&#x27;</span>) &#123;<br>      nextlevel++;<br>    &#125; <span class="hljs-keyword">else</span>&#123;<br>      <span class="hljs-keyword">while</span>(index&lt;traversal.length() &amp;&amp; traversal.charAt(index)!=<span class="hljs-string">&#x27;-&#x27;</span>)&#123;<br>        val = val*<span class="hljs-number">10</span>+traversal.charAt(index)-<span class="hljs-string">&#x27;0&#x27;</span>;<br>        index++;<br>      &#125;<br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 与当前深度不一致时，回溯</span><br>  <span class="hljs-keyword">if</span>(level == nextlevel)&#123;<br>    node = <span class="hljs-keyword">new</span> TreeNode();<br>    node.val = val;<br>    start = index;<br>    node.left = dfs(level+<span class="hljs-number">1</span>, traversal);<br>    node.right = dfs(level+<span class="hljs-number">1</span>, traversal);<br>  &#125;<br>  <span class="hljs-keyword">return</span> node;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-comment">// 记录当前访问到字符串的位置</span><br><span class="hljs-keyword">int</span> start = <span class="hljs-number">0</span>;<br><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">recoverFromPreorder</span><span class="hljs-params">(String traversal)</span> </span>&#123;<br>  <span class="hljs-keyword">return</span> dfs(<span class="hljs-number">0</span>,traversal);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">public</span> TreeNode <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span> level, String traversal)</span></span>&#123;<br>  <span class="hljs-keyword">int</span> val = <span class="hljs-number">0</span>, nextlevel=<span class="hljs-number">0</span>,index;<br>  TreeNode node = <span class="hljs-keyword">null</span>;<br>  <span class="hljs-keyword">for</span>(index = start; index&lt;traversal.length();index++)&#123;<br>    <span class="hljs-keyword">if</span>(traversal.charAt(index)==<span class="hljs-string">&#x27;-&#x27;</span>) &#123;<br>      nextlevel++;<br>    &#125; <span class="hljs-keyword">else</span>&#123;<br>      <span class="hljs-keyword">while</span>(index&lt;traversal.length() &amp;&amp; traversal.charAt(index)!=<span class="hljs-string">&#x27;-&#x27;</span>)&#123;<br>        val = val*<span class="hljs-number">10</span>+traversal.charAt(index)-<span class="hljs-string">&#x27;0&#x27;</span>;<br>        index++;<br>      &#125;<br>      <span class="hljs-keyword">break</span>;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 与当前深度不一致时，回溯</span><br>  <span class="hljs-keyword">if</span>(level == nextlevel)&#123;<br>    node = <span class="hljs-keyword">new</span> TreeNode();<br>    node.val = val;<br>    start = index;<br>    node.left = dfs(level+<span class="hljs-number">1</span>, traversal);<br>    node.right = dfs(level+<span class="hljs-number">1</span>, traversal);<br>  &#125;<br>  <span class="hljs-keyword">return</span> node;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 
             </div>
@@ -296,7 +296,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/categories/Leetcode/">Leetcode</a>
+                      <a class="hover-with-bg" href="/categories/Leetcode/">Leetcode</a>
                     
                   </div>
                 
@@ -304,7 +304,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
                     
                   </div>
                 
@@ -315,7 +315,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/03/20/2039-%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B2%E7%9A%84%E6%97%B6%E5%88%BB/">
+                      <a href="/2022/03/20/2039-%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B2%E7%9A%84%E6%97%B6%E5%88%BB/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">2039_网络空闲的时刻</span>
                         <span class="visible-mobile">上一篇</span>
@@ -325,7 +325,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/03/19/827-%E6%9C%80%E5%A4%A7%E4%BA%BA%E5%B7%A5%E5%B2%9B/">
+                      <a href="/2022/03/19/827-%E6%9C%80%E5%A4%A7%E4%BA%BA%E5%B7%A5%E5%B2%9B/">
                         <span class="hidden-mobile">827_最大人工岛</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -419,18 +419,18 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/xt-blog/js/events.js" ></script>
-<script  src="/xt-blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/xt-blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/xt-blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -483,7 +483,7 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/xt-blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
 </body>

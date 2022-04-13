@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/xt-blog/img/favicon.png">
-  <link rel="icon" href="/xt-blog/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="难度：困难             题目给你一个大小为 n x n 二进制矩阵 grid 。最多 只能将一格 0 变成 1 。 返回执行此操作后，grid 中最大的岛屿面积是多少？ 岛屿 由一组上、下、左、右四个方向相连的 1 形成。 示例示例一：  输入: grid &#x3D; [[1, 0], [0, 1]]输出: 3解释: 将一格0变成1，最终连通两个小岛得到面积为 3 的">
 <meta property="og:type" content="article">
 <meta property="og:title" content="827_最大人工岛">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/03/19/827-%E6%9C%80%E5%A4%A7%E4%BA%BA%E5%B7%A5%E5%B2%9B/index.html">
+<meta property="og:url" content="https://southantarctic.github.io/2022/03/19/827-%E6%9C%80%E5%A4%A7%E4%BA%BA%E5%B7%A5%E5%B2%9B/index.html">
 <meta property="og:site_name" content="学涛的博客">
 <meta property="og:description" content="难度：困难             题目给你一个大小为 n x n 二进制矩阵 grid 。最多 只能将一格 0 变成 1 。 返回执行此操作后，grid 中最大的岛屿面积是多少？ 岛屿 由一组上、下、左、右四个方向相连的 1 形成。 示例示例一：  输入: grid &#x3D; [[1, 0], [0, 1]]输出: 3解释: 将一格0变成1，最终连通两个小岛得到面积为 3 的">
 <meta property="og:locale" content="zh_CN">
@@ -42,7 +42,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/night-owl.min.css" />
     
   
 
@@ -60,21 +60,21 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/xt-blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="/xt-blog/css/mac.css">
+<link rel="stylesheet" href="/css/mac.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"accept_one_time.gitee.io","root":"/xt-blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xt-blog/local-search.xml"};
+    var CONFIG = {"hostname":"southantarctic.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/xt-blog/js/utils.js" ></script>
-  <script  src="/xt-blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.1"></head>
 
 
@@ -82,7 +82,7 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/xt-blog/">
+    <a class="navbar-brand" href="/">
       <strong>学涛的博客</strong>
     </a>
 
@@ -101,7 +101,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -113,7 +113,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 文档
               </a>
@@ -125,7 +125,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -137,7 +137,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -149,7 +149,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -175,7 +175,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/xt-blog/img/default.jpg') no-repeat center center;
+         style="background: url('/img/default.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -273,13 +273,13 @@
 </ul>
 <h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>基本思路是先计算出所有岛屿的面积，在所有的格子上标记出岛屿的面积。然后搜索哪个海洋格子相邻的两个岛屿面积最大，但是为了防止同一片陆地被计算多次，所以给每个陆地打上不同的标记。</p>
 <p>先 DFS 求出各陆地面积，同时用不同标号标记不同的陆地</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> index)</span></span>&#123;<br>  <span class="hljs-keyword">if</span> (!isArea(grid,i,j) || grid[i][j]!=<span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br>  grid[i][j] = index;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>    +dfs(grid,i-<span class="hljs-number">1</span>,j,index)<br>    +dfs(grid,i+<span class="hljs-number">1</span>,j,index)<br>    +dfs(grid,i,j-<span class="hljs-number">1</span>,index)<br>    +dfs(grid,i,j+<span class="hljs-number">1</span>,index);<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> index)</span></span>&#123;<br>  <span class="hljs-keyword">if</span> (!isArea(grid,i,j) || grid[i][j]!=<span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br>  grid[i][j] = index;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>    +dfs(grid,i-<span class="hljs-number">1</span>,j,index)<br>    +dfs(grid,i+<span class="hljs-number">1</span>,j,index)<br>    +dfs(grid,i,j-<span class="hljs-number">1</span>,index)<br>    +dfs(grid,i,j+<span class="hljs-number">1</span>,index);<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>然后遍历海洋，求出与其相连的最大陆地面积之和</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">plusArea</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, Map&lt;Integer,Integer&gt; map)</span></span>&#123;<br>  <span class="hljs-keyword">if</span> (!isArea(grid,i,j) || grid[i][j]!=<span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br>  <span class="hljs-keyword">int</span> size = <span class="hljs-number">0</span>;<br>  <span class="hljs-comment">// 用 set 去重，防止出现同一块陆地</span><br>  Set&lt;Integer&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();<br>  <span class="hljs-keyword">if</span> (isArea(grid,i-<span class="hljs-number">1</span>,j)&amp;&amp; grid[i-<span class="hljs-number">1</span>][j]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i-<span class="hljs-number">1</span>][j]);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (isArea(grid,i+<span class="hljs-number">1</span>,j)&amp;&amp; grid[i+<span class="hljs-number">1</span>][j]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i+<span class="hljs-number">1</span>][j]);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (isArea(grid,i,j-<span class="hljs-number">1</span>)&amp;&amp; grid[i][j-<span class="hljs-number">1</span>]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i][j-<span class="hljs-number">1</span>]);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (isArea(grid,i,j+<span class="hljs-number">1</span>)&amp;&amp; grid[i][j+<span class="hljs-number">1</span>]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i][j+<span class="hljs-number">1</span>]);<br>  &#125;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> num:set)&#123;<br>    size += map.get(num);<br>  &#125;<br>  <span class="hljs-comment">// 加上自身这块</span><br>  size +=<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">return</span> size;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">plusArea</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, Map&lt;Integer,Integer&gt; map)</span></span>&#123;<br>  <span class="hljs-keyword">if</span> (!isArea(grid,i,j) || grid[i][j]!=<span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br>  <span class="hljs-keyword">int</span> size = <span class="hljs-number">0</span>;<br>  <span class="hljs-comment">// 用 set 去重，防止出现同一块陆地</span><br>  Set&lt;Integer&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();<br>  <span class="hljs-keyword">if</span> (isArea(grid,i-<span class="hljs-number">1</span>,j)&amp;&amp; grid[i-<span class="hljs-number">1</span>][j]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i-<span class="hljs-number">1</span>][j]);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (isArea(grid,i+<span class="hljs-number">1</span>,j)&amp;&amp; grid[i+<span class="hljs-number">1</span>][j]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i+<span class="hljs-number">1</span>][j]);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (isArea(grid,i,j-<span class="hljs-number">1</span>)&amp;&amp; grid[i][j-<span class="hljs-number">1</span>]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i][j-<span class="hljs-number">1</span>]);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (isArea(grid,i,j+<span class="hljs-number">1</span>)&amp;&amp; grid[i][j+<span class="hljs-number">1</span>]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i][j+<span class="hljs-number">1</span>]);<br>  &#125;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> num:set)&#123;<br>    size += map.get(num);<br>  &#125;<br>  <span class="hljs-comment">// 加上自身这块</span><br>  size +=<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">return</span> size;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 <p>将代码组合起来</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">largestIsland</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid)</span></span>&#123;<br>  <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">int</span> maxSize = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">int</span> index = <span class="hljs-number">2</span>;<br>  Map&lt;Integer,Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();<br>  <span class="hljs-comment">// 遍历求陆地面积</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; grid.length; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; grid[<span class="hljs-number">0</span>].length; j++) &#123;<br>      <span class="hljs-keyword">if</span> (grid[i][j]==<span class="hljs-number">1</span>)&#123;<br>        <span class="hljs-keyword">int</span> size = dfs(grid,i,j,index);<br>        maxSize = Math.max(maxSize,size);<br>        map.put(index,size);<br>        index+=<span class="hljs-number">1</span>;<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 遍历海洋，求相邻陆地面积最大的海洋</span><br>  <span class="hljs-keyword">int</span> maxSea = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; grid.length; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; grid[<span class="hljs-number">0</span>].length; j++) &#123;<br>      <span class="hljs-keyword">if</span> (grid[i][j]==<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">int</span> sea = plusArea(grid,i,j,map);<br>        maxSea = Math.max(sea,maxSea);<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 可能没有海洋，返回最大值</span><br>  ans = Math.max(maxSize,maxSea);<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> index)</span></span>&#123;<br>  <span class="hljs-keyword">if</span> (!isArea(grid,i,j) || grid[i][j]!=<span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br>  grid[i][j] = index;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>    +dfs(grid,i-<span class="hljs-number">1</span>,j,index)<br>    +dfs(grid,i+<span class="hljs-number">1</span>,j,index)<br>    +dfs(grid,i,j-<span class="hljs-number">1</span>,index)<br>    +dfs(grid,i,j+<span class="hljs-number">1</span>,index);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">plusArea</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, Map&lt;Integer,Integer&gt; map)</span></span>&#123;<br>  <span class="hljs-keyword">if</span> (!isArea(grid,i,j) || grid[i][j]!=<span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br>  <span class="hljs-keyword">int</span> size = <span class="hljs-number">0</span>;<br>  <span class="hljs-comment">// 用 set 去重，防止出现同一块陆地</span><br>  Set&lt;Integer&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();<br>  <span class="hljs-keyword">if</span> (isArea(grid,i-<span class="hljs-number">1</span>,j)&amp;&amp; grid[i-<span class="hljs-number">1</span>][j]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i-<span class="hljs-number">1</span>][j]);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (isArea(grid,i+<span class="hljs-number">1</span>,j)&amp;&amp; grid[i+<span class="hljs-number">1</span>][j]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i+<span class="hljs-number">1</span>][j]);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (isArea(grid,i,j-<span class="hljs-number">1</span>)&amp;&amp; grid[i][j-<span class="hljs-number">1</span>]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i][j-<span class="hljs-number">1</span>]);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (isArea(grid,i,j+<span class="hljs-number">1</span>)&amp;&amp; grid[i][j+<span class="hljs-number">1</span>]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i][j+<span class="hljs-number">1</span>]);<br>  &#125;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> num:set)&#123;<br>    size += map.get(num);<br>  &#125;<br>  <span class="hljs-comment">// 加上自身这块</span><br>  size +=<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">return</span> size;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isArea</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span></span>&#123;<br>  <span class="hljs-keyword">return</span> i&gt;=<span class="hljs-number">0</span> &amp;&amp; i&lt;grid.length &amp;&amp; j&gt;=<span class="hljs-number">0</span> &amp;&amp; j&lt;grid[<span class="hljs-number">0</span>].length;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">largestIsland</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid)</span></span>&#123;<br>  <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">int</span> maxSize = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">int</span> index = <span class="hljs-number">2</span>;<br>  Map&lt;Integer,Integer&gt; map = <span class="hljs-keyword">new</span> HashMap&lt;&gt;();<br>  <span class="hljs-comment">// 遍历求陆地面积</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; grid.length; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; grid[<span class="hljs-number">0</span>].length; j++) &#123;<br>      <span class="hljs-keyword">if</span> (grid[i][j]==<span class="hljs-number">1</span>)&#123;<br>        <span class="hljs-keyword">int</span> size = dfs(grid,i,j,index);<br>        maxSize = Math.max(maxSize,size);<br>        map.put(index,size);<br>        index+=<span class="hljs-number">1</span>;<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 遍历海洋，求相邻陆地面积最大的海洋</span><br>  <span class="hljs-keyword">int</span> maxSea = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; grid.length; i++) &#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; grid[<span class="hljs-number">0</span>].length; j++) &#123;<br>      <span class="hljs-keyword">if</span> (grid[i][j]==<span class="hljs-number">0</span>)&#123;<br>        <span class="hljs-keyword">int</span> sea = plusArea(grid,i,j,map);<br>        maxSea = Math.max(sea,maxSea);<br>      &#125;<br>    &#125;<br>  &#125;<br>  <span class="hljs-comment">// 可能没有海洋，返回最大值</span><br>  ans = Math.max(maxSize,maxSea);<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">dfs</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> index)</span></span>&#123;<br>  <span class="hljs-keyword">if</span> (!isArea(grid,i,j) || grid[i][j]!=<span class="hljs-number">1</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br>  grid[i][j] = index;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span><br>    +dfs(grid,i-<span class="hljs-number">1</span>,j,index)<br>    +dfs(grid,i+<span class="hljs-number">1</span>,j,index)<br>    +dfs(grid,i,j-<span class="hljs-number">1</span>,index)<br>    +dfs(grid,i,j+<span class="hljs-number">1</span>,index);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">plusArea</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, Map&lt;Integer,Integer&gt; map)</span></span>&#123;<br>  <span class="hljs-keyword">if</span> (!isArea(grid,i,j) || grid[i][j]!=<span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125;<br>  <span class="hljs-keyword">int</span> size = <span class="hljs-number">0</span>;<br>  <span class="hljs-comment">// 用 set 去重，防止出现同一块陆地</span><br>  Set&lt;Integer&gt; set = <span class="hljs-keyword">new</span> HashSet&lt;&gt;();<br>  <span class="hljs-keyword">if</span> (isArea(grid,i-<span class="hljs-number">1</span>,j)&amp;&amp; grid[i-<span class="hljs-number">1</span>][j]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i-<span class="hljs-number">1</span>][j]);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (isArea(grid,i+<span class="hljs-number">1</span>,j)&amp;&amp; grid[i+<span class="hljs-number">1</span>][j]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i+<span class="hljs-number">1</span>][j]);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (isArea(grid,i,j-<span class="hljs-number">1</span>)&amp;&amp; grid[i][j-<span class="hljs-number">1</span>]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i][j-<span class="hljs-number">1</span>]);<br>  &#125;<br>  <span class="hljs-keyword">if</span> (isArea(grid,i,j+<span class="hljs-number">1</span>)&amp;&amp; grid[i][j+<span class="hljs-number">1</span>]&gt;=<span class="hljs-number">2</span>)&#123;<br>    set.add(grid[i][j+<span class="hljs-number">1</span>]);<br>  &#125;<br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> num:set)&#123;<br>    size += map.get(num);<br>  &#125;<br>  <span class="hljs-comment">// 加上自身这块</span><br>  size +=<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">return</span> size;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">isArea</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[][] grid, <span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j)</span></span>&#123;<br>  <span class="hljs-keyword">return</span> i&gt;=<span class="hljs-number">0</span> &amp;&amp; i&lt;grid.length &amp;&amp; j&gt;=<span class="hljs-number">0</span> &amp;&amp; j&lt;grid[<span class="hljs-number">0</span>].length;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 
             </div>
@@ -290,7 +290,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/categories/Leetcode/">Leetcode</a>
+                      <a class="hover-with-bg" href="/categories/Leetcode/">Leetcode</a>
                     
                   </div>
                 
@@ -298,7 +298,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
                     
                   </div>
                 
@@ -309,7 +309,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/03/19/1028-%E4%BB%8E%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%91/">
+                      <a href="/2022/03/19/1028-%E4%BB%8E%E5%85%88%E5%BA%8F%E9%81%8D%E5%8E%86%E8%BF%98%E5%8E%9F%E4%BA%8C%E5%8F%89%E6%A0%91/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">1028_从先序遍历还原二叉树</span>
                         <span class="visible-mobile">上一篇</span>
@@ -319,7 +319,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/03/16/432-%E5%85%A8O-1-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                      <a href="/2022/03/16/432-%E5%85%A8O-1-%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
                         <span class="hidden-mobile">432_全O_1_的数据结构</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -413,18 +413,18 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/xt-blog/js/events.js" ></script>
-<script  src="/xt-blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/xt-blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/xt-blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -477,7 +477,7 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/xt-blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
 </body>

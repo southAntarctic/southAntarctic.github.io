@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/xt-blog/img/favicon.png">
-  <link rel="icon" href="/xt-blog/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="难度：中等             题目在 R 行 C 列的矩阵上，我们从 (r0, c0) 面朝东面开始 这里，网格的西北角位于第一行第一列，网格的东南角位于最后一行最后一列。 现在，我们以顺时针按螺旋状行走，访问此网格中的每个位置。 每当我们移动到网格的边界之外时，我们会继续在网格之外行走（但稍后可能会返回到网格边界）。 最终，我们到过网格的所有 R * C 个空间。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="885_螺旋矩阵III">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/03/07/885-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5III/index.html">
+<meta property="og:url" content="https://southantarctic.github.io/2022/03/07/885-%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5III/index.html">
 <meta property="og:site_name" content="学涛的博客">
 <meta property="og:description" content="难度：中等             题目在 R 行 C 列的矩阵上，我们从 (r0, c0) 面朝东面开始 这里，网格的西北角位于第一行第一列，网格的东南角位于最后一行最后一列。 现在，我们以顺时针按螺旋状行走，访问此网格中的每个位置。 每当我们移动到网格的边界之外时，我们会继续在网格之外行走（但稍后可能会返回到网格边界）。 最终，我们到过网格的所有 R * C 个空间。">
 <meta property="og:locale" content="zh_CN">
@@ -45,7 +45,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/night-owl.min.css" />
     
   
 
@@ -63,21 +63,21 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/xt-blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="/xt-blog/css/mac.css">
+<link rel="stylesheet" href="/css/mac.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"accept_one_time.gitee.io","root":"/xt-blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xt-blog/local-search.xml"};
+    var CONFIG = {"hostname":"southantarctic.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/xt-blog/js/utils.js" ></script>
-  <script  src="/xt-blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.1"></head>
 
 
@@ -85,7 +85,7 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/xt-blog/">
+    <a class="navbar-brand" href="/">
       <strong>学涛的博客</strong>
     </a>
 
@@ -104,7 +104,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -116,7 +116,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 文档
               </a>
@@ -128,7 +128,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -140,7 +140,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -152,7 +152,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -178,7 +178,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/xt-blog/img/default.jpg') no-repeat center center;
+         style="background: url('/img/default.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -262,12 +262,12 @@
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
 <blockquote>
 <p><strong>输入</strong>：R = 1, C = 4, r0 = 0, c0 = 0<br><strong>输出</strong>：[[0,0],[0,1],[0,2],[0,3]]</p>
-<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220307134618.png" srcset="/xt-blog/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220307134618.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
 <p>示例二：</p>
 <blockquote>
 <p><strong>输入</strong>：R = 5, C = 6, r0 = 1, c0 = 4<br><strong>输出</strong>：[[1,4],[1,5],[2,5],[2,4],[2,3],[1,3],[0,3],[0,4],[0,5],[3,5],[3,4],[3,3],[3,2],[2,2],[1,2],[0,2],[4,5],[4,4],[4,3],[4,2],[4,1],[3,1],[2,1],[1,1],[0,1],[4,0],[3,0],[2,0],[1,0],[0,0]]</p>
-<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220307134547.png" srcset="/xt-blog/img/loading.gif" lazyload></p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220307134547.png" srcset="/img/loading.gif" lazyload></p>
 </blockquote>
 <h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul>
 <li><code>1 &lt;= R &lt;= 100</code></li>
@@ -283,7 +283,7 @@
 <li>向上到达上边界时，转向右，上边界扩大</li>
 </ul>
 <p>初始边界为初始位置上下左右加一</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[][] spiralMatrixIII(<span class="hljs-keyword">int</span> rows, <span class="hljs-keyword">int</span> cols, <span class="hljs-keyword">int</span> rStart, <span class="hljs-keyword">int</span> cStart) &#123;<br>  <span class="hljs-keyword">int</span>[][] ans = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[rows*cols][<span class="hljs-number">2</span>];<br>  <span class="hljs-keyword">int</span>[][] directions = &#123;&#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>&#125;,&#123;<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>&#125;,&#123;-<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;&#125;;<br>  <span class="hljs-keyword">int</span> row = rStart, col = cStart,num=<span class="hljs-number">1</span>,dirIndex = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">int</span> Left = cStart-<span class="hljs-number">1</span>, Right = cStart+<span class="hljs-number">1</span>, Upper = rStart-<span class="hljs-number">1</span>, Bottom = rStart+<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">while</span> (num&lt;=rows*cols)&#123;<br>    <span class="hljs-keyword">if</span> (row&gt;=<span class="hljs-number">0</span> &amp;&amp; row&lt;rows &amp;&amp; col&gt;=<span class="hljs-number">0</span> &amp;&amp; col&lt;cols)&#123;<br>      ans[num-<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;row,col&#125;;<br>      num++;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (dirIndex==<span class="hljs-number">0</span> &amp;&amp; col==Right)&#123; <span class="hljs-comment">// 到右边界</span><br>      dirIndex +=<span class="hljs-number">1</span>; <span class="hljs-comment">// 方向向右转为向下</span><br>      Right+=<span class="hljs-number">1</span>; <span class="hljs-comment">// 右边界右移</span><br>    &#125;<br>    <span class="hljs-keyword">if</span> (dirIndex==<span class="hljs-number">1</span>&amp;&amp; row==Bottom)&#123; <span class="hljs-comment">// 到下边界</span><br>      dirIndex +=<span class="hljs-number">1</span>; <span class="hljs-comment">// 方向由下转为向左</span><br>      Bottom+=<span class="hljs-number">1</span>;  <span class="hljs-comment">// 下边界下移</span><br>    &#125;<br>    <span class="hljs-keyword">if</span> (dirIndex==<span class="hljs-number">2</span> &amp;&amp; col==Left)&#123;  <span class="hljs-comment">// 到左边界</span><br>      dirIndex +=<span class="hljs-number">1</span>; <span class="hljs-comment">// 方向由向左转为向上</span><br>      Left-=<span class="hljs-number">1</span>;    <span class="hljs-comment">// 左边界左移</span><br>    &#125;<br>    <span class="hljs-keyword">if</span> (dirIndex==<span class="hljs-number">3</span> &amp;&amp; row==Upper) &#123; <span class="hljs-comment">// 到上边界</span><br>      dirIndex = <span class="hljs-number">0</span>;   <span class="hljs-comment">// 方向由向上转为向右</span><br>      Upper -=<span class="hljs-number">1</span>;  <span class="hljs-comment">// 上边界上移</span><br>    &#125;<br>    row += directions[dirIndex][<span class="hljs-number">0</span>];<br>    col += directions[dirIndex][<span class="hljs-number">1</span>];<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span>[][] spiralMatrixIII(<span class="hljs-keyword">int</span> rows, <span class="hljs-keyword">int</span> cols, <span class="hljs-keyword">int</span> rStart, <span class="hljs-keyword">int</span> cStart) &#123;<br>  <span class="hljs-keyword">int</span>[][] ans = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[rows*cols][<span class="hljs-number">2</span>];<br>  <span class="hljs-keyword">int</span>[][] directions = &#123;&#123;<span class="hljs-number">0</span>,<span class="hljs-number">1</span>&#125;,&#123;<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;,&#123;<span class="hljs-number">0</span>,-<span class="hljs-number">1</span>&#125;,&#123;-<span class="hljs-number">1</span>,<span class="hljs-number">0</span>&#125;&#125;;<br>  <span class="hljs-keyword">int</span> row = rStart, col = cStart,num=<span class="hljs-number">1</span>,dirIndex = <span class="hljs-number">0</span>;<br>  <span class="hljs-keyword">int</span> Left = cStart-<span class="hljs-number">1</span>, Right = cStart+<span class="hljs-number">1</span>, Upper = rStart-<span class="hljs-number">1</span>, Bottom = rStart+<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">while</span> (num&lt;=rows*cols)&#123;<br>    <span class="hljs-keyword">if</span> (row&gt;=<span class="hljs-number">0</span> &amp;&amp; row&lt;rows &amp;&amp; col&gt;=<span class="hljs-number">0</span> &amp;&amp; col&lt;cols)&#123;<br>      ans[num-<span class="hljs-number">1</span>] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[]&#123;row,col&#125;;<br>      num++;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (dirIndex==<span class="hljs-number">0</span> &amp;&amp; col==Right)&#123; <span class="hljs-comment">// 到右边界</span><br>      dirIndex +=<span class="hljs-number">1</span>; <span class="hljs-comment">// 方向向右转为向下</span><br>      Right+=<span class="hljs-number">1</span>; <span class="hljs-comment">// 右边界右移</span><br>    &#125;<br>    <span class="hljs-keyword">if</span> (dirIndex==<span class="hljs-number">1</span>&amp;&amp; row==Bottom)&#123; <span class="hljs-comment">// 到下边界</span><br>      dirIndex +=<span class="hljs-number">1</span>; <span class="hljs-comment">// 方向由下转为向左</span><br>      Bottom+=<span class="hljs-number">1</span>;  <span class="hljs-comment">// 下边界下移</span><br>    &#125;<br>    <span class="hljs-keyword">if</span> (dirIndex==<span class="hljs-number">2</span> &amp;&amp; col==Left)&#123;  <span class="hljs-comment">// 到左边界</span><br>      dirIndex +=<span class="hljs-number">1</span>; <span class="hljs-comment">// 方向由向左转为向上</span><br>      Left-=<span class="hljs-number">1</span>;    <span class="hljs-comment">// 左边界左移</span><br>    &#125;<br>    <span class="hljs-keyword">if</span> (dirIndex==<span class="hljs-number">3</span> &amp;&amp; row==Upper) &#123; <span class="hljs-comment">// 到上边界</span><br>      dirIndex = <span class="hljs-number">0</span>;   <span class="hljs-comment">// 方向由向上转为向右</span><br>      Upper -=<span class="hljs-number">1</span>;  <span class="hljs-comment">// 上边界上移</span><br>    &#125;<br>    row += directions[dirIndex][<span class="hljs-number">0</span>];<br>    col += directions[dirIndex][<span class="hljs-number">1</span>];<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 
             </div>
@@ -294,7 +294,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/categories/Leetcode/">Leetcode</a>
+                      <a class="hover-with-bg" href="/categories/Leetcode/">Leetcode</a>
                     
                   </div>
                 
@@ -302,7 +302,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
                     
                   </div>
                 
@@ -313,7 +313,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/03/08/1588-%E6%89%80%E6%9C%89%E5%A5%87%E6%95%B0%E9%95%BF%E5%BA%A6%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E5%92%8C/">
+                      <a href="/2022/03/08/1588-%E6%89%80%E6%9C%89%E5%A5%87%E6%95%B0%E9%95%BF%E5%BA%A6%E5%AD%90%E6%95%B0%E7%BB%84%E7%9A%84%E5%92%8C/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">1588_所有奇数长度子数组的和</span>
                         <span class="visible-mobile">上一篇</span>
@@ -323,7 +323,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/03/04/289-%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/">
+                      <a href="/2022/03/04/289-%E7%94%9F%E5%91%BD%E6%B8%B8%E6%88%8F/">
                         <span class="hidden-mobile">289_生命游戏</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -417,18 +417,18 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/xt-blog/js/events.js" ></script>
-<script  src="/xt-blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/xt-blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/xt-blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -481,7 +481,7 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/xt-blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
 </body>

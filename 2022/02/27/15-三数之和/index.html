@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/xt-blog/img/favicon.png">
-  <link rel="icon" href="/xt-blog/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="难度：中等             题目给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c &#x3D; 0 ？请你找出所有和为 0 且不重复的三元组。 注意：答案中不可以包含重复的三元组。 示例示例一：  输入：nums &#x3D; [-1,0,1,2,-1,-4]输出：[[-1,-1,2],[-1,0,1]]  示例二：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="15_三数之和">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/02/27/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/index.html">
+<meta property="og:url" content="https://southantarctic.github.io/2022/02/27/15-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/index.html">
 <meta property="og:site_name" content="学涛的博客">
 <meta property="og:description" content="难度：中等             题目给你一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c &#x3D; 0 ？请你找出所有和为 0 且不重复的三元组。 注意：答案中不可以包含重复的三元组。 示例示例一：  输入：nums &#x3D; [-1,0,1,2,-1,-4]输出：[[-1,-1,2],[-1,0,1]]  示例二：">
 <meta property="og:locale" content="zh_CN">
@@ -42,7 +42,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/night-owl.min.css" />
     
   
 
@@ -60,21 +60,21 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/xt-blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="/xt-blog/css/mac.css">
+<link rel="stylesheet" href="/css/mac.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"accept_one_time.gitee.io","root":"/xt-blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xt-blog/local-search.xml"};
+    var CONFIG = {"hostname":"southantarctic.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/xt-blog/js/utils.js" ></script>
-  <script  src="/xt-blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.1"></head>
 
 
@@ -82,7 +82,7 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/xt-blog/">
+    <a class="navbar-brand" href="/">
       <strong>学涛的博客</strong>
     </a>
 
@@ -101,7 +101,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -113,7 +113,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 文档
               </a>
@@ -125,7 +125,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -137,7 +137,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -149,7 +149,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -175,7 +175,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/xt-blog/img/default.jpg') no-repeat center center;
+         style="background: url('/img/default.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -271,7 +271,7 @@
 <h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>题目最关键的就是如何去除重复的三元组，可以通过排序的方法解决这个问题，将数组排序后，如果遇到重复的元素，跳过即可。</p>
 <ol>
 <li><p>首先对数组进行排序</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">int</span> len = nums.length;<br><span class="hljs-keyword">if</span> (nums==<span class="hljs-keyword">null</span>|| len&lt;<span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> ans;<br>Arrays.sort(nums); <span class="hljs-comment">// 排序</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">int</span> len = nums.length;<br><span class="hljs-keyword">if</span> (nums==<span class="hljs-keyword">null</span>|| len&lt;<span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> ans;<br>Arrays.sort(nums); <span class="hljs-comment">// 排序</span><br></code></pre></div></td></tr></table></figure></li>
 <li><p>固定一个数 <code>nums[i]</code>, 定义左右指针分别指向 <code>nums[i]</code> 之后的两端，分别为 <code>nums[L]</code> 和 <code>nums[R]</code>, 判断和是否为 0</p>
 <p><code>int L = i + 1; int R = len - 1;</code></p>
 </li>
@@ -284,7 +284,7 @@
 <li><p>当和为 0 时，如果 <code>nums[R] = nums[R--]</code>, 说明该数字重复，应该R–</p>
 </li>
 </ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="hljs-keyword">int</span>[] nums)&#123;<br>  List&lt;List&lt;Integer&gt;&gt; ans = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>  <span class="hljs-keyword">int</span> len = nums.length;<br>  <span class="hljs-keyword">if</span> (nums==<span class="hljs-keyword">null</span>|| len&lt;<span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> ans;<br>  Arrays.sort(nums); <span class="hljs-comment">// 排序</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;<br>    <span class="hljs-keyword">if</span> (nums[i]&gt;<span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 如果当前数字大于0，则和一定大于0，结束循环</span><br>    <span class="hljs-keyword">if</span> (i&gt;<span class="hljs-number">0</span> &amp;&amp; nums[i] == nums[i-<span class="hljs-number">1</span>]) <span class="hljs-keyword">continue</span>;<br>    <span class="hljs-keyword">int</span> L = i+<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">int</span> R = len-<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (L&lt;R)&#123;<br>      <span class="hljs-keyword">int</span> sum = nums[i] + nums[L] + nums[R];<br>      <span class="hljs-keyword">if</span> (sum == <span class="hljs-number">0</span>)&#123;<br>        ans.add(Arrays.asList(nums[i],nums[L],nums[R]));<br>        <span class="hljs-keyword">while</span> (L&lt;R &amp;&amp; nums[L] == nums[L+<span class="hljs-number">1</span>]) L++;<br>        <span class="hljs-keyword">while</span> (L&lt;R &amp;&amp; nums[R] == nums[R-<span class="hljs-number">1</span>]) R--;<br>        L++;<br>        R--;<br>      &#125;<br>      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sum&lt;<span class="hljs-number">0</span>) L++; <span class="hljs-comment">// 增大sum</span><br>      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sum&gt;<span class="hljs-number">0</span>) R--; <span class="hljs-comment">// 减小sum</span><br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="hljs-keyword">int</span>[] nums)&#123;<br>  List&lt;List&lt;Integer&gt;&gt; ans = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>  <span class="hljs-keyword">int</span> len = nums.length;<br>  <span class="hljs-keyword">if</span> (nums==<span class="hljs-keyword">null</span>|| len&lt;<span class="hljs-number">3</span>) <span class="hljs-keyword">return</span> ans;<br>  Arrays.sort(nums); <span class="hljs-comment">// 排序</span><br>  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; len; i++) &#123;<br>    <span class="hljs-keyword">if</span> (nums[i]&gt;<span class="hljs-number">0</span>) <span class="hljs-keyword">break</span>; <span class="hljs-comment">// 如果当前数字大于0，则和一定大于0，结束循环</span><br>    <span class="hljs-keyword">if</span> (i&gt;<span class="hljs-number">0</span> &amp;&amp; nums[i] == nums[i-<span class="hljs-number">1</span>]) <span class="hljs-keyword">continue</span>;<br>    <span class="hljs-keyword">int</span> L = i+<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">int</span> R = len-<span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">while</span> (L&lt;R)&#123;<br>      <span class="hljs-keyword">int</span> sum = nums[i] + nums[L] + nums[R];<br>      <span class="hljs-keyword">if</span> (sum == <span class="hljs-number">0</span>)&#123;<br>        ans.add(Arrays.asList(nums[i],nums[L],nums[R]));<br>        <span class="hljs-keyword">while</span> (L&lt;R &amp;&amp; nums[L] == nums[L+<span class="hljs-number">1</span>]) L++;<br>        <span class="hljs-keyword">while</span> (L&lt;R &amp;&amp; nums[R] == nums[R-<span class="hljs-number">1</span>]) R--;<br>        L++;<br>        R--;<br>      &#125;<br>      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sum&lt;<span class="hljs-number">0</span>) L++; <span class="hljs-comment">// 增大sum</span><br>      <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (sum&gt;<span class="hljs-number">0</span>) R--; <span class="hljs-comment">// 减小sum</span><br>    &#125;<br>  &#125;<br>  <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
 
             </div>
@@ -295,7 +295,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/categories/Leetcode/">Leetcode</a>
+                      <a class="hover-with-bg" href="/categories/Leetcode/">Leetcode</a>
                     
                   </div>
                 
@@ -303,7 +303,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
                     
                   </div>
                 
@@ -314,7 +314,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/28/1601-%E6%9C%80%E5%A4%9A%E5%8F%AF%E8%BE%BE%E6%88%90%E7%9A%84%E6%8D%A2%E6%A5%BC%E8%AF%B7%E6%B1%82%E6%95%B0%E7%9B%AE/">
+                      <a href="/2022/02/28/1601-%E6%9C%80%E5%A4%9A%E5%8F%AF%E8%BE%BE%E6%88%90%E7%9A%84%E6%8D%A2%E6%A5%BC%E8%AF%B7%E6%B1%82%E6%95%B0%E7%9B%AE/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">1601_最多可达成的换楼请求数目</span>
                         <span class="visible-mobile">上一篇</span>
@@ -324,7 +324,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/02/26/343-%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86%EF%BC%88%E5%89%AA%E7%BB%B3%E5%AD%90%EF%BC%89/">
+                      <a href="/2022/02/26/343-%E6%95%B4%E6%95%B0%E6%8B%86%E5%88%86%EF%BC%88%E5%89%AA%E7%BB%B3%E5%AD%90%EF%BC%89/">
                         <span class="hidden-mobile">343_整数拆分（剪绳子）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -418,18 +418,18 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/xt-blog/js/events.js" ></script>
-<script  src="/xt-blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/xt-blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/xt-blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -482,7 +482,7 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/xt-blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
 </body>

@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/xt-blog/img/favicon.png">
-  <link rel="icon" href="/xt-blog/img/favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="难度：中等             题目假设有一个同时存储文件和目录的文件系统。下图展示了文件系统的一个示例：  这里将 dir 作为根目录中的唯一目录。dir 包含两个子目录 subdir1 和 subdir2 。subdir1 包含文件 file1.ext 和子目录 subsubdir1；subdir2 包含子目录 subsubdir2，该子目录下包含文件 file2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="388_文件的最长绝对路径">
-<meta property="og:url" content="https://accept_one_time.gitee.io/xt-blog/2022/03/24/388-%E6%96%87%E4%BB%B6%E7%9A%84%E6%9C%80%E9%95%BF%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84/index.html">
+<meta property="og:url" content="https://southantarctic.github.io/2022/03/24/388-%E6%96%87%E4%BB%B6%E7%9A%84%E6%9C%80%E9%95%BF%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84/index.html">
 <meta property="og:site_name" content="学涛的博客">
 <meta property="og:description" content="难度：中等             题目假设有一个同时存储文件和目录的文件系统。下图展示了文件系统的一个示例：  这里将 dir 作为根目录中的唯一目录。dir 包含两个子目录 subdir1 和 subdir2 。subdir1 包含文件 file1.ext 和子目录 subsubdir1；subdir2 包含子目录 subsubdir2，该子目录下包含文件 file2">
 <meta property="og:locale" content="zh_CN">
@@ -46,7 +46,7 @@
     
     
       
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/night-owl.min.css" />
     
   
 
@@ -64,21 +64,21 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/xt-blog/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 <!-- 自定义样式保持在最底部 -->
 
   
-<link rel="stylesheet" href="/xt-blog/css/mac.css">
+<link rel="stylesheet" href="/css/mac.css">
 
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"accept_one_time.gitee.io","root":"/xt-blog/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/xt-blog/local-search.xml"};
+    var CONFIG = {"hostname":"southantarctic.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
   </script>
-  <script  src="/xt-blog/js/utils.js" ></script>
-  <script  src="/xt-blog/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.1"></head>
 
 
@@ -86,7 +86,7 @@
   <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/xt-blog/">
+    <a class="navbar-brand" href="/">
       <strong>学涛的博客</strong>
     </a>
 
@@ -105,7 +105,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -117,7 +117,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 文档
               </a>
@@ -129,7 +129,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -141,7 +141,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -153,7 +153,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/xt-blog/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -179,7 +179,7 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/xt-blog/img/default.jpg') no-repeat center center;
+         style="background: url('/img/default.jpg') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
@@ -255,7 +255,7 @@
           </div>
 
 <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>假设有一个同时存储文件和目录的文件系统。下图展示了文件系统的一个示例：</p>
-<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220324113857.jpg" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220324113857.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>这里将 dir 作为根目录中的唯一目录。dir 包含两个子目录 subdir1 和 subdir2 。subdir1 包含文件 file1.ext 和子目录 subsubdir1；subdir2 包含子目录 subsubdir2，该子目录下包含文件 file2.ext 。</p>
 <p>在文本格式中，如下所示(⟶表示制表符)：</p>
 <blockquote>
@@ -265,12 +265,12 @@
 <p>文件系统中的每个文件和文件夹都有一个唯一的 绝对路径 ，即必须打开才能到达文件/目录所在位置的目录顺序，所有路径用 ‘/‘ 连接。上面例子中，指向 file2.ext 的 绝对路径 是 “dir/subdir2/subsubdir2/file2.ext” 。每个目录名由字母、数字和/或空格组成，每个文件名遵循 name.extension 的格式，其中 name 和 extension由字母、数字和/或空格组成。</p>
 <p>给定一个以上述格式表示文件系统的字符串 input ，返回文件系统中 指向 文件 的 最长绝对路径 的长度 。 如果系统中没有文件，返回 0。</p>
 <h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p>
-<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220324114139.jpg" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220324114139.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <blockquote>
 <p><strong>输入</strong>：input = “dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext”<br><strong>输出</strong>：20<br><strong>解释</strong>：只有一个文件，绝对路径为 “dir/subdir2/file.ext” ，路径长度 20</p>
 </blockquote>
 <p>示例二：</p>
-<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220324114114.jpg" srcset="/xt-blog/img/loading.gif" lazyload alt="img"></p>
+<p><img src="https://gitee.com/accept_one_time/pic-bed/raw/master/img/20220324114114.jpg" srcset="/img/loading.gif" lazyload alt="img"></p>
 <blockquote>
 <p><strong>输入</strong>：input = “dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext”<br><strong>输出</strong>：32<br><strong>解释</strong>：存在两个文件：<br>“dir/subdir1/file1.ext” ，路径长度 21<br>“dir/subdir2/subsubdir2/file2.ext” ，路径长度 32<br>返回 32 ，因为这是最长的路径</p>
 </blockquote>
@@ -287,7 +287,7 @@
 <li>input 可能包含小写或大写的英文字母，一个换行符 <code>&#39;\n&#39;</code>，一个制表符 <code>&#39;\t&#39;</code>，一个点 <code>&#39;.&#39;</code>，一个空格 <code>&#39; &#39;</code>，和数字。</li>
 </ul>
 <h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>先用 <code>\n</code>将字符串切开，按行读取，然后用一个 栈 来存储每层的累积长度</p>
-<figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthLongestPath</span><span class="hljs-params">(String input)</span></span>&#123;<br>    String[] files = input.split(<span class="hljs-string">&quot;\n&quot;</span>);<br>    Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    stack.push(<span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">for</span> (String file: files)&#123;<br>        <span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>, depth = <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// 计算层数</span><br>        <span class="hljs-keyword">while</span> (j&lt;file.length()&amp;&amp;file.charAt(j)==<span class="hljs-string">&#x27;\t&#x27;</span>)&#123;<br>            depth++;<br>            j++;<br>        &#125;<br>        <span class="hljs-comment">// 文件名长度</span><br>        <span class="hljs-keyword">int</span> length = file.length()-j;<br>        <span class="hljs-comment">// 清空多余层数</span><br>        <span class="hljs-keyword">while</span> (stack.size()&gt;depth)&#123;<br>            stack.pop();<br>        &#125;<br>        <span class="hljs-comment">// 如果是文件，则计算最大长度 stack.peek() + length</span><br>        <span class="hljs-keyword">if</span> (file.indexOf(<span class="hljs-string">&#x27;.&#x27;</span>)&gt;=<span class="hljs-number">0</span>)&#123;<br>            ans = Math.max(ans,stack.peek()+length);<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 如果不是文件，说明为目录，则推入当前层的累积长度 （上一层+本层+1）</span><br>            stack.push(stack.peek()+length+<span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">int</span> <span class="hljs-title">lengthLongestPath</span><span class="hljs-params">(String input)</span></span>&#123;<br>    String[] files = input.split(<span class="hljs-string">&quot;\n&quot;</span>);<br>    Deque&lt;Integer&gt; stack = <span class="hljs-keyword">new</span> LinkedList&lt;&gt;();<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    stack.push(<span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">for</span> (String file: files)&#123;<br>        <span class="hljs-keyword">int</span> j=<span class="hljs-number">0</span>, depth = <span class="hljs-number">1</span>;<br>        <span class="hljs-comment">// 计算层数</span><br>        <span class="hljs-keyword">while</span> (j&lt;file.length()&amp;&amp;file.charAt(j)==<span class="hljs-string">&#x27;\t&#x27;</span>)&#123;<br>            depth++;<br>            j++;<br>        &#125;<br>        <span class="hljs-comment">// 文件名长度</span><br>        <span class="hljs-keyword">int</span> length = file.length()-j;<br>        <span class="hljs-comment">// 清空多余层数</span><br>        <span class="hljs-keyword">while</span> (stack.size()&gt;depth)&#123;<br>            stack.pop();<br>        &#125;<br>        <span class="hljs-comment">// 如果是文件，则计算最大长度 stack.peek() + length</span><br>        <span class="hljs-keyword">if</span> (file.indexOf(<span class="hljs-string">&#x27;.&#x27;</span>)&gt;=<span class="hljs-number">0</span>)&#123;<br>            ans = Math.max(ans,stack.peek()+length);<br>        &#125;<span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-comment">// 如果不是文件，说明为目录，则推入当前层的累积长度 （上一层+本层+1）</span><br>            stack.push(stack.peek()+length+<span class="hljs-number">1</span>);<br>        &#125;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
             </div>
             <hr>
@@ -297,7 +297,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/categories/Leetcode/">Leetcode</a>
+                      <a class="hover-with-bg" href="/categories/Leetcode/">Leetcode</a>
                     
                   </div>
                 
@@ -305,7 +305,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/xt-blog/tags/leetcode/">leetcode</a>
+                      <a class="hover-with-bg" href="/tags/leetcode/">leetcode</a>
                     
                   </div>
                 
@@ -316,7 +316,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/xt-blog/2022/03/28/1123-%E6%9C%80%E6%B7%B1%E5%8F%B6%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/">
+                      <a href="/2022/03/28/1123-%E6%9C%80%E6%B7%B1%E5%8F%B6%E8%8A%82%E7%82%B9%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">1123_最深叶节点的最近公共祖先</span>
                         <span class="visible-mobile">上一篇</span>
@@ -326,7 +326,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/xt-blog/2022/03/24/385-%E8%BF%B7%E4%BD%A0%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/">
+                      <a href="/2022/03/24/385-%E8%BF%B7%E4%BD%A0%E8%AF%AD%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8/">
                         <span class="hidden-mobile">385_迷你语法分析器</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -420,18 +420,18 @@
 
 <script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
 <script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/xt-blog/js/events.js" ></script>
-<script  src="/xt-blog/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 <!-- Plugins -->
 
 
-  <script  src="/xt-blog/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/xt-blog/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -484,7 +484,7 @@
 
 
 <!-- 主题的启动项 保持在最底部 -->
-<script  src="/xt-blog/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
 </body>
