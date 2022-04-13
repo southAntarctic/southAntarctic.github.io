@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>Qt中使用OpenGL-Camera类</title>
+    <link href="/xt-blog/2022/04/13/Qt%E4%B8%AD%E4%BD%BF%E7%94%A8OpenGL-Camera%E7%B1%BB/"/>
+    <url>/xt-blog/2022/04/13/Qt%E4%B8%AD%E4%BD%BF%E7%94%A8OpenGL-Camera%E7%B1%BB/</url>
+    
+    <content type="html"><![CDATA[<p>在 Qt 中</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Qt</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>OpenGL Qt</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>17_电话号码的字母组合</title>
+    <link href="/xt-blog/2022/04/07/17-%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/"/>
+    <url>/xt-blog/2022/04/07/17-%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/</url>
+    
+    <content type="html"><![CDATA[<div class="note note-warning">            <p>难度：中等</p>          </div><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。答案可以按 任意顺序 返回。</p><p>给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</p><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>示例一：</p><blockquote><p><strong>输入</strong>：digits = “23”<br><strong>输出</strong>：[“ad”,”ae”,”af”,”bd”,”be”,”bf”,”cd”,”ce”,”cf”]</p></blockquote><p>示例二：</p><blockquote><p><strong>输入</strong>：digits = “”<br><strong>输出</strong>：[]</p></blockquote><p>示例三：</p><blockquote><p><strong>输入</strong>：digits = “2”<br><strong>输出</strong>：[“a”,”b”,”c”]</p></blockquote><h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ul><li><code>0 &lt;= digits.length &lt;= 4</code></li><li><code>digits[i]</code> 是范围 <code>[&#39;2&#39;, &#39;9&#39;]</code> 的一个数字。</li></ul><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>采用 DFS 思路，在 DFS 函数中，首先判断是否遍历结束，即<code>index == digits.length()</code>，遍历结束即将当前字符串加入答案列表。否则获取当前字符对应的全部字母，然后遍历字母。</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">char</span> digit = digits.charAt(index);<br>String letter = chars[digit-<span class="hljs-string">&#x27;0&#x27;</span>-<span class="hljs-number">2</span>];<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;letter.length(); i++)&#123;<br>  sb.append(letter.charAt(i));<br>  dfs(sb,digits,index+<span class="hljs-number">1</span>);<br>  sb.deleteCharAt(index);<br>&#125;<br></code></pre></td></tr></table></figure><p>从 index = 0 的位置开始，最后返回答案列表</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Solution</span> </span>&#123;<br>    List&lt;String&gt; ans;<br>    <span class="hljs-keyword">static</span> String[] chars = &#123;<span class="hljs-string">&quot;abc&quot;</span>, <span class="hljs-string">&quot;def&quot;</span>, <span class="hljs-string">&quot;ghi&quot;</span>, <span class="hljs-string">&quot;jkl&quot;</span>, <span class="hljs-string">&quot;mno&quot;</span>, <span class="hljs-string">&quot;pqrs&quot;</span>, <span class="hljs-string">&quot;tuv&quot;</span>, <span class="hljs-string">&quot;wxyz&quot;</span>&#125;;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;String&gt; <span class="hljs-title">letterCombinations</span><span class="hljs-params">(String digits)</span></span>&#123;<br>        ans = <span class="hljs-keyword">new</span> ArrayList&lt;&gt;();<br>        <span class="hljs-keyword">if</span> (digits.length()==<span class="hljs-number">0</span>) <span class="hljs-keyword">return</span> ans;<br>        StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder();<br>        dfs(sb,digits,<span class="hljs-number">0</span>);<br>        <span class="hljs-keyword">return</span> ans;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">dfs</span><span class="hljs-params">(StringBuilder sb, String digits, <span class="hljs-keyword">int</span> index)</span></span>&#123;<br>        <span class="hljs-keyword">if</span> (index == digits.length())&#123;<br>            ans.add(sb.toString());<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        <span class="hljs-keyword">char</span> digit = digits.charAt(index);<br>        <span class="hljs-comment">// 当前数字对应的全部字母</span><br>        String letter = chars[digit-<span class="hljs-string">&#x27;0&#x27;</span>-<span class="hljs-number">2</span>];<br>        <span class="hljs-keyword">int</span> letterCount = letter.length();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; letterCount; i++) &#123;<br>            <span class="hljs-comment">// 加入当前字母</span><br>            sb.append(letter.charAt(i));<br>            <span class="hljs-comment">// 去下个数字中搜索</span><br>            dfs(sb,digits,index+<span class="hljs-number">1</span>);<br>            <span class="hljs-comment">// 回溯，将当前字母删掉</span><br>            sb.deleteCharAt(index);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Leetcode</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>leetcode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>765_情侣牵手</title>
     <link href="/xt-blog/2022/04/06/765-%E6%83%85%E4%BE%A3%E7%89%B5%E6%89%8B/"/>
     <url>/xt-blog/2022/04/06/765-%E6%83%85%E4%BE%A3%E7%89%B5%E6%89%8B/</url>
