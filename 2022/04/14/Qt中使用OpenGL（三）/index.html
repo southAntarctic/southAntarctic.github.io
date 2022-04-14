@@ -1,0 +1,498 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xue tao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="纹理简单理解，纹理就是将 “一层皮” 套在了三维世界中的物体身上，物体身上的每个顶点都对应到了这层皮上的一个位置。 以下通过简单的例子解释纹理，展示一张风景画。 绘制矩形与设定纹理映射坐标首先要绘制一个矩形。OpenGL 提供了多种绘制多个三角形的方法，其中有一个方法，使得我们只需要 逆时针 定义 4 个顶点，就可以绘制出可以组成矩形的两个三角形。 在屏幕坐标中，左上是 (-1, 1)，左下是 (">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt中使用OpenGL（三）">
+<meta property="og:url" content="https://southantarctic.github.io/2022/04/14/Qt%E4%B8%AD%E4%BD%BF%E7%94%A8OpenGL%EF%BC%88%E4%B8%89%EF%BC%89/index.html">
+<meta property="og:site_name" content="学涛的博客">
+<meta property="og:description" content="纹理简单理解，纹理就是将 “一层皮” 套在了三维世界中的物体身上，物体身上的每个顶点都对应到了这层皮上的一个位置。 以下通过简单的例子解释纹理，展示一张风景画。 绘制矩形与设定纹理映射坐标首先要绘制一个矩形。OpenGL 提供了多种绘制多个三角形的方法，其中有一个方法，使得我们只需要 逆时针 定义 4 个顶点，就可以绘制出可以组成矩形的两个三角形。 在屏幕坐标中，左上是 (-1, 1)，左下是 (">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-14T06:55:23.000Z">
+<meta property="article:modified_time" content="2022-04-14T10:29:48.402Z">
+<meta property="article:author" content="xue tao">
+<meta property="article:tag" content="OpenGL">
+<meta property="article:tag" content="Qt">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Qt中使用OpenGL（三） - 学涛的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/night-owl.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/mac.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"southantarctic.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>学涛的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                文档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Qt中使用OpenGL（三）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-14 14:55" pubdate>
+        2022年4月14日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      27 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Qt中使用OpenGL（三）</h1>
+            
+            <div class="markdown-body">
+              <h2 id="纹理"><a href="#纹理" class="headerlink" title="纹理"></a>纹理</h2><p>简单理解，纹理就是将 “一层皮” 套在了三维世界中的物体身上，物体身上的每个顶点都对应到了这层皮上的一个位置。</p>
+<p>以下通过简单的例子解释纹理，展示一张风景画。</p>
+<h2 id="绘制矩形与设定纹理映射坐标"><a href="#绘制矩形与设定纹理映射坐标" class="headerlink" title="绘制矩形与设定纹理映射坐标"></a>绘制矩形与设定纹理映射坐标</h2><p>首先要绘制一个矩形。OpenGL 提供了多种绘制多个三角形的方法，其中有一个方法，使得我们只需要 逆时针 定义 4 个顶点，就可以绘制出可以组成矩形的两个三角形。</p>
+<p>在屏幕坐标中，左上是 <code>(-1, 1)</code>，左下是 <code>(-1, -1)</code>，右下是 <code>(1, -1)</code>，右上是 <code>(1, 1)</code>。按照这个顺序就可以定义四个顶点了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">float</span> _vertex[] = &#123;<br>  <span class="hljs-number">-1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-comment">// 左上</span><br>  <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-comment">// 左下</span><br>  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-comment">// 右下</span><br>  <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span> <span class="hljs-comment">//右上</span><br>&#125;;<br></code></pre></div></td></tr></table></figure>
+
+<p>至此，画两个三角形的准备工作就完成了。然后需要纹理映射坐标，就是将每一个顶点，都对应到纹理上的一个位置。</p>
+<p>简单来讲就是用（x，y）这个二维坐标来表示纹理上的一个位置，其中，x 与 y 的值域是 <code>[0, 1]。</code></p>
+<p>其中 <code>[0, 0]</code>表示左下角 ，<code>[1, 1]</code>表示右上角。了解了这些，就可以给顶点附加纹理坐标了，方法很简单，只需要在每个顶点坐标后面，附加两个代表纹理坐标的 float 值就行。</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">// 顶点缓存中前三个是顶点坐标，后两个是纹理坐标</span><br><span class="hljs-keyword">float</span> _vertex[] = &#123;<br>  <span class="hljs-number">-1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-comment">// 左上</span><br>  <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-comment">// 左下</span><br>  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>,  <span class="hljs-comment">// 右下</span><br>  <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-comment">//右上</span><br>&#125;;<br></code></pre></div></td></tr></table></figure>
+
+<p>此时，每个顶点就有 5 个 float 值了。</p>
+<h2 id="使用包含纹理的顶点缓存"><a href="#使用包含纹理的顶点缓存" class="headerlink" title="使用包含纹理的顶点缓存"></a>使用包含纹理的顶点缓存</h2><p>很显然，之前使用了 <code>setAttributeBuffer()</code> 这个函数告诉了 OpenGL 每个顶点有 3 个值，现在同样需要使用 <code>setAttributeBuffer()</code> 这个函数告诉 OpenGL，现在每个顶点有 5 个值，其中前三个是顶点坐标，后两个是纹理坐标。</p>
+<p>所以，首先要修改shader。</p>
+<h3 id="修改-shader"><a href="#修改-shader" class="headerlink" title="修改 shader"></a>修改 shader</h3><p>之前的 shader 里面，定义了 1 个 vec3 类型的输入，所以要再加一个 vec2 类型的输入</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#version 450 core</span><br>in vec3 vPos;<br>in vec2 vTexture;<br>out vec2 oTexture;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  gl_Position = vec4(vPos, <span class="hljs-number">1.0</span>);<br>  oTexture = vTexture;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>在 Vertex shader 中，在获取坐标的同时也要获取纹理坐标，然后将纹理坐标发送给其他shader。</p>
+<p>这里添加了一个输入变量 vTexture，还定义了一个输出变量 oTexture，因为 shader 是一种链式调用的代码，Vertex shader 会自动从顶点缓存中获取数据，可是 Fargment shader 不会，所以需要从顶点缓存中获取数据，然后将获取到的数据传给 Fragment shader。</p>
+<figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta"># version 450 core</span><br>in vec2 oTexture;<br>uniform sampler2D uTexture;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  gl_FragColor = texture(uTexture, oTexture);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>在 Fragment shader 中，要定义一个名字和 Vertex shader 中定义输出变量名字一致的输入变量 oTexture，Vertex shader 中的输出变量就会自动的传递到 Fragment shader 中的输入变量中。然后使用 OpenGL 内置的函数 texture() 来进行纹理映射了。</p>
+<p>这里除了 in 和 out 之外还有另一个指示器 uniform，它和 in 一样，也表示一种输入，但是，和 in 不一样的是，它的来源可以是任何地方。而 in 的来源只能是顶点缓存或者其他 shader 的输出。可以在不修改顶点缓存的情况下，在任何合理地方输入 uniform 的值。例如可以根据需要，动态的改变纹理。sampler2D 这个类型表示二维纹理。</p>
+<p>然后告诉 OpenGL 如何使用顶点缓存。</p>
+<h3 id="绑定坐标信息"><a href="#绑定坐标信息" class="headerlink" title="绑定坐标信息"></a>绑定坐标信息</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">// 绑定顶点坐标，从 0 * sizeof(flaot) 字节开始读取 3 个 float，</span><br><span class="hljs-comment">// 因为每个顶点有 5 个 float 数据，所以下一个数据需要偏移 5 * sizeof(float) 字节</span><br>m_program-&gt;<span class="hljs-built_in">setAttributeBuffer</span>(<span class="hljs-string">&quot;vPos&quot;</span>, GL_FLOAT, <span class="hljs-number">0</span> * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">float</span>), <span class="hljs-number">3</span>, <span class="hljs-number">5</span> * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">float</span>));<br>m_program-&gt;<span class="hljs-built_in">enableAttributeArray</span>(<span class="hljs-string">&quot;vPos&quot;</span>);<br><span class="hljs-comment">// 绑定纹理坐标，从 3 * sizeof(float) 字节开始读取 2 个 float，</span><br><span class="hljs-comment">// 因为每个顶点有 5 个 float 数据，所以下一个数据需要偏移 5 * sizeof(float) 字节</span><br>m_program-&gt;<span class="hljs-built_in">setAttributeBuffer</span>(<span class="hljs-string">&quot;vTexture&quot;</span>, GL_FLOAT, <span class="hljs-number">3</span> * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">float</span>), <span class="hljs-number">2</span>, <span class="hljs-number">5</span> * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(<span class="hljs-keyword">float</span>));<br>m_program-&gt;<span class="hljs-built_in">enableAttributeArray</span>(<span class="hljs-string">&quot;vTexture&quot;</span>);<br></code></pre></div></td></tr></table></figure>
+
+<p><code>setAttributeBuffer()</code>：</p>
+<ul>
+<li>第一个参数：表示 shader 中变量的名字</li>
+<li>第二个参数：表示数据类型</li>
+<li>第三个参数：表示在一个顶点中从哪个位置开始是需要的数据，坐标是 0 * sizeof(float)，纹理是 3 * sizeof(float)</li>
+<li>第四个参数：表示有几个数据，坐标有 3 个数据，纹理坐标有 2 个数据</li>
+<li>第五个参数：表示顶点数据中多少数据表示一个顶点，在这里是 5 个 float 值表示一个顶点</li>
+</ul>
+<h2 id="绘制带纹理的矩形"><a href="#绘制带纹理的矩形" class="headerlink" title="绘制带纹理的矩形"></a>绘制带纹理的矩形</h2><h3 id="加载纹理"><a href="#加载纹理" class="headerlink" title="加载纹理"></a>加载纹理</h3><p>在 Qt 中，OpenGL 的纹理使用 <code>QOpenGLTexture</code> 表示。</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">m_texture = <span class="hljs-keyword">new</span> <span class="hljs-built_in">QOpenGLTexture</span>(<span class="hljs-built_in">QImage</span>(<span class="hljs-string">&quot;path/to/image.png&quot;</span>).<span class="hljs-built_in">mirrored</span>());<br></code></pre></div></td></tr></table></figure>
+
+<p>只要在类的头文件中定义了 <code>QOpenGLTexture *m_texture = nullptr;</code> ，初始化的时候就可以创建纹理了。</p>
+<p>在加载图片的时候，要使用 mirrored() 方法，它默认会将图片沿 y 轴进行镜像翻转。因为我们用 （0， 0）表示左下角，所以坐标和一般的图像坐标发生了镜像翻转，所以加载纹理的时候也要镜像翻转一下。</p>
+<h3 id="绑定纹理"><a href="#绑定纹理" class="headerlink" title="绑定纹理"></a>绑定纹理</h3><p>加载好纹理后，要绑定一下，告诉 OpenGL 有纹理才可以使用。</p>
+<p>在绘制前 bind 一下，绘制完毕 release 就可以了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OpenGLWidget::paintGL</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  m_texture.<span class="hljs-built_in">bind</span>();<br>  m_vao.<span class="hljs-built_in">bind</span>();<br>  m_program-&gt;<span class="hljs-built_in">bind</span>();<br>  <span class="hljs-built_in">glDrawArrays</span>(GL_TRIANGLE_FAN, <span class="hljs-number">0</span>, <span class="hljs-number">4</span>);<br>  m_program-&gt;<span class="hljs-built_in">release</span>();<br>  m_vao.<span class="hljs-built_in">release</span>();<br>  m_texture.<span class="hljs-built_in">release</span>();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>绘制矩形的参数不是之前绘制三角形时的 GL_TRIANGLES，0，3, 而是 GL_TRIANGLE_FAN，0，4。其中 GL_TRIANGLE_FAN 就是另一种绘制三角形的方法，它允许我们逆时针定义四个顶点，然后绘制出来两个三角形组成一个矩形。</p>
+<p>此时，虽然定义了 <code>uniform sampler2D uTexture;</code> 用来表示纹理，但是始终没有给这个输入变量赋值，但是 OpenGL 又是如何将加载的纹理传到 shader 中？</p>
+<p>因为 OpenGL 的纹理系统有个默认设定，那就是使用纹理的时候（调用 bind 函数的时候），会被自动对应到当前激活的纹理，默认激活的纹理就是纹理 0，而我们第一个定义的纹理变量，就会被当作纹理 0。这样，使用的纹理就自动的和 shader 中定义的纹理对应上了。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Qt/">Qt</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OpenGL/">OpenGL</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Qt/">Qt</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/14/Qt%E4%B8%AD%E4%BD%BF%E7%94%A8OpenGL%EF%BC%88%E5%9B%9B%EF%BC%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Qt中使用OpenGL（四）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/13/Qt%E4%B8%AD%E4%BD%BF%E7%94%A8OpenGL%EF%BC%88%E4%BA%8C%EF%BC%89/">
+                        <span class="hidden-mobile">Qt中使用OpenGL（二）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     Peace <i class="iconfont icon-love"></i> Love 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
