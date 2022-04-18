@@ -24,7 +24,7 @@
 <meta property="og:description" content="如何画一个骰子整理顶点一个骰子是有六个正方形组成。 根据骰子纹理资源，不再使用（0，0）为左下角和（1，1）为右上角，而是使用和图片相同的左上角为（0，0），右下角为（1，1）。（因为需要人工处理这些坐标映射，所以使用和图片相同的坐标系统比较节省脑子） 骰子每个面的安排如下：1在前面，6在后面，2在右侧，5在左侧，3在上面，4在下面 12345678910111213141516171819202">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-14T10:29:57.000Z">
-<meta property="article:modified_time" content="2022-04-15T07:36:58.437Z">
+<meta property="article:modified_time" content="2022-04-18T05:44:49.625Z">
 <meta property="article:author" content="xue tao">
 <meta property="article:tag" content="OpenGL">
 <meta property="article:tag" content="Qt">
@@ -202,7 +202,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.3k 字
+      2.8k 字
     </span>
   
 
@@ -211,7 +211,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      20 分钟
+      24 分钟
     </span>
   
 
@@ -268,24 +268,24 @@
 <li>视图矩阵负责模拟一个摄像机的镜头，让你可以在三维空间的某一个位置去观察另一个位置</li>
 <li>模型矩阵负责让你绘制模型的时候，可以对它进行缩放、平移、旋转的操作</li>
 </ul>
-<p>在 Qt 中，这些矩阵可以通过 QMatrix4x4 类进行表示</p>
-<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">QMatrix4x4 m_projection;<br>QMatrix4x4 m_view;<br>QMatrix4x4  m_model;<br></code></pre></div></td></tr></table></figure>
+<p>在 Qt 中，这些矩阵可以通过 <code>QMatrix4x4</code> 类进行表示</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">QMatrix4x4 m_projection;<br>QMatrix4x4 m_view;<br>QMatrix4x4 m_model;<br></code></pre></div></td></tr></table></figure>
 
 
 
 <h3 id="投影矩阵"><a href="#投影矩阵" class="headerlink" title="投影矩阵"></a>投影矩阵</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OpenGLWdiget::resizeGL</span><span class="hljs-params">(<span class="hljs-keyword">int</span> w, <span class="hljs-keyword">int</span> h)</span></span><br><span class="hljs-function"></span>&#123;<br>  m_projection.<span class="hljs-built_in">setToIdentity</span>();<br>  m_projection.<span class="hljs-built_in">perspective</span>(<span class="hljs-number">60</span>, (<span class="hljs-keyword">float</span>) w / h, <span class="hljs-number">0.001</span>, <span class="hljs-number">1000</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
-<p>setToIdentity() 函数保证接下来的所有矩阵运算都会在一个单位矩阵上进行。</p>
-<p>perspective() 函数就可以构建出一个基于窗口大小的近大远小的投影矩阵了：</p>
+<p><code>setToIdentity()</code> 函数保证接下来的所有矩阵运算都会在一个单位矩阵上进行。</p>
+<p><code>perspective()</code> 函数就可以构建出一个基于窗口大小的近大远小的投影矩阵了：</p>
 <ul>
 <li>第一个参数表示用什么样的视角来进行投影。可以理解为看到的画面的视野有多大。人眼在头部不动的情况下，视野大概是 60 度。（这里的角度是指纵向视野的角度，不对横向视野进行限制，窗口越宽，看到的内容就会越多，但是靠近边缘的部分变形也会越严重）</li>
 <li>第二个参数是窗口的横纵比。</li>
 <li>第三、四个参数是离摄像机多近到多远范围内的物体要被显示。超出这个范围顶点物体将无法显示。</li>
 </ul>
-<h3 id="视图矩阵"><a href="#视图矩阵" class="headerlink" title="视图矩阵"></a>视图矩阵</h3><p>视图矩阵用于模拟摄像机，所以可以用 QMatrix4x4 类的 lookAt 函数来设置视角。</p>
+<h3 id="视图矩阵"><a href="#视图矩阵" class="headerlink" title="视图矩阵"></a>视图矩阵</h3><p>视图矩阵用于模拟摄像机，所以可以用 <code>QMatrix4x4</code> 类的 <code>lookAt</code> 函数来设置视角。</p>
 <figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">m_view.<span class="hljs-built_in">setToIdentity</span>();<br>m_view.<span class="hljs-built_in">lookAt</span>(<span class="hljs-built_in">QVector3D</span>(<span class="hljs-number">3</span>,<span class="hljs-number">3</span>,<span class="hljs-number">3</span>), <span class="hljs-built_in">QVector3D</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>). <span class="hljs-built_in">QVector3D</span>(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>));<br></code></pre></div></td></tr></table></figure>
 
-<p>lookAt 函数：</p>
+<p><code>lookAt</code> 函数：</p>
 <ul>
 <li>第一个参数表示你的眼睛在哪里</li>
 <li>第二个参数表示你的眼睛看向了哪里</li>
@@ -294,6 +294,15 @@
 <h3 id="模型矩阵"><a href="#模型矩阵" class="headerlink" title="模型矩阵"></a>模型矩阵</h3><p>模型矩阵用于让绘制的模型可以缩放、旋转和平移。</p>
 <figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">m_model.<span class="hljs-built_in">setToIdentity</span>();<br>model.<span class="hljs-built_in">rotate</span>(m_angle, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);<br></code></pre></div></td></tr></table></figure>
 
+<p><code>rotate</code> 函数表示绕某个轴进行一定角度的旋转，这里的角度是指具体的角度，如果每次都首先调用 <code>setToIdentity</code> 清零，则旋转的角度不会累加。</p>
+<p>如果希望模型可以一直转下去，可以设置一个定时器，以 60 帧/秒的频率修改 <code>m_angle</code> 的值，每帧 +1，到了 360 度就归零。</p>
+<p>Qt 中自带定时器，可以在构造函数中开启一个定时器</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">OpenGLWidget::<span class="hljs-built_in">OpenGLWidget</span>(QWidget *parent) : <span class="hljs-built_in">QOpenGLWidget</span>(parent)<br>&#123;<br>  <span class="hljs-built_in">startTimer</span>(<span class="hljs-number">1000</span> / <span class="hljs-number">60</span>);<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>然后在定时器事件中修改旋转角度和矩阵</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OpenGLWdiget::tinerEvent</span><span class="hljs-params">(QTimerEvent * event)</span></span><br><span class="hljs-function"></span>&#123;<br>  m_angle+=<span class="hljs-number">1</span>;<br>  <span class="hljs-keyword">if</span>(m_angle &gt;= <span class="hljs-number">360</span>)&#123;<br>    m_angle = <span class="hljs-number">0</span>;<br>  &#125;<br>  m_model.<span class="hljs-built_in">setToIdentity</span>();<br>  m_model.<span class="hljs-built_in">rotate</span>(m_angle, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);<br>  <span class="hljs-built_in">repaint</span>();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>最后调用 <code>repaint()</code> 函数告诉 OpenGL 重新绘制</p>
 
             </div>
             <hr>
@@ -323,6 +332,12 @@
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/04/18/Qt%E4%B8%AD%E4%BD%BF%E7%94%A8OpenGL%EF%BC%88%E4%BA%94%EF%BC%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Qt中使用OpenGL（五）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
