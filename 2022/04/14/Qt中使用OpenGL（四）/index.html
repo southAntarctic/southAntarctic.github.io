@@ -24,8 +24,9 @@
 <meta property="og:description" content="如何画一个骰子整理顶点一个骰子是有六个正方形组成。  根据骰子纹理资源，不再使用（0，0）为左下角和（1，1）为右上角，而是使用和图片相同的左上角为（0，0），右下角为（1，1）。（因为需要人工处理这些坐标映射，所以使用和图片相同的坐标系统比较节省脑子） 骰子每个面的安排如下：1在前面，6在后面，2在右侧，5在左侧，3在上面，4在下面 1234567891011121314151617181920">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://xt-doc-img.oss-cn-hangzhou.aliyuncs.com/202204181919816.png">
+<meta property="og:image" content="https://xt-doc-img.oss-cn-hangzhou.aliyuncs.com/202204201350668.png">
 <meta property="article:published_time" content="2022-04-14T10:29:57.000Z">
-<meta property="article:modified_time" content="2022-04-18T11:20:00.158Z">
+<meta property="article:modified_time" content="2022-04-20T05:50:34.590Z">
 <meta property="article:author" content="xue tao">
 <meta property="article:tag" content="OpenGL">
 <meta property="article:tag" content="Qt">
@@ -204,7 +205,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.5k 字
+      3.6k 字
     </span>
   
 
@@ -260,7 +261,7 @@
 
 <h3 id="加载纹理"><a href="#加载纹理" class="headerlink" title="加载纹理"></a>加载纹理</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">m_texture = <span class="hljs-keyword">new</span> <span class="hljs-built_in">QOpenGLTexture</span>(<span class="hljs-built_in">QImage</span>(<span class="hljs-string">&quot;path/to/image.png&quot;</span>));<br></code></pre></div></td></tr></table></figure>
 
-<p>因为在设计纹理坐标时，和图片坐标保持了一致，所以此时不同镜像。</p>
+<p>因为在设计纹理坐标时，和图片坐标保持了一致，所以此时不用镜像。</p>
 <h3 id="三维变换"><a href="#三维变换" class="headerlink" title="三维变换"></a>三维变换</h3><p>因为模型是三维的，而显示器只能显示一张图片，所以可以通过一系列的数学计算，将三维空间的一个物体，映射到一个二维平面，当我们观察这个二维平面时，可以有一种我们是在三维空间的某一个位置观察它的错觉。</p>
 <p>实际在用的时候，只需要定义三个矩阵，然后让顶点依此乘以矩阵就可以了。</p>
 <figure class="highlight c"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c"><span class="hljs-meta">#version 450 core</span><br>in vec3 vPos;<br>in vec2 vTexture;<br>out vec2 oTexture;<br>uniform mat4 projection;<br>uniform mat4 view;<br>uniform mat4 model;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  gl_Position = projection * view * model * vec4(vPos, <span class="hljs-number">1.0</span>);<br>  oTexture = vTexture;<br>&#125;<br></code></pre></div></td></tr></table></figure>
@@ -312,8 +313,8 @@
 <p>最终 paintGL 函数如下</p>
 <figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">OpenGLWidget::paintGL</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>  m_texture-&gt;<span class="hljs-built_in">bind</span>();<br>  m_vao.<span class="hljs-built_in">bind</span>();<br>  m_shaderProgram-&gt;<span class="hljs-built_in">bind</span>();<br>  <span class="hljs-comment">// 绑定变换矩阵</span><br>  m_shaderProgram-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;projection&quot;</span>, m_projection);<br>  m_shaderProgram-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;view&quot;</span>, m_view);<br>  m_shaderProgram-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;model&quot;</span>, m_model);<br>  <span class="hljs-comment">// 绘制</span><br>  <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>; i&lt;<span class="hljs-number">6</span>; ++i)<br>  &#123;<br>    <span class="hljs-built_in">glDrawArrays</span>(GL_TRIANGLE_FAN, i*<span class="hljs-number">4</span>, <span class="hljs-number">4</span>);<br>  &#125;<br>  m_shaderProgram-&gt;<span class="hljs-built_in">release</span>();<br>  m_vao.<span class="hljs-built_in">release</span>();<br>  m_texture-&gt;<span class="hljs-built_in">release</span>();<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
-
-
+<p>展示效果如下</p>
+<p><img src="https://xt-doc-img.oss-cn-hangzhou.aliyuncs.com/202204201350668.png" srcset="/img/loading.gif" lazyload alt="image-20220420135029537"></p>
 
             </div>
             <hr>
