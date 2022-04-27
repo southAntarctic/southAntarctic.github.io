@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xue tao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本章中，在三维世界中引入光照 现实中的光照在 OpenGL 中，光照也可以通过数学手段进行模拟。 冯氏光照模型主要由三个分量构成：  环境光（Ambient）：即使在黑暗情况下，也仍有一些光亮（远处的光） 漫反射（Diffuse）：模拟光源对物体的方向性影响 镜面光照（Specular）：模拟有光泽物体上面出现的亮点  为了确定平面的朝向，还需要法线进行帮助，有了法线，就可以计算这个平面时朝向光源">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Qt中使用OpenGL（六）">
+<meta property="og:url" content="https://southantarctic.github.io/2022/04/27/Qt%E4%B8%AD%E4%BD%BF%E7%94%A8OpenGL%EF%BC%88%E5%85%AD%EF%BC%89/index.html">
+<meta property="og:site_name" content="学涛的博客">
+<meta property="og:description" content="本章中，在三维世界中引入光照 现实中的光照在 OpenGL 中，光照也可以通过数学手段进行模拟。 冯氏光照模型主要由三个分量构成：  环境光（Ambient）：即使在黑暗情况下，也仍有一些光亮（远处的光） 漫反射（Diffuse）：模拟光源对物体的方向性影响 镜面光照（Specular）：模拟有光泽物体上面出现的亮点  为了确定平面的朝向，还需要法线进行帮助，有了法线，就可以计算这个平面时朝向光源">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-27T06:50:59.000Z">
+<meta property="article:modified_time" content="2022-04-27T14:10:15.945Z">
+<meta property="article:author" content="xue tao">
+<meta property="article:tag" content="OpenGL">
+<meta property="article:tag" content="Qt">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Qt中使用OpenGL（六） - 学涛的博客</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/night-owl.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/mac.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"southantarctic.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>学涛的博客</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                文档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Qt中使用OpenGL（六）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-27 14:50" pubdate>
+        2022年4月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      15k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      125 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Qt中使用OpenGL（六）</h1>
+            
+            <div class="markdown-body">
+              <p>本章中，在三维世界中引入光照</p>
+<h2 id="现实中的光照"><a href="#现实中的光照" class="headerlink" title="现实中的光照"></a>现实中的光照</h2><p>在 OpenGL 中，光照也可以通过数学手段进行模拟。</p>
+<p>冯氏光照模型主要由三个分量构成：</p>
+<ul>
+<li>环境光（Ambient）：即使在黑暗情况下，也仍有一些光亮（远处的光）</li>
+<li>漫反射（Diffuse）：模拟光源对物体的方向性影响</li>
+<li>镜面光照（Specular）：模拟有光泽物体上面出现的亮点</li>
+</ul>
+<p>为了确定平面的朝向，还需要法线进行帮助，有了法线，就可以计算这个平面时朝向光源还是背向光源。简单来讲，就是计算一下法线向量和从平面上一个点到光源方向的点乘，也就是 cos 值。cos 值大于 0 ，则说明当前是面向光源。</p>
+<ol>
+<li>在顶点信息中增加法线的概念，以便计算光是否照在这个顶点所在平面</li>
+<li>需要材质的概念，来模拟 环境光、漫反射与镜面反射。</li>
+</ol>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Vertex</span> &#123;</span><br>    QVector3D pos;<br>    QVector2D texture;<br>    QVector3D normal;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Material</span> &#123;</span><br>    QVector3D ambient = <span class="hljs-built_in">QVector3D</span>(<span class="hljs-number">0.24725</span>, <span class="hljs-number">0.1995</span>, <span class="hljs-number">0.0745</span>);<br>    QVector3D diffuse = <span class="hljs-built_in">QVector3D</span>(<span class="hljs-number">0.75164</span>, <span class="hljs-number">0.60648</span>, <span class="hljs-number">0.22648</span>);<br>    QVector3D specular = <span class="hljs-built_in">QVector3D</span>(<span class="hljs-number">0.628281</span>, <span class="hljs-number">0.555802</span>, <span class="hljs-number">0.366065</span>);<br>    <span class="hljs-keyword">float</span> shininess = <span class="hljs-number">0.4</span>;<br>&#125;;<br></code></pre></div></td></tr></table></figure>
+
+<p>normal 就是法线。</p>
+<p>然后为 model 添加材质接口与实现</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">// model.h</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> MODEL_H</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> MODEL_H</span><br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QOpenGLWidget&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QOpenGLFunctions_4_5_Core&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QOpenGLVertexArrayObject&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QOpenGLBuffer&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QOpenGLShaderProgram&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;QOpenGLTexture&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;Camera.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;light.h&quot;</span></span><br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Vertex</span> &#123;</span><br>    QVector3D pos;<br>    QVector2D texture;<br>    QVector3D normal;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Material</span> &#123;</span><br>    QVector3D ambient = <span class="hljs-built_in">QVector3D</span>(<span class="hljs-number">0.24725</span>, <span class="hljs-number">0.1995</span>, <span class="hljs-number">0.0745</span>);<br>    QVector3D diffuse = <span class="hljs-built_in">QVector3D</span>(<span class="hljs-number">0.75164</span>, <span class="hljs-number">0.60648</span>, <span class="hljs-number">0.22648</span>);<br>    QVector3D specular = <span class="hljs-built_in">QVector3D</span>(<span class="hljs-number">0.628281</span>, <span class="hljs-number">0.555802</span>, <span class="hljs-number">0.366065</span>);<br>    <span class="hljs-keyword">float</span> shininess = <span class="hljs-number">0.4</span>;<br>&#125;;<br><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">float</span> VertexFloatCount = <span class="hljs-number">8</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Model</span> :</span> <span class="hljs-keyword">public</span> QOpenGLFunctions_4_5_Core<br>&#123;<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-built_in">Model</span>();<br>    ~<span class="hljs-built_in">Model</span>();<br><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setScale</span><span class="hljs-params">(<span class="hljs-keyword">float</span> val)</span></span><br><span class="hljs-function">    </span>&#123;<br>        m_scale = val;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setRotate</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QVector3D &amp;rotate)</span></span><br><span class="hljs-function">    </span>&#123;<br>        m_rotate = rotate;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setPos</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QVector3D &amp;pos)</span></span><br><span class="hljs-function">    </span>&#123;<br>        m_pos = pos;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">float</span> <span class="hljs-title">scale</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> m_scale;<br>    &#125;<br>    <span class="hljs-function">QVector3D <span class="hljs-title">rotate</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> m_rotate;<br>    &#125;<br>    <span class="hljs-function">QVector3D <span class="hljs-title">pos</span><span class="hljs-params">()</span></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> m_pos;<br>    &#125;<br><br>    <span class="hljs-function">QVector3D <span class="hljs-title">getRotate</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span><br><span class="hljs-function">    </span>&#123;<br>        <span class="hljs-keyword">return</span> m_rotate;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setVertices</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QVector&lt;Vertex&gt; &amp;vertices)</span></span><br><span class="hljs-function">    </span>&#123;<br>        m_vertices = vertices;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setTexture</span><span class="hljs-params">(QOpenGLTexture *texture, <span class="hljs-keyword">int</span> index = <span class="hljs-number">-1</span>)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setMaterial</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Material &amp;material, <span class="hljs-keyword">int</span> index = <span class="hljs-number">-1</span>)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setShaderProgram</span><span class="hljs-params">(QOpenGLShaderProgram *program)</span></span><br><span class="hljs-function">    </span>&#123;<br>        m_program = program;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setCamera</span><span class="hljs-params">(Camera *camera)</span></span><br><span class="hljs-function">    </span>&#123;<br>        m_camera = camera;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setProjection</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QMatrix4x4 &amp;projection)</span></span><br><span class="hljs-function">    </span>&#123;<br>        m_projection = projection;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setView</span><span class="hljs-params">(<span class="hljs-keyword">const</span> QMatrix4x4 &amp;view)</span></span><br><span class="hljs-function">    </span>&#123;<br>        m_view = view;<br>    &#125;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">setLight</span><span class="hljs-params">(Light *light)</span></span><br><span class="hljs-function">    </span>&#123;<br>        m_light = light;<br>    &#125;<br><br>    <span class="hljs-function">QMatrix4x4 <span class="hljs-title">model</span><span class="hljs-params">()</span></span>;<br><br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">paint</span><span class="hljs-params">()</span></span>;<br><span class="hljs-keyword">protected</span>:<br>    QVector3D m_pos&#123; <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> &#125;;<br>    QVector3D m_rotate&#123; <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span> &#125;;<br>    <span class="hljs-keyword">float</span> m_scale = <span class="hljs-number">1</span>;<br>    QVector&lt;Vertex&gt; m_vertices;<br>    QMap&lt;<span class="hljs-keyword">int</span>, QOpenGLTexture *&gt; m_textures;<br>    QMap&lt;<span class="hljs-keyword">int</span>, Material&gt; m_materials;<br>    QOpenGLVertexArrayObject m_vao;<br>    QOpenGLBuffer m_vbo;<br>    QOpenGLShaderProgram *m_program = <span class="hljs-literal">nullptr</span>;<br><br>    QMatrix4x4 m_projection;<br>    QMatrix4x4 m_view;<br>    Camera *m_camera = <span class="hljs-literal">nullptr</span>;<br>    Light *m_light = <span class="hljs-literal">nullptr</span>;<br><br>&#125;;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span> <span class="hljs-comment">// MODEL_H</span></span><br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">// model.cpp</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&quot;model.h&quot;</span></span><br><br>Model::<span class="hljs-built_in">Model</span>()<br>&#123;<br>&#125;<br><br>Model::~<span class="hljs-built_in">Model</span>()<br>&#123;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Model::setTexture</span><span class="hljs-params">(QOpenGLTexture *texture, <span class="hljs-keyword">int</span> index)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(index == <span class="hljs-number">-1</span>) &#123;<br>        <span class="hljs-keyword">if</span>(m_textures.<span class="hljs-built_in">isEmpty</span>()) &#123;<br>            index = <span class="hljs-number">0</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            index = m_textures.<span class="hljs-built_in">keys</span>().<span class="hljs-built_in">last</span>() + <span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br>    m_textures.<span class="hljs-built_in">insert</span>(index, texture);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Model::setMaterial</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Material &amp;material, <span class="hljs-keyword">int</span> index)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">if</span>(index == <span class="hljs-number">-1</span>) &#123;<br>        <span class="hljs-keyword">if</span>(m_materials.<span class="hljs-built_in">isEmpty</span>()) &#123;<br>            index = <span class="hljs-number">0</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            index = m_materials.<span class="hljs-built_in">keys</span>().<span class="hljs-built_in">last</span>() + <span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br>    m_materials.<span class="hljs-built_in">insert</span>(index, material);<br>&#125;<br><br><span class="hljs-function">QMatrix4x4 <span class="hljs-title">Model::model</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    QMatrix4x4 _mat;<br>    _mat.<span class="hljs-built_in">setToIdentity</span>();<br>    _mat.<span class="hljs-built_in">translate</span>(m_pos);<br>    _mat.<span class="hljs-built_in">rotate</span>(m_rotate.<span class="hljs-built_in">x</span>(), <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>    _mat.<span class="hljs-built_in">rotate</span>(m_rotate.<span class="hljs-built_in">y</span>(), <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>);<br>    _mat.<span class="hljs-built_in">rotate</span>(m_rotate.<span class="hljs-built_in">z</span>(), <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>);<br>    _mat.<span class="hljs-built_in">scale</span>(m_scale);<br>    <span class="hljs-keyword">return</span> _mat;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Model::init</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Model::update</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Model::paint</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="设置法线和材质"><a href="#设置法线和材质" class="headerlink" title="设置法线和材质"></a>设置法线和材质</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-built_in">setVertices</span>(&#123;<br>  <span class="hljs-comment">// 1</span><br>  &#123;&#123;<span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,&#125;, &#123;<span class="hljs-number">0.50</span>, <span class="hljs-number">0.25</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;&#125;,	<span class="hljs-comment">// 左上</span><br>  &#123;&#123;<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>,&#125;, &#123;<span class="hljs-number">0.50</span>, <span class="hljs-number">0.50</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;&#125;,	<span class="hljs-comment">// 左下</span><br>  &#123;&#123; <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>,&#125;, &#123;<span class="hljs-number">0.75</span>, <span class="hljs-number">0.50</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;&#125;,	<span class="hljs-comment">// 右下</span><br>  &#123;&#123; <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,&#125;, &#123;<span class="hljs-number">0.75</span>, <span class="hljs-number">0.25</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;&#125;,	<span class="hljs-comment">// 右上</span><br>  <span class="hljs-comment">// 6</span><br>  &#123;&#123; <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>,&#125;, &#123;<span class="hljs-number">0.00</span>, <span class="hljs-number">0.25</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>&#125;&#125;,	<span class="hljs-comment">// 左上</span><br>  &#123;&#123; <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,&#125;, &#123;<span class="hljs-number">0.00</span>, <span class="hljs-number">0.50</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>&#125;&#125;,	<span class="hljs-comment">// 左下</span><br>  &#123;&#123;<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,&#125;, &#123;<span class="hljs-number">0.25</span>, <span class="hljs-number">0.50</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>&#125;&#125;,	<span class="hljs-comment">// 右下</span><br>  &#123;&#123;<span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>,&#125;, &#123;<span class="hljs-number">0.25</span>, <span class="hljs-number">0.25</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-1</span>&#125;&#125;,	<span class="hljs-comment">// 右上</span><br>  <span class="hljs-comment">// 2</span><br>  &#123;&#123; <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,&#125;, &#123;<span class="hljs-number">0.75</span>, <span class="hljs-number">0.25</span>&#125;, &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 左上</span><br>  &#123;&#123; <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>,&#125;, &#123;<span class="hljs-number">0.75</span>, <span class="hljs-number">0.50</span>&#125;, &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 左下</span><br>  &#123;&#123; <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,&#125;, &#123;<span class="hljs-number">1.00</span>, <span class="hljs-number">0.50</span>&#125;, &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 右下</span><br>  &#123;&#123; <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>,&#125;, &#123;<span class="hljs-number">1.00</span>, <span class="hljs-number">0.25</span>&#125;, &#123;<span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 右上</span><br>  <span class="hljs-comment">// 5</span><br>  &#123;&#123;<span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>,&#125;, &#123;<span class="hljs-number">0.25</span>, <span class="hljs-number">0.25</span>&#125;, &#123;<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 左上</span><br>  &#123;&#123;<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,&#125;, &#123;<span class="hljs-number">0.25</span>, <span class="hljs-number">0.50</span>&#125;, &#123;<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 左下</span><br>  &#123;&#123;<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>,&#125;, &#123;<span class="hljs-number">0.50</span>, <span class="hljs-number">0.50</span>&#125;, &#123;<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 右下</span><br>  &#123;&#123;<span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,&#125;, &#123;<span class="hljs-number">0.50</span>, <span class="hljs-number">0.25</span>&#125;, &#123;<span class="hljs-number">-1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 右上</span><br>  <span class="hljs-comment">// 3</span><br>  &#123;&#123;<span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>,&#125;, &#123;<span class="hljs-number">0.00</span>, <span class="hljs-number">0.00</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 左上</span><br>  &#123;&#123;<span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,&#125;, &#123;<span class="hljs-number">0.00</span>, <span class="hljs-number">0.25</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 左下</span><br>  &#123;&#123; <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>,&#125;, &#123;<span class="hljs-number">0.25</span>, <span class="hljs-number">0.25</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 右下</span><br>  &#123;&#123; <span class="hljs-number">1</span>,  <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>,&#125;, &#123;<span class="hljs-number">0.25</span>, <span class="hljs-number">0.00</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 右上</span><br>  <span class="hljs-comment">// 4</span><br>  &#123;&#123;<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>,&#125;, &#123;<span class="hljs-number">0.00</span>, <span class="hljs-number">0.50</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 左上</span><br>  &#123;&#123;<span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,&#125;, &#123;<span class="hljs-number">0.00</span>, <span class="hljs-number">0.75</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 左下</span><br>  &#123;&#123; <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">-1</span>,&#125;, &#123;<span class="hljs-number">0.25</span>, <span class="hljs-number">0.75</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 右下</span><br>  &#123;&#123; <span class="hljs-number">1</span>, <span class="hljs-number">-1</span>,  <span class="hljs-number">1</span>,&#125;, &#123;<span class="hljs-number">0.25</span>, <span class="hljs-number">0.50</span>&#125;, &#123;<span class="hljs-number">0</span>, <span class="hljs-number">-1</span>, <span class="hljs-number">0</span>&#125;&#125;,	<span class="hljs-comment">// 右上</span><br>&#125;);<br></code></pre></div></td></tr></table></figure>
+
+<p>设置材质</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">auto</span> _texture = <span class="hljs-keyword">new</span> <span class="hljs-built_in">QOpenGLTexture</span>(<span class="hljs-built_in">QImage</span>(<span class="hljs-string">&quot;path/to/texture.png&quot;</span>));<br>_texture-&gt;<span class="hljs-built_in">setMinificationFilter</span>(QOpenGLTexture::LinearMipMapLinear);<br>_texture-&gt;<span class="hljs-built_in">setMagnificationFilter</span>(QOpenGLTexture::Linear);<br><span class="hljs-built_in">setTexture</span>(_texture);<br><span class="hljs-built_in">setMaterial</span>(&#123;<span class="hljs-built_in">QVector3D</span>(<span class="hljs-number">0.24725</span>, <span class="hljs-number">0.1995</span>, <span class="hljs-number">0.0745</span>), <span class="hljs-built_in">QVector3D</span>(<span class="hljs-number">0.75164</span>, <span class="hljs-number">0.60648</span>, <span class="hljs-number">0.22648</span>), <span class="hljs-built_in">QVector3D</span>(<span class="hljs-number">0.628281</span>, <span class="hljs-number">0.555802</span>, <span class="hljs-number">0.366065</span>), <span class="hljs-number">0.4</span>&#125;);<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="使用-shader-计算光照"><a href="#使用-shader-计算光照" class="headerlink" title="使用 shader 计算光照"></a>使用 shader 计算光照</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">// vertex.shader</span><br><span class="hljs-meta">#version 450 core</span><br><br>in vec3 vPos;<br>in vec2 vTexture;<br>in vec3 vNormal;<br><br>out vec3 FragPos;<br>out vec3 Normal;<br>out vec2 TexCoords;<br><br>uniform mat4 projection;<br>uniform mat4 view;<br>uniform mat4 model;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>        FragPos = <span class="hljs-built_in">vec3</span>(model * <span class="hljs-built_in">vec4</span>(vPos, <span class="hljs-number">1.0</span>));<br>        Normal = <span class="hljs-built_in">mat3</span>(<span class="hljs-built_in">transpose</span>(<span class="hljs-built_in">inverse</span>(model))) * vNormal;<br>        TexCoords = vTexture;<br><br>        gl_Position = projection * view * model * <span class="hljs-built_in">vec4</span>(vPos, <span class="hljs-number">1.0</span>);<br>&#125;<br><br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-comment">// fragment.shader</span><br><span class="hljs-meta">#version 450 core</span><br><br>out vec4 FragColor;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Material</span> &#123;</span><br>    sampler2D texture;<br>    vec3 ambient;<br>    vec3 diffuse;<br>    vec3 specular;<br>    <span class="hljs-keyword">float</span> shininess;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Light</span> &#123;</span><br>    vec3 position;<br>    vec3 color;<br>&#125;;<br><br>in vec3 FragPos;<br>in vec3 Normal;<br>in vec2 TexCoords;<br><br>uniform vec3 viewPos;<br>uniform Material material;<br>uniform Light light;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    vec3 materialTexColor = <span class="hljs-built_in">vec3</span>(<span class="hljs-built_in">texture</span>(material.texture, TexCoords));<br><br>    <span class="hljs-comment">// ambient</span><br>    vec3 ambient = materialTexColor * material.ambient;<br><br>    <span class="hljs-comment">// diffuse</span><br>    vec3 norm = <span class="hljs-built_in">normalize</span>(Normal);<br>    vec3 lightDir = <span class="hljs-built_in">normalize</span>(light.position - FragPos);<br>    <span class="hljs-keyword">float</span> diff = <span class="hljs-built_in">max</span>(<span class="hljs-built_in">dot</span>(norm, lightDir), <span class="hljs-number">0.0</span>);<br>    vec3 diffuse = diff * material.diffuse * materialTexColor * light.color;<br><br>    <span class="hljs-comment">// specular</span><br>    vec3 viewDir = <span class="hljs-built_in">normalize</span>(viewPos - FragPos);<br>    vec3 reflectDir = <span class="hljs-built_in">reflect</span>(-lightDir, norm);<br>    <span class="hljs-keyword">float</span> spec = <span class="hljs-built_in">pow</span>(<span class="hljs-built_in">max</span>(<span class="hljs-built_in">dot</span>(viewDir, reflectDir), <span class="hljs-number">0.0</span>), material.shininess);<br>    vec3 specular = spec * material.specular * light.color;<br><br>    vec3 result = ambient + diffuse + specular;<br><br>    FragColor = <span class="hljs-built_in">vec4</span>(result, <span class="hljs-number">1.0</span>);<br><br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>其中 </p>
+<ul>
+<li>环境光 = 环境光参数 * 纹理采样（<code>vec3(texture(material.texture, TexCoords))</code>）</li>
+<li>漫反射 = 法线（<code>normalize(Normal)</code>）和朝向光源向量（<code>light.position - FragPos</code>）的点乘 乘以 漫反射参数 乘以 纹理采样 乘以 光（<code>light.color</code>）</li>
+<li>镜面反射 ： 先用光的方向和法线方向计算出反射光线方向（<code>vec3 lightDir = reflect(-lightDir, norm)</code>），然后计算视角朝向方向（<code>vec3 viewDir = normalize(viewPos - FragPos)</code>），然后使用 pow 函数计算光斑（<code>float spec = pow(max(dot(viewDir, reflectDir), 0.0), material.shininess)</code>），最终镜面反射 = 光斑 乘以 镜面反射参数 乘以 光</li>
+<li>最终结果 = 环境光 + 漫反射 + 镜面反射</li>
+</ul>
+<p>然后加载 shader </p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-keyword">auto</span> _program = <span class="hljs-keyword">new</span> <span class="hljs-built_in">QOpenGLShaderProgram</span>();<br>_program-&gt;<span class="hljs-built_in">addShaderFromSourceFile</span>(QOpenGLShader::Vertex, <span class="hljs-string">&quot;:/shaders/vertex.shader&quot;</span>);<br>_program-&gt;<span class="hljs-built_in">addShaderFromSourceFile</span>(QOpenGLShader::Fragment, <span class="hljs-string">&quot;:/shaders/fragment.shader&quot;</span>);<br><span class="hljs-built_in">setShaderProgram</span>(_program);<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="初始化带法线的顶点缓存"><a href="#初始化带法线的顶点缓存" class="headerlink" title="初始化带法线的顶点缓存"></a>初始化带法线的顶点缓存</h3><p>修改 init() 函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Dice::init</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">initializeOpenGLFunctions</span>();<br>    <span class="hljs-keyword">if</span>(!m_vao.<span class="hljs-built_in">isCreated</span>()) &#123;<br>        m_vao.<span class="hljs-built_in">create</span>();<br>    &#125;<br>    <span class="hljs-keyword">if</span>(!m_vbo.<span class="hljs-built_in">isCreated</span>()) &#123;<br>        m_vbo.<span class="hljs-built_in">create</span>();<br>    &#125;<br>    <span class="hljs-keyword">if</span>(!m_program-&gt;<span class="hljs-built_in">isLinked</span>()) &#123;<br>        m_program-&gt;<span class="hljs-built_in">link</span>();<br>    &#125;<br>    <span class="hljs-keyword">if</span>(m_vertexCount &lt; m_vertices.<span class="hljs-built_in">count</span>()) &#123;<br>        <span class="hljs-keyword">if</span>(m_vertexBuffer) &#123;<br>            <span class="hljs-keyword">delete</span>[] m_vertexBuffer;<br>        &#125;<br>        m_vertexBuffer = <span class="hljs-keyword">new</span> <span class="hljs-keyword">float</span>[m_vertices.<span class="hljs-built_in">count</span>() * VertexFloatCount];<br>        m_vertexCount = m_vertices.<span class="hljs-built_in">count</span>();<br>        <span class="hljs-keyword">int</span> _offset = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> &amp;vertex : m_vertices) &#123;<br>            m_vertexBuffer[_offset] = vertex.pos.<span class="hljs-built_in">x</span>();<br>            _offset++;<br>            m_vertexBuffer[_offset] = vertex.pos.<span class="hljs-built_in">y</span>();<br>            _offset++;<br>            m_vertexBuffer[_offset] = vertex.pos.<span class="hljs-built_in">z</span>();<br>            _offset++;<br>            m_vertexBuffer[_offset] = vertex.texture.<span class="hljs-built_in">x</span>();<br>            _offset++;<br>            m_vertexBuffer[_offset] = vertex.texture.<span class="hljs-built_in">y</span>();<br>            _offset++;<br>            m_vertexBuffer[_offset] = vertex.normal.<span class="hljs-built_in">x</span>();<br>            _offset++;<br>            m_vertexBuffer[_offset] = vertex.normal.<span class="hljs-built_in">y</span>();<br>            _offset++;<br>            m_vertexBuffer[_offset] = vertex.normal.<span class="hljs-built_in">z</span>();<br>            _offset++;<br>        &#125;<br>    &#125;<br>    m_vao.<span class="hljs-built_in">bind</span>();<br>    m_vbo.<span class="hljs-built_in">bind</span>();<br>    m_vbo.<span class="hljs-built_in">allocate</span>(m_vertexBuffer, <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span> (<span class="hljs-keyword">float</span>)*m_vertices.<span class="hljs-built_in">count</span>() * VertexFloatCount);<br>    m_program-&gt;<span class="hljs-built_in">bind</span>();<br>    <span class="hljs-comment">// 绑定顶点坐标信息 从 0*sizeof(flaot)开始读取 3 个 float, 一个顶点有 VertexFLoatCount 个 float 数据，所以下一个数据要偏移 VertexFloatCount * sizeof(float) 个字节</span><br>    m_program-&gt;<span class="hljs-built_in">setAttributeBuffer</span>(<span class="hljs-string">&quot;vPos&quot;</span>, GL_FLOAT, <span class="hljs-number">0</span> * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span> (<span class="hljs-keyword">float</span>), <span class="hljs-number">3</span>, VertexFloatCount * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span> (<span class="hljs-keyword">float</span>));<br>    m_program-&gt;<span class="hljs-built_in">enableAttributeArray</span>(<span class="hljs-string">&quot;vPos&quot;</span>);<br>    <span class="hljs-comment">// 绑定纹理坐标信息 从 3*sizeof(float)开始读取 2 个 float，一个顶点有 VertexFLoatCount 个 float 数据，所以下一个数据要偏移 VertexFloatCount * sizeof(float) 个字节</span><br>    m_program-&gt;<span class="hljs-built_in">setAttributeBuffer</span>(<span class="hljs-string">&quot;vTexture&quot;</span>, GL_FLOAT, <span class="hljs-number">3</span> * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span> (<span class="hljs-keyword">float</span>), <span class="hljs-number">2</span>, VertexFloatCount * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span> (<span class="hljs-keyword">float</span>));<br>    m_program-&gt;<span class="hljs-built_in">enableAttributeArray</span>(<span class="hljs-string">&quot;vTexture&quot;</span>);<br>    m_program-&gt;<span class="hljs-built_in">setAttributeBuffer</span>(<span class="hljs-string">&quot;vNormal&quot;</span>, GL_FLOAT, <span class="hljs-number">5</span> * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span> (<span class="hljs-keyword">float</span>), <span class="hljs-number">3</span>, VertexFloatCount * <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span> (<span class="hljs-keyword">float</span>));<br>    m_program-&gt;<span class="hljs-built_in">enableAttributeArray</span>(<span class="hljs-string">&quot;vNormal&quot;</span>);<br>    m_program-&gt;<span class="hljs-built_in">release</span>();<br>    m_vbo.<span class="hljs-built_in">release</span>();<br>    m_vao.<span class="hljs-built_in">release</span>();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p>修改 paint() 函数</p>
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Dice::paint</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> index : m_textures.<span class="hljs-built_in">keys</span>()) &#123;<br>        m_textures[index]-&gt;<span class="hljs-built_in">bind</span>(index);<br>    &#125;<br>    m_vao.<span class="hljs-built_in">bind</span>();<br>    m_program-&gt;<span class="hljs-built_in">bind</span>();<br>    <span class="hljs-comment">// 绑定变换矩阵</span><br>    m_program-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;projection&quot;</span>, m_projection);<br>    m_program-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;view&quot;</span>, m_camera-&gt;<span class="hljs-built_in">GetViewMatrix</span>());<br>    m_program-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;viewPos&quot;</span>, m_camera-&gt;Position);<br>    m_program-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;model&quot;</span>, <span class="hljs-built_in">model</span>());<br>    <span class="hljs-comment">// 设置灯光位置和颜色</span><br>    m_program-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;light.position&quot;</span>, m_light-&gt;<span class="hljs-built_in">pos</span>());<br>    m_program-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;light.color&quot;</span>, m_light-&gt;<span class="hljs-built_in">color</span>().<span class="hljs-built_in">redF</span>(), m_light-&gt;<span class="hljs-built_in">color</span>().<span class="hljs-built_in">greenF</span>(), m_light-&gt;<span class="hljs-built_in">color</span>().<span class="hljs-built_in">blueF</span>());<br>    <span class="hljs-keyword">auto</span> &amp;_material = m_materials.<span class="hljs-built_in">value</span>(<span class="hljs-number">0</span>);<br>    <span class="hljs-comment">// 设置材质</span><br>    m_program-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;material.ambient&quot;</span>, _material.ambient);<br>    m_program-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;material.diffuse&quot;</span>, _material.diffuse);<br>    m_program-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;material.specular&quot;</span>, _material.specular);<br>    m_program-&gt;<span class="hljs-built_in">setUniformValue</span>(<span class="hljs-string">&quot;material.shininess&quot;</span>, _material.shininess);<br>    <span class="hljs-comment">// 绘制</span><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">6</span>; i++) &#123;<br>        <span class="hljs-built_in">glDrawArrays</span>(GL_TRIANGLE_FAN, i * <span class="hljs-number">4</span>, <span class="hljs-number">4</span>);<br>    &#125;<br>    m_program-&gt;<span class="hljs-built_in">release</span>();<br>    m_vao.<span class="hljs-built_in">release</span>();<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> texture : m_textures) &#123;<br>        texture-&gt;<span class="hljs-built_in">release</span>();<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h3 id="修改-OpenGLWidget-类"><a href="#修改-OpenGLWidget-类" class="headerlink" title="修改 OpenGLWidget 类"></a>修改 OpenGLWidget 类</h3><figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">TreeOpenGLWidget</span> :</span> <span class="hljs-keyword">public</span> QOpenGLWidget, QOpenGLFunctions_4_5_Core<br>&#123;<br>    Q_OBJECT<br><span class="hljs-keyword">public</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">explicit</span> <span class="hljs-title">TreeOpenGLWidget</span><span class="hljs-params">(QWidget *parent = <span class="hljs-literal">nullptr</span>)</span></span>;<br>    ~<span class="hljs-built_in">TreeOpenGLWidget</span>();<br><span class="hljs-keyword">protected</span>:<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">initializeGL</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">resizeGL</span><span class="hljs-params">(<span class="hljs-keyword">int</span> w, <span class="hljs-keyword">int</span> h)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">paintGL</span><span class="hljs-params">()</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">wheelEvent</span><span class="hljs-params">(QWheelEvent *event)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">keyPressEvent</span><span class="hljs-params">(QKeyEvent *event)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mouseMoveEvent</span><span class="hljs-params">(QMouseEvent *event)</span></span>;<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">mousePressEvent</span><span class="hljs-params">(QMouseEvent *event)</span></span>;<br>signals:<br><span class="hljs-keyword">public</span> slots:<br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">on_timeout</span><span class="hljs-params">()</span></span>;<br><span class="hljs-keyword">private</span>:<br>    QTimer m_timer;<br>    QTime m_time;<br>    Camera m_camera;<br>    Light m_light;<br>    QMatrix4x4 m_projection;<br><br>    QMatrix4x4 m_view;<br>    QVector&lt;Model *&gt; m_models;<br>    Model *m_lightModel;<br>&#125;;<br><br></code></pre></div></td></tr></table></figure>
+
+<figure class="highlight c++"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs c++">TreeOpenGLWidget::<span class="hljs-built_in">TreeOpenGLWidget</span>(QWidget *parent) : <span class="hljs-built_in">QOpenGLWidget</span>(parent)<br>&#123;<br>    <span class="hljs-built_in">connect</span>(&amp;m_timer, <span class="hljs-built_in">SIGNAL</span>(<span class="hljs-built_in">timeout</span>()), <span class="hljs-keyword">this</span>, <span class="hljs-built_in">SLOT</span>(<span class="hljs-built_in">on_timeout</span>()));<br>    m_timer.<span class="hljs-built_in">start</span>(timeOutmSec);<br>    m_time.<span class="hljs-built_in">start</span>();<br>    m_camera.Position = viewInitPos;<br>    m_light.<span class="hljs-built_in">setPos</span>(&#123;<span class="hljs-number">10</span>, <span class="hljs-number">3</span>, <span class="hljs-number">0</span>&#125;);<br>    m_light.<span class="hljs-built_in">setColor</span>(<span class="hljs-built_in">QColor</span>(<span class="hljs-number">255</span>, <span class="hljs-number">255</span>, <span class="hljs-number">255</span>));<br>    <span class="hljs-built_in">setFocusPolicy</span>(Qt::StrongFocus);<br>&#125;<br><br>TreeOpenGLWidget::~<span class="hljs-built_in">TreeOpenGLWidget</span>()<br>&#123;<br>    <span class="hljs-keyword">if</span>(!<span class="hljs-built_in">isValid</span>()) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-built_in">makeCurrent</span>();<br>    <span class="hljs-comment">// 删除必要的</span><br><span class="hljs-comment">//    glDeleteBuffers(1, &amp;VBO);</span><br><span class="hljs-comment">//    glDeleteVertexArrays(1, &amp;VAO);</span><br><span class="hljs-comment">//    glDeleteVertexArrays(1, &amp;lightVAO);</span><br>    <span class="hljs-built_in">doneCurrent</span>();<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">TreeOpenGLWidget::initializeGL</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">initializeOpenGLFunctions</span>();<br>    <span class="hljs-built_in">glEnable</span>(GL_DEPTH_TEST);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span> ; i++ ) &#123;<br>        <span class="hljs-keyword">auto</span> _dice = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Dice</span>();<br>        _dice-&gt;<span class="hljs-built_in">init</span>();<br>        _dice-&gt;<span class="hljs-built_in">setPos</span>(&#123;<span class="hljs-number">0</span>, i * <span class="hljs-number">3.0f</span>, <span class="hljs-number">0</span>&#125;);<br>        _dice-&gt;<span class="hljs-built_in">setLight</span>(&amp;m_light);<br>        _dice-&gt;<span class="hljs-built_in">setCamera</span>(&amp;m_camera);<br>        m_models &lt;&lt; _dice;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">TreeOpenGLWidget::resizeGL</span><span class="hljs-params">(<span class="hljs-keyword">int</span> w, <span class="hljs-keyword">int</span> h)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">Q_UNUSED</span>(w);<br>    <span class="hljs-built_in">Q_UNUSED</span>(h);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">TreeOpenGLWidget::paintGL</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">glClearColor</span>(<span class="hljs-number">0.2f</span>, <span class="hljs-number">0.3f</span>, <span class="hljs-number">0.3f</span>, <span class="hljs-number">1.0f</span>);<br>    m_projection.<span class="hljs-built_in">setToIdentity</span>();<br>    m_view.<span class="hljs-built_in">setToIdentity</span>();<br>    m_projection.<span class="hljs-built_in">perspective</span>(m_camera.Zoom, (<span class="hljs-keyword">float</span>)<span class="hljs-built_in">width</span>() / <span class="hljs-built_in">height</span>(), <span class="hljs-number">0.1</span>, <span class="hljs-number">100</span>);<br>    m_view = m_camera.<span class="hljs-built_in">GetViewMatrix</span>();<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> dice : m_models) &#123;<br>        dice-&gt;<span class="hljs-built_in">setProjection</span>(m_projection);<br>        dice-&gt;<span class="hljs-built_in">paint</span>();<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">TreeOpenGLWidget::wheelEvent</span><span class="hljs-params">(QWheelEvent *event)</span></span><br><span class="hljs-function"></span>&#123;<br>    m_camera.<span class="hljs-built_in">ProcessMouseScroll</span>(event-&gt;<span class="hljs-built_in">angleDelta</span>().<span class="hljs-built_in">y</span>() / <span class="hljs-number">120</span>);<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">TreeOpenGLWidget::keyPressEvent</span><span class="hljs-params">(QKeyEvent *event)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">float</span> deltaTime = timeOutmSec / <span class="hljs-number">50.0f</span>;<br>    <span class="hljs-built_in"><span class="hljs-keyword">switch</span></span> (event-&gt;<span class="hljs-built_in">key</span>()) &#123;<br>        <span class="hljs-keyword">case</span> Qt::Key_W:<br>            m_camera.<span class="hljs-built_in">ProcessKeyboard</span>(FORWARD, deltaTime);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> Qt::Key_S:<br>            m_camera.<span class="hljs-built_in">ProcessKeyboard</span>(BACKWARD, deltaTime);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> Qt::Key_A:<br>            m_camera.<span class="hljs-built_in">ProcessKeyboard</span>(LEFT, deltaTime);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> Qt::Key_D:<br>            m_camera.<span class="hljs-built_in">ProcessKeyboard</span>(RIGHT, deltaTime);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> Qt::Key_Q:<br>            m_camera.<span class="hljs-built_in">ProcessKeyboard</span>(UP, deltaTime);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> Qt::Key_E:<br>            m_camera.<span class="hljs-built_in">ProcessKeyboard</span>(DOWN, deltaTime);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">case</span> Qt::Key_Space:<br>            m_camera.Position = viewInitPos;<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-keyword">default</span>:<br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">TreeOpenGLWidget::mouseMoveEvent</span><span class="hljs-params">(QMouseEvent *event)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">makeCurrent</span>();<br>    <span class="hljs-keyword">if</span>(event-&gt;<span class="hljs-built_in">buttons</span>() &amp; Qt::RightButton) &#123;<br>        <span class="hljs-keyword">auto</span> currentPos = event-&gt;<span class="hljs-built_in">pos</span>();<br>        QPoint deltaPos = currentPos - lastPos;<br>        lastPos = currentPos;<br>        m_camera.<span class="hljs-built_in">ProcessMouseMovement</span>(deltaPos.<span class="hljs-built_in">x</span>(), -deltaPos.<span class="hljs-built_in">y</span>());<br>    &#125;<br>    <span class="hljs-built_in">doneCurrent</span>();<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">TreeOpenGLWidget::mousePressEvent</span><span class="hljs-params">(QMouseEvent *event)</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-built_in">makeCurrent</span>();<br>    lastPos = event-&gt;<span class="hljs-built_in">pos</span>();<br>    <span class="hljs-built_in">doneCurrent</span>();<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">TreeOpenGLWidget::on_timeout</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">float</span> _speed = <span class="hljs-number">0.1</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> dice : m_models) &#123;<br>        <span class="hljs-keyword">float</span> _y = dice-&gt;<span class="hljs-built_in">getRotate</span>().<span class="hljs-built_in">y</span>() + _speed;<br>        <span class="hljs-keyword">if</span>(_y &gt;= <span class="hljs-number">360</span>) &#123;<br>            _y -= <span class="hljs-number">360</span>;<br>        &#125;<br>        dice-&gt;<span class="hljs-built_in">setRotate</span>(&#123;<span class="hljs-number">0</span>, _y, <span class="hljs-number">0</span>&#125;);<br>        _speed += <span class="hljs-number">0.01</span>;<br>    &#125;<br><span class="hljs-comment">//    auto _h = m_light.color().hslHue() + 1;</span><br><span class="hljs-comment">//    if(_h &gt;= 360) &#123;</span><br><span class="hljs-comment">//        _h -= 360;</span><br><span class="hljs-comment">//    &#125;</span><br><span class="hljs-comment">//    m_light.setColor(QColor::fromHsv(_h, 255, 255));</span><br>    <span class="hljs-built_in">update</span>();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Qt/">Qt</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/OpenGL/">OpenGL</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Qt/">Qt</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/25/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95CheckList/">
+                        <span class="hidden-mobile">渗透测试CheckList</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     Peace <i class="iconfont icon-love"></i> Love 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
